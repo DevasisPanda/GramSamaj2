@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#E5EBE0] text-[#111111] font-sans antialiased;
+    font-family: Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-saffron-200 text-saffron-900;
+  }
+
+  .devanagari {
+    font-family: '"Noto Sans Devanagari"', Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-[1530px] px-1 sm:px-2;
+  }
+
+  .section-py {
+    @apply py-2;
+  }
+
+  /* Uniraj-Style Solid Header Bar */
+  .govt-header-bar {
+    @apply bg-forest-900 text-white font-bold uppercase text-xs tracking-wider px-2.5 py-1.5 border-b-2 border-saffron-500 flex items-center justify-between;
+  }
+
+  /* Uniraj-Style Filled Block Container */
+  .govt-box {
+    @apply bg-white border border-forest-900 mb-2 p-2 sm:p-3;
+  }
+
+  .govt-title {
+    @apply text-xs md:text-sm font-bold text-forest-900 border-b border-forest-800 pb-1 mb-1.5 uppercase tracking-wide;
+  }
+
+
+  .govt-link {
+    @apply font-bold text-forest-900 hover:text-saffron-700 underline text-xs;
+  }
+
+  .card-surface {
+    @apply border border-forest-800 bg-white;
+  }
+
+  .prose-aird p {
+    @apply leading-relaxed text-ink/90;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #e2e8dc;
+}
+::-webkit-scrollbar-thumb {
+  background: #15803d;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0b4d24;
+}
+
+/* Google Translate widget bar */
+.goog-te-gadget {
+  font-size: 0 !important;
+}
+.goog-te-gadget .goog-te-combo {
+  margin: 0 !important;
+}
+.goog-logo-link,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+div.goog-te-gadget {
+  color: transparent !important;
+}
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+

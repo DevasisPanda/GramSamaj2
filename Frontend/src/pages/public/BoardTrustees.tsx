@@ -1,0 +1,73 @@
+import { PageHero } from '@/components/shared/PageHero';
+import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { TRUSTEES_2026_2027, MANAGING_TRUSTEE } from '@/data/trustees';
+
+const POSITION_COLORS: Record<string, string> = {
+  Convener: 'bg-saffron-100 text-saffron-800',
+  Director: 'bg-forest-100 text-forest-800',
+  Comptroller: 'bg-blue-100 text-blue-800',
+  'Finance Controller': 'bg-amber-100 text-amber-800',
+  'General Manager': 'bg-purple-100 text-purple-800',
+  Manager: 'bg-gray-100 text-gray-700',
+  'Chief Executive': 'bg-indigo-100 text-indigo-800',
+  Executive: 'bg-gray-100 text-gray-600',
+  PRO: 'bg-pink-100 text-pink-700',
+};
+
+function posColor(pos: string) {
+  return POSITION_COLORS[pos] ?? 'bg-saffron-50 text-saffron-700';
+}
+
+export default function BoardTrustees() {
+  return (
+    <>
+      <PageHero
+        title="Board of Trustees (2026\u201327)"
+        subtitle={`Financial Year 2026\u20132027 \u2022 Managing Trustee: ${MANAGING_TRUSTEE.name}`}
+        gradient="saffron"
+      />
+      <Breadcrumb items={[{ label: 'Trustee' }, { label: 'Board of Trustees (2026\u201327)' }]} />
+
+      <section className="container-px section-py">
+        <div className="mx-auto max-w-4xl">
+          {/* Managing Trustee highlight */}
+          <div className="mb-8 rounded-2xl border-2 border-saffron-200 bg-saffron-50 p-6">
+            <h2 className="text-lg font-bold text-saffron-800">Managing Trustee</h2>
+            <p className="mt-1 text-2xl font-bold font-display text-ink">{MANAGING_TRUSTEE.name}</p>
+            <span className="mt-2 inline-block rounded-full bg-saffron-200 px-3 py-1 text-xs font-semibold text-saffron-800">
+              {MANAGING_TRUSTEE.role}
+            </span>
+          </div>
+
+          {/* Table */}
+          <div className="overflow-x-auto rounded-xl border border-saffron-100">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-forest-700 text-left text-xs font-semibold uppercase tracking-wide text-cream">
+                  <th className="px-4 py-3">S. No.</th>
+                  <th className="px-4 py-3">Name</th>
+                  <th className="px-4 py-3">Particulars</th>
+                  <th className="px-4 py-3">Position</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-saffron-100">
+                {TRUSTEES_2026_2027.map((t) => (
+                  <tr key={t.id} className="hover:bg-saffron-50/50 transition-colors">
+                    <td className="px-4 py-3 text-ink/50">{t.serial}</td>
+                    <td className="px-4 py-3 font-medium text-ink">{t.name}</td>
+                    <td className="px-4 py-3 text-ink/65 text-xs">{t.particulars}</td>
+                    <td className="px-4 py-3">
+                      <span className={`inline-block rounded-full px-2.5 py-1 text-xs font-semibold ${posColor(t.position)}`}>
+                        {t.position}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
