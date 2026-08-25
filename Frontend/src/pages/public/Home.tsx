@@ -17,6 +17,7 @@ import { QuickLinksGrid } from './sections/QuickLinksGrid';
 import { NoticeBoard } from './sections/NoticeBoard';
 import {
   AIRD_NARRATIVE, DEMO_VILLAGE, DEV_INDIA_HOME, WHO_CAN_JOIN,
+  GOAL_OF_SOUL, DEV_CAR_HOME,
 } from '@/data/homepage';
 import { PHILOSOPHY_GUIDING_PRINCIPLE } from '@/data/philosophy';
 import { PLANNED_ACTIVITIES } from '@/data/events';
@@ -383,6 +384,55 @@ function DonorsBlock() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Goal of the Soul — documented homepage section #4 (Home page        */
+/* final1). Verbatim excerpt; full text on /teachings.                 */
+/* ------------------------------------------------------------------ */
+function GoalOfSoulBlock() {
+  return (
+    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+      <div className="govt-header-bar mb-1.5">
+        <span>Goal of Soul</span>
+        <span className="text-[9px] text-saffron-300 font-normal">Whirlpool</span>
+      </div>
+      <p className="text-[10px] text-gray-800 leading-tight mb-1">
+        {GOAL_OF_SOUL.intro}
+      </p>
+      <p className="text-[10px] text-gray-700 leading-tight">
+        {GOAL_OF_SOUL.body[0]}
+      </p>
+      <div className="text-right border-t pt-0.5 mt-1">
+        <Link to="/teachings" className="govt-link text-[10px]">
+          Read More Goal of Soul &rarr;
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Development Car — documented homepage section #11 (Home page        */
+/* final1). Verbatim excerpt; full narrative slider on /development-car.*/
+/* ------------------------------------------------------------------ */
+function DevCarStrip() {
+  return (
+    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+      <div className="govt-header-bar mb-1.5">
+        <span>Development Car</span>
+        <span className="text-[9px] text-saffron-300 font-normal">Spiritual</span>
+      </div>
+      {DEV_CAR_HOME.intro.slice(0, 2).map((p, i) => (
+        <p key={i} className="text-[10px] text-gray-800 leading-tight mb-1">{p}</p>
+      ))}
+      <div className="text-right border-t pt-0.5 mt-1">
+        <Link to="/development-car" className="govt-link text-[10px]">
+          Read More Development Car &rarr;
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Homepage — hero first, then About AIRD, Gram Swaraj, Human &        */
 /* Humanity, then the remaining documented sections.                   */
 /* ------------------------------------------------------------------ */
@@ -438,10 +488,12 @@ export default function Home() {
             <DecentralisedSection />
           </div>
 
-          {/* Right Column — Philosophy and Teachings as separate blocks */}
+          {/* Right Column — Philosophy, Teachings, Goal of Soul, Dev Car, Model Village */}
           <div className="lg:col-span-3 space-y-1.5">
             <PhilosophyBlock />
             <TeachingsBlock />
+            <GoalOfSoulBlock />
+            <DevCarStrip />
             <WhatWeCanDo />
           </div>
         </div>

@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 
-/** Format a number as Indian Rupees, e.g. 39452085277 -> "₹39,45,20,85,277". */
+/** Format a number as Indian Rupees, e.g. 123456789 -> "₹12,34,56,789". */
 export function formatINR(amount: number, opts?: { decimals?: boolean }): string {
   const fractionDigits = opts?.decimals ? 2 : 0;
   return new Intl.NumberFormat('en-IN', {

@@ -233,6 +233,18 @@ No source documents exist for admin functionality itself. Admin manages: village
 
 ## 7. Documentation Audit (vs current frontend, Aug 2026 state)
 
+> **✅ EXECUTED** — the fix queue below was implemented on branch `content-fixes`
+> (commits `2a50906`, `a44c82b` + homepage additions). Summary:
+> events.ts corrected (Bank Uncle Day = 25 Sept/Christopher Baron; recurring days added) ·
+> KRANTI launch 25 Sep 2026 surfaced · board route renamed `/trustee/board-2020-2025` (+redirect) ·
+> biography timeline rebuilt from Trustee/Journey docs · verbatim modules generated
+> (`contentVerbatim.ts`, `journeyFull.ts`) and wired into Vision/Aim/Strategy/Concept/
+> Initiation/Teachings(+Facts of life & Humanity and Religion)/Journey/History ·
+> Annual Reports page now renders all six real reports incl. figures · Development Car =
+> narrative slider · membership minimum-donation note · both offices shown · honest
+> 12A/80G line · dead import removed · sensitive-number docstring neutralized.
+> Verification: typecheck ✓ build ✓ preview smoke test ✓ traceability spot-checks ✓.
+
 ### 7.1 Homepage Audit
 | Requirement (documented) | Status |
 |------------|--------|
