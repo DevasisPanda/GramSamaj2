@@ -134,6 +134,9 @@ export default function Donate() {
                   AIRD is registered under PCTA 1882 (Reg. {AIRD.registrationNo}) and listed on NGO Darpan ({AIRD.ngoDarpanId}). All donations are received with formal receipts.
                 </p>
               </div>
+              <p className="text-[11px] text-ink/45 mt-1 px-1">
+                {AIRD.taxStatus}
+              </p>
               <p className="text-xs text-ink/40 mt-2">
                 After transfer, share details on{' '}
                 <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="text-forest-700 underline">WhatsApp</a>

@@ -16,6 +16,8 @@ export const AIRD = {
   ngoDarpanId: 'UP/2022/0303967',
   pan: 'AAHTA8244M',
   registeredOffice: '46-A, Nai Basti Babu Ganj, Lucknow, Uttar Pradesh, India \u2013 226020',
+  // Field office as stated in Annual Report 2020-21 / 2021-22 headers.
+  fieldOffice: '1/58 Priyadarshani Colony, Sector D, Sitapur Road, Lucknow, Uttar Pradesh, India \u2013 226020',
   email: 'aird.up.india@gmail.com',
   contactPerson: 'K. C. Tripathi',
   contactMobile: '9169888444',
@@ -34,7 +36,21 @@ export const AIRD = {
     mobile: '9169888444',
     email: 'aird.up.india@gmail.com',
   },
+  /**
+   * Honest 12A/80G status (client-approved wording, decision D11).
+   * Approved in FY 2021-22; renewal application rejected 1 Dec 2023 and is
+   * pending re-application. Source: Annual Report 2023-24 ("Regulatory
+   * compliance") + Activity in past1.docx.
+   */
+  taxStatus:
+    'Registered under Sections 12A and 80G of the Income Tax Act in FY 2021\u201322; renewal application pending since December 2023.',
 } as const;
+
+/**
+ * Trust deed download. Flip to true once the client places the signed PDF at
+ * `Frontend/public/trust-deed.pdf` (decision D10). No dead link until then.
+ */
+export const TRUST_DEED_AVAILABLE = false;
 
 export const NAV_LINKS = [
   { label: 'Home', to: '/' },
@@ -74,8 +90,8 @@ export const NAV_TREE: NavItem[] = [
       { label: 'Trust / In Brief', to: '/about/trust', desc: 'Registration, credentials & legal status' },
       { label: 'Trustee', to: '/trustee/journey', desc: 'Managing Trustee \u2014 K. C. Tripathi (A)' },
       { label: 'Journey of the Trustee', to: '/trustee/journey', desc: 'The life & work of the founder (B)' },
-      { label: 'Board of Trustees (2026\u201327)', to: '/trustee/board', desc: 'Current governing board (C)' },
-      { label: 'Board of Trustees (2020\u201326)', to: '/trustee/board-2020-2026', desc: 'Previous board roster (D)' },
+      { label: 'Board of Trustees (FY 2020\u201325)', to: '/trustee/board-2020-2025', desc: 'Previous board roster (C)' },
+      { label: 'Board of Trustees (FY 2026\u201327)', to: '/trustee/board', desc: 'Current governing board (D)' },
       { label: 'Strategy', to: '/strategy', desc: 'Participatory strategy for Gram Swaraj (E)' },
       { label: 'Concept', to: '/concept', desc: 'The case for a demonstration village (F)' },
       { label: 'Development Car', to: '/development-car', desc: 'The journey of the soul (G)' },

@@ -99,7 +99,9 @@ function AppRoutes() {
         {/* Trustee */}
         <Route path="/trustee/journey" element={<PageSuspense><JourneyTrustee /></PageSuspense>} />
         <Route path="/trustee/board" element={<PageSuspense><BoardTrustees /></PageSuspense>} />
-        <Route path="/trustee/board-2020-2026" element={<PageSuspense><BoardTrustees2020 /></PageSuspense>} />
+        <Route path="/trustee/board-2020-2025" element={<PageSuspense><BoardTrustees2020 /></PageSuspense>} />
+        {/* Legacy slug (file was named "2020-2026"; document heading says FY 2020-25) */}
+        <Route path="/trustee/board-2020-2026" element={<Navigate to="/trustee/board-2020-2025" replace />} />
         <Route path="/strategy" element={<PageSuspense><Strategy /></PageSuspense>} />
 
         {/* KRANTI */}

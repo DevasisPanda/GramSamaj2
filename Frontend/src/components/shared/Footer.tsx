@@ -78,7 +78,10 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs text-cream/60">
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-saffron-400" />
-                <span>{AIRD_CONST.registeredOffice}</span>
+                <span>
+                  <span className="block">{AIRD_CONST.registeredOffice}</span>
+                  <span className="mt-1 block">Field office: {AIRD_CONST.fieldOffice}</span>
+                </span>
               </li>
               <li>
                 <a href={SOCIAL_LINKS.phone} className="flex items-center gap-2 hover:text-saffron-300">

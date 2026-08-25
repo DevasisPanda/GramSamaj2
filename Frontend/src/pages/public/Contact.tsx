@@ -34,6 +34,8 @@ export default function Contact() {
                 <div>
                   <div className="text-sm font-semibold text-ink">Registered Office</div>
                   <div className="mt-0.5 text-sm text-ink/65">{AIRD.registeredOffice}</div>
+                  <div className="mt-3 text-sm font-semibold text-ink">Field Office</div>
+                  <div className="mt-0.5 text-sm text-ink/65">{AIRD.fieldOffice}</div>
                   <div className="mt-0.5 text-xs text-ink/45">PIN: 226020</div>
                 </div>
               </li>

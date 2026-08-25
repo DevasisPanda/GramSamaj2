@@ -1,12 +1,12 @@
 import {
   ShieldCheck, FileText, Hash, Globe, CreditCard, Building,
-  MapPin, Mail, Phone,
+  MapPin, Mail, Phone, ScrollText,
 } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
-import { AIRD, SERVICE_PRINCIPLE } from '@/lib/constants';
+import { AIRD, SERVICE_PRINCIPLE, TRUST_DEED_AVAILABLE } from '@/lib/constants';
 
 const CREDENTIALS = [
   { icon: FileText, label: 'Registered Under', value: AIRD.registeredUnder },
@@ -54,8 +54,35 @@ export default function AboutTrust() {
                 <div className="mt-6 space-y-2 text-sm">
                   <div className="flex items-start gap-2">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-saffron-500" />
-                    <span className="text-ink/70">{AIRD.registeredOffice}</span>
+                    <span className="text-ink/70">
+                      <strong className="font-semibold text-ink">Registered office:</strong>{' '}
+                      {AIRD.registeredOffice}
+                    </span>
                   </div>
+                  <div className="flex items-start gap-2">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-saffron-500" />
+                    <span className="text-ink/70">
+                      <strong className="font-semibold text-ink">Field office:</strong>{' '}
+                      {AIRD.fieldOffice}
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <ScrollText className="mt-0.5 h-4 w-4 shrink-0 text-saffron-500" />
+                    <span className="text-ink/70">{AIRD.taxStatus}</span>
+                  </div>
+                  {TRUST_DEED_AVAILABLE && (
+                    <div className="flex items-center gap-2">
+                      <FileText className="h-4 w-4 text-saffron-500" />
+                      <a
+                        href="/trust-deed.pdf"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-saffron-700 hover:underline"
+                      >
+                        Download Trust Deed (PDF)
+                      </a>
+                    </div>
+                  )}
                   <div className="flex items-center gap-2">
                     <Mail className="h-4 w-4 text-saffron-500" />
                     <a href={`mailto:${AIRD.email}`} className="text-saffron-700 hover:underline">{AIRD.email}</a>
