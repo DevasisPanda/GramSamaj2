@@ -52,6 +52,11 @@ export default function Kranti() {
               </div>
             </CardContent>
           </Card>
+          <p className="mt-4 text-center">
+            <Link to="/kranti/document" className="govt-link">
+              Read Full Project Document &rarr;
+            </Link>
+          </p>
         </div>
       </section>
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   Heart, Sparkles, Brain, Users, Leaf, Compass, Sun, Wind, Droplets,
 } from 'lucide-react';
@@ -94,6 +95,15 @@ export default function Philosophy() {
             })}
           </div>
         </div>
+      </section>
+
+      {/* Full documented text */}
+      <section className="container-px pb-10">
+        <p className="text-center">
+          <Link to="/philosophy/full" className="govt-link">
+            Read the Complete Philosophy Text &rarr;
+          </Link>
+        </p>
       </section>
     </>
   );

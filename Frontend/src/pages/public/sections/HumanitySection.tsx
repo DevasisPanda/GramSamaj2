@@ -68,6 +68,9 @@ export function HumanitySection() {
       </div>
 
       <div className="text-right border-t pt-0.5">
+        <Link to="/human-and-humanity" className="govt-link text-[10px] block">
+          Read Full Human &amp; Humanity Text &rarr;
+        </Link>
         <Link to="/philosophy" className="govt-link text-[10px]">
           Read More Philosophy &amp; Humanity &rarr;
         </Link>

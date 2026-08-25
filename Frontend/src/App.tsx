@@ -49,6 +49,10 @@ const Contact            = lazy(() => import('@/pages/public/Contact'));
 /* Lazy — admin panels                                                 */
 /* ------------------------------------------------------------------ */
 const AdminDashboard = lazy(() => import('@/pages/admin/AdminDashboard'));
+const KrantiDocument   = lazy(() => import('@/pages/public/KrantiDocument'));
+const PhilosophyFull   = lazy(() => import('@/pages/public/PhilosophyFull'));
+const HumanLife        = lazy(() => import('@/pages/public/HumanLife'));
+const TrusteeProfile   = lazy(() => import('@/pages/public/TrusteeProfile'));
 const AdminVillagers = lazy(() => import('@/pages/admin/AdminVillagers'));
 const AdminCalendar  = lazy(() => import('@/pages/admin/AdminCalendar'));
 const AdminMedia     = lazy(() => import('@/pages/admin/AdminMedia'));
@@ -107,11 +111,15 @@ function AppRoutes() {
 
         {/* KRANTI */}
         <Route path="/kranti" element={<Kranti />} />
+        <Route path="/kranti/document" element={<PageSuspense><KrantiDocument /></PageSuspense>} />
         <Route path="/kranti/decentralized-governance" element={<PageSuspense><DecentralizedGov /></PageSuspense>} />
         <Route path="/development-in-india" element={<PageSuspense><DevelopmentIndia /></PageSuspense>} />
 
         {/* Philosophy */}
         <Route path="/philosophy" element={<Philosophy />} />
+        <Route path="/philosophy/full" element={<PageSuspense><PhilosophyFull /></PageSuspense>} />
+        <Route path="/human-and-humanity" element={<PageSuspense><HumanLife /></PageSuspense>} />
+        <Route path="/trustee/profile" element={<PageSuspense><TrusteeProfile /></PageSuspense>} />
         <Route path="/concept" element={<PageSuspense><Concept /></PageSuspense>} />
         <Route path="/initiation" element={<PageSuspense><Initiation /></PageSuspense>} />
         <Route path="/teachings" element={<PageSuspense><Teachings /></PageSuspense>} />

@@ -1,6 +1,7 @@
 import {
   Accordion, AccordionItem, AccordionTrigger, AccordionContent,
 } from '@/components/ui/accordion';
+import { Link } from 'react-router-dom';
 import { ContentPage } from '@/components/shared/ContentPage';
 import { JOURNEY_ROLE_PARAS, JOURNEY_AUTOBIOGRAPHY } from '@/data/journeyFull';
 
@@ -19,6 +20,11 @@ export default function JourneyTrustee() {
       crumbs={[{ label: 'Trustee', to: '/trustee/board' }, { label: 'Journey of the Trustee' }]}
     >
       <section className="prose-aird mx-auto max-w-3xl">
+        <p className="mb-6 text-sm">
+          <Link to="/trustee/profile" className="govt-link">
+            View Trustee biodata &amp; career profile &rarr;
+          </Link>
+        </p>
         {/* Role description — opening paras */}
         <p className="mb-5 text-lg font-medium leading-relaxed text-ink/80">
           {JOURNEY_ROLE_PARAS[0]}

@@ -170,4 +170,96 @@ header_ab = (
     "export interface FullAnnualReport {\n  id: string;\n  year: string;\n  label: string;\n  sections: FullReportSection[];\n}\n\n"
     "export const ANNUAL_REPORTS_FULL: Record<string, FullAnnualReport> = {")
 emit(os.path.join(OUT, "annualReportFull.ts"), header_ab, entries + ["};"])
+
+# ---------------------------------------------------------------- docFull.ts
+# Project KRANTI (O) — split on numbered headings like "1.0 Introduction"
+KRANTI_SECTION = re.compile(r"^(\d+\.0)\s+(.+)$")
+kranti_secs, cur = [], {"heading": "Cover", "paragraphs": []}
+for line in read("Project KRANTI.txt"):
+    if not line.strip():
+        continue
+    m = KRANTI_SECTION.match(line)
+    if m:
+        kranti_secs.append(cur)
+        cur = {"heading": (m.group(1) + " " + m.group(2)).strip(), "paragraphs": []}
+    elif re.fullmatch(r"\d{1,2}", line.strip()):
+        continue  # month-number columns of the timeline grid
+    else:
+        cur["paragraphs"].append(line.strip())
+kranti_secs.append(cur)
+kranti_secs = [s for s in kranti_secs if s["paragraphs"]]
+
+phil = None  # (parser defined below)
+def parse_generic(lines):
+    """Inline 'Heading: body' + standalone heading detection (see reports)."""
+    secs, cur = [], None
+    def flush():
+        nonlocal cur
+        if cur and cur.get("paragraphs"):
+            secs.append(cur)
+        cur = None
+    for line in lines:
+        if not line.strip():
+            continue
+        m = INLINE_HEADING.match(line)
+        if m:
+            flush()
+            cur = {"heading": m.group(1).strip(), "paragraphs": [m.group(2).strip()]}
+        elif heading_like(line):
+            flush()
+            cur = {"heading": line.rstrip(":").strip(), "paragraphs": []}
+        else:
+            if cur is None:
+                cur = {"paragraphs": []}
+            cur.setdefault("paragraphs", []).append(line.strip())
+    flush()
+    return secs
+
+philosophy_secs = parse_generic([l for l in read("Philosophy.txt")][1:])   # skip title
+humanlife_secs  = parse_generic([l for l in read("Human life.txt")][1:])   # skip title
+
+# Trustee biodata: "Key : Value" block + career rows after 'Professional:'
+t_lines = [l.strip() for l in read("Trustee.txt") if l.strip()]
+bio, career, mode = [], [], "bio"
+for l in t_lines:
+    if l == "BACKGROUND":
+        continue
+    if l.startswith("Educational"):
+        continue
+    if l.startswith("Professional"):
+        mode = "career"
+        continue
+    if mode == "bio":
+        m = re.match(r"^([A-Za-z][A-Za-z ./]*?)\s*:\s*(.+)$", l)
+        if m:
+            bio.append({"k": m.group(1).strip(), "v": m.group(2).strip()})
+    else:
+        career.append(l)
+
+def secs_lit(secs):
+    return ",\n".join(sect_lit(s) for s in secs)
+
+dblocks = [
+    "/**",
+    " * VERBATIM full-document texts - auto-generated from Work/*.docx via",
+    " * .zcode/docs_txt. Regenerate:  python .zcode/gen_verbatim.py",
+    " */",
+]
+dblocks.append(
+    "export interface DocSection { heading?: string; paragraphs: string[] }\n\n"
+    "/** Project KRANTI.docx (=O) - complete project document. */\n"
+    "export const KRANTI_DOCUMENT: DocSection[] = [\n" + secs_lit(kranti_secs) + ",\n];\n")
+dblocks.append(
+    "/** Philosophy.docx - complete text (the /philosophy page shows condensed pillars). */\n"
+    "export const PHILOSOPHY_FULL: DocSection[] = [\n" + secs_lit(philosophy_secs) + ",\n];\n")
+dblocks.append(
+    "/** Human life.docx - complete text (home Humanity block is an excerpt). */\n"
+    "export const HUMAN_LIFE_FULL: DocSection[] = [\n" + secs_lit(humanlife_secs) + ",\n];\n")
+bio_lit = ",\n".join("  { k: %s, v: %s }" % (ts_str(b["k"]), ts_str(b["v"])) for b in bio)
+car_lit = ",\n".join("  " + ts_str(c) for c in career)
+dblocks.append(
+    "/** Trustee.docx (=A) - biodata fields + professional career rows. */\n"
+    "export const TRUSTEE_BIO: { k: string; v: string }[] = [\n" + bio_lit + ",\n];\n\n"
+    "export const TRUSTEE_CAREER: string[] = [\n" + car_lit + ",\n];\n")
+emit(os.path.join(OUT, "docFull.ts"), dblocks[0], dblocks[1:])
 print("done")
