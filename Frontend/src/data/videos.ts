@@ -8,8 +8,8 @@ import type { VideoAsset } from '@/lib/types';
 export const VIDEOS: VideoAsset[] = [
   {
     id: 'vid1',
-    title: 'Gram Swaraj \u2014 The Vision',
-    description: 'Why people\u2019s governance is the foundation of rural transformation.',
+    title: 'Gram Swaraj — The Vision',
+    description: 'Why people’s governance is the foundation of rural transformation.',
     src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     poster: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80',
     category: 'planning',
@@ -35,7 +35,7 @@ export const VIDEOS: VideoAsset[] = [
   },
   {
     id: 'vid4',
-    title: 'Women SHG \u2014 Agents of Change',
+    title: 'Women SHG — Agents of Change',
     description: 'Self-Help Groups leading livelihoods and social audit.',
     src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     poster: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?w=800&q=80',

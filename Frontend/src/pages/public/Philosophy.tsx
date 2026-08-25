@@ -74,7 +74,7 @@ export default function Philosophy() {
             </div>
             <h2 className="mt-4 text-2xl md:text-3xl font-bold text-gradient-saffron">Life in Three Dimensions</h2>
             <p className="mt-2 text-ink/60 max-w-2xl mx-auto">
-              {'Life progresses through three interconnected worlds \u2014 each sustaining the next.'}
+              {'Life progresses through three interconnected worlds — each sustaining the next.'}
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-3">

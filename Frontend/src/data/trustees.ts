@@ -54,8 +54,8 @@ export interface TrusteeRoster {
 }
 
 export const TRUSTEE_ROSTERS: TrusteeRoster[] = [
-  { id: '2020-2025', label: '2020 \u2013 2025 Board', period: 'Financial Year 2020\u20132025', members: TRUSTEES_2020_2025 },
-  { id: '2026-2027', label: '2026 \u2013 2027 Board', period: 'Financial Year 2026\u20132027', members: TRUSTEES_2026_2027 },
+  { id: '2020-2025', label: '2020 – 2025 Board', period: 'Financial Year 2020–2025', members: TRUSTEES_2020_2025 },
+  { id: '2026-2027', label: '2026 – 2027 Board', period: 'Financial Year 2026–2027', members: TRUSTEES_2026_2027 },
 ];
 
 export const MANAGING_TRUSTEE = {

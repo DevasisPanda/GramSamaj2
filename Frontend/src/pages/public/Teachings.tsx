@@ -13,7 +13,7 @@ export default function Teachings() {
   return (
     <ContentPage
       title="Teachings"
-      subtitle="Spiritual awakening \u2014 the thoughts of Swami Vivekananda and Gautama Buddha that inspire AIRD's work."
+      subtitle="Spiritual awakening — the thoughts of Swami Vivekananda and Gautama Buddha that inspire AIRD's work."
       gradient="forest"
       crumbs={[{ label: 'About Us', to: '/about' }, { label: 'Teachings' }]}
       sections={[
@@ -22,7 +22,7 @@ export default function Teachings() {
           paragraphs: [ARISE_AWAKE.intro, ...ARISE_AWAKE.body],
         },
         {
-          heading: '\u201cDon\u2019t believe on God \u2014 come and see\u201d',
+          heading: '“Don’t believe on God — come and see”',
           paragraphs: [EHIPASSIKO_HOME.intro, ...EHIPASSIKO_HOME.body],
         },
         {

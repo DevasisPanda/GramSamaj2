@@ -22,11 +22,11 @@ export default function BoardTrustees2020() {
   return (
     <>
       <PageHero
-        title="Board of Trustees (2020\u201326)"
-        subtitle={`Financial Year 2020\u20132026 \u2022 Managing Trustee: ${MANAGING_TRUSTEE.name}`}
+        title="Board of Trustees (FY 2020–25)"
+        subtitle={`Financial Year 2020–2025 • Managing Trustee: ${MANAGING_TRUSTEE.name}`}
         gradient="saffron"
       />
-      <Breadcrumb items={[{ label: 'Trustee' }, { label: 'Board of Trustees (2020\u201326)' }]} />
+      <Breadcrumb items={[{ label: 'Trustee' }, { label: 'Board of Trustees (FY 2020–25)' }]} />
 
       <section className="container-px section-py">
         <div className="mx-auto max-w-4xl">

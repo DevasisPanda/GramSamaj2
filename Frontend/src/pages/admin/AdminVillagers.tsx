@@ -164,7 +164,7 @@ export default function AdminVillagers() {
                             placeholder="Phone"
                           />
                         ) : (
-                          v.contactNumber ?? '\u2014'
+                          v.contactNumber ?? '—'
                         )}
                       </td>
                       <td className="p-3">

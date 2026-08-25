@@ -5,7 +5,7 @@
  * frontend is fully functional without a backend. Each function returns a
  * Promise with simulated latency; consumed via @tanstack/react-query hooks in
  * `hooks/useApi.ts`. When `ngo-management-system` is wired, swap these hooks
- * for `trpc.<proc>.useQuery/useMutation` \u2014 the call sites stay identical.
+ * for `trpc.<proc>.useQuery/useMutation` — the call sites stay identical.
  */
 import { DONORS } from '@/data/donors';
 import { EVENTS } from '@/data/events';

@@ -27,13 +27,13 @@ export default function DevelopmentInIndia() {
               <Link to="/kranti/decentralized-governance" className="font-medium text-forest-700 hover:underline">
                 Decentralized Process of Governance
               </Link>
-              {' \u2014'} the 73rd Amendment and Panchayati Raj Institutions.
+              {' —'} the 73rd Amendment and Panchayati Raj Institutions.
             </li>
             <li>
               <Link to="/concept" className="font-medium text-forest-700 hover:underline">
                 The AIRD Concept
               </Link>
-              {' \u2014'} the case for a demonstration village.
+              {' —'} the case for a demonstration village.
             </li>
           </ul>
         </div>

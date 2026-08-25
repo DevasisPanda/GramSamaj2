@@ -1,7 +1,7 @@
 /** About-page content: Aim, Objectives, and the Founder's biography timeline. */
 
 export const AIRD_AIM =
-  'Attempt to make collective effort of people and institutions for translating the pending dream of Mahatma Gandhi \u201cGram Swaraj\u201d into reality, not only on paper but really in Gram Panchayat/s.';
+  'Attempt to make collective effort of people and institutions for translating the pending dream of Mahatma Gandhi “Gram Swaraj” into reality, not only on paper but really in Gram Panchayat/s.';
 
 export const AIRD_OBJECTIVES: string[] = [
   'Organize courses on spiritual science and meditation to let the people Arise! Awake! and Stop not till the goal of soul is reached.',
@@ -32,7 +32,7 @@ export interface BiographyMilestone {
  * Every entry is drawn from the official documents: professional rows verbatim
  * from "Trustee.docx" (=A), life events from "Journey of trustee(1).docx" (=B),
  * registration facts from "AIRD in brief.docx" / annual reports.
- * NOTE: Gosianpurwa work is 2005\u201307 per Trustee.docx (not the 1980s).
+ * NOTE: Gosianpurwa work is 2005–07 per Trustee.docx (not the 1980s).
  */
 export const FOUNDER = {
   name: 'Kamlesh Chandra Tripathi',
@@ -50,51 +50,51 @@ export const BIOGRAPHY_TIMELINE: BiographyMilestone[] = [
   {
     year: '1977',
     title: 'Meditation practice begins',
-    description: 'Learned meditation from Shri Jitendra Bahadur Seth, a disciple of Maharishi Mahesh Yogi; studied the literature of Swami Vivekananda and the teachings of Gautam Buddha. Learned deep meditation at Maharishi Mahesh Yogi\u2019s Rishikesh Ashram in 1981.',
+    description: 'Learned meditation from Shri Jitendra Bahadur Seth, a disciple of Maharishi Mahesh Yogi; studied the literature of Swami Vivekananda and the teachings of Gautam Buddha. Learned deep meditation at Maharishi Mahesh Yogi’s Rishikesh Ashram in 1981.',
   },
   {
     year: '1982',
     title: 'Joins ATDA, Gandhi Bhawan',
-    description: 'Began work on 31st July 1982 as Research Assistant at the Appropriate Technology Development Association (ATDA), Lucknow \u2014 learning Participatory Action Research (PAR) from Shri Varun Vidyarthi.',
+    description: 'Began work on 31st July 1982 as Research Assistant at the Appropriate Technology Development Association (ATDA), Lucknow — learning Participatory Action Research (PAR) from Shri Varun Vidyarthi.',
   },
   {
-    year: '1983\u201396',
+    year: '1983–96',
     title: 'Research Co-ordinator, ATDA',
     description: 'Conducted PAR on forest management in Almora (1984), where he met Neera Kool, who became his life partner three years later. Initiated environmental education in UP government schools (1989, with Centre for Environmental Education, Ahmedabad) and worked on reclaiming saline wastelands. Blessed with sons in 1990 and 1995.',
   },
   {
-    year: '1996\u201397',
+    year: '1996–97',
     title: 'Executive Officer, ATDA',
-    description: 'Served as Executive Officer during ATDA\u2019s difficult period, shouldering responsibility for closing the Mohanlalganj cement unit and settling employees\u2019 dues.',
+    description: 'Served as Executive Officer during ATDA’s difficult period, shouldering responsibility for closing the Mohanlalganj cement unit and settling employees’ dues.',
   },
   {
-    year: '1997\u20132003',
+    year: '1997–2003',
     title: 'Research Director, India Development Group (IDG-UK), India Chapter',
     description: 'Prepared a project proposal approved by the National Lottery Charity Board, London (worth Rs. 1.5 crores). Honoured as an expert in participatory management at a workshop in Holland.',
   },
   {
-    year: '2003\u201305',
+    year: '2003–05',
     title: 'General Manager, Sarathi Development Foundation (SDF)',
     description: 'Strengthened SDF and gained direct experience with Self-Help Groups, working with NABARD and UNICEF.',
   },
   {
-    year: '2005\u201307',
+    year: '2005–07',
     title: 'Voluntary researcher, Gosianpurwa (Barabanki)',
-    description: 'As an independent researcher pursued \u201cAppropriate technique to execute Bottom to Top approach of rural development\u201d in Gosianpurwa village, Surat Ganj Block, Barabanki \u2014 voluntarily, without any project or salary, supported by the Gram Pradhan and Lions Club Lucknow Maitri.',
+    description: 'As an independent researcher pursued “Appropriate technique to execute Bottom to Top approach of rural development” in Gosianpurwa village, Surat Ganj Block, Barabanki — voluntarily, without any project or salary, supported by the Gram Pradhan and Lions Club Lucknow Maitri.',
   },
   {
-    year: '2007\u201309',
+    year: '2007–09',
     title: 'Director (Pro.), ATDA',
     description: 'Promoted participatory development processes with social-work students of Lucknow University; built a mobile library rickshaw under OXFAM-supported project support.',
   },
   {
-    year: '2009\u201314',
+    year: '2009–14',
     title: 'CEO, Sarvajanik Shikshonnayan Sansthan (SSS)',
-    description: 'Organized SSS\u2019s documentation and accounts, facilitated an AIESEC international student study across 14 countries, joined the Anna movement\u2019s fast for Lokpal, launched the \u201cHonesty in Governance\u201d movement from Kakori, and was honoured as an N.G.I. by twenty-one organizations on 12 January 2014.',
+    description: 'Organized SSS’s documentation and accounts, facilitated an AIESEC international student study across 14 countries, joined the Anna movement’s fast for Lokpal, launched the “Honesty in Governance” movement from Kakori, and was honoured as an N.G.I. by twenty-one organizations on 12 January 2014.',
   },
   {
-    year: '2016\u201317',
-    title: 'CEO, ISSS \u00b7 Social Audit LCC (TISS & MoRD)',
+    year: '2016–17',
+    title: 'CEO, ISSS · Social Audit LCC (TISS & MoRD)',
     description: 'CEO of the International Society for Spiritual Sciences, Rishikesh (ashram site at Kothar village near Neelkanth). Since 31st July 2016, Lead Course Coordinator for Social Audit and Accountability with TISS & Ministry of Rural Development, Government of India.',
   },
   {
@@ -110,6 +110,6 @@ export const BIOGRAPHY_TIMELINE: BiographyMilestone[] = [
   {
     year: '2026',
     title: 'Project KRANTI ready',
-    description: 'KRANTI (Key to Reform & Adopt Noble Treatment Initiatives) finalized as a comprehensive action project \u2014 launching 25th September 2026 \u2014 to establish the first live model village of participatory governance.',
+    description: 'KRANTI (Key to Reform & Adopt Noble Treatment Initiatives) finalized as a comprehensive action project — launching 25th September 2026 — to establish the first live model village of participatory governance.',
   },
 ];

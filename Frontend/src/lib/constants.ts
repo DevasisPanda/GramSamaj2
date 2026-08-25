@@ -8,16 +8,16 @@
 export const AIRD = {
   name: 'Appropriate Institute of Rural Development',
   shortName: 'AIRD',
-  tagline: "A trust committed to strengthen people's governance \u201cGram Swaraj\u201d not on paper but at village level.",
-  motto: 'Join Hands \u2022 Learn Together \u2022 Serve Together \u2022 Build Gram Swaraj',
+  tagline: "A trust committed to strengthen people's governance “Gram Swaraj” not on paper but at village level.",
+  motto: 'Join Hands • Learn Together • Serve Together • Build Gram Swaraj',
   registeredUnder: 'Public Charitable Trust Act (PCTA) 1882',
   registrationNo: '9002139 IV-66/2020',
   registrationDate: '31.01.2020',
   ngoDarpanId: 'UP/2022/0303967',
   pan: 'AAHTA8244M',
-  registeredOffice: '46-A, Nai Basti Babu Ganj, Lucknow, Uttar Pradesh, India \u2013 226020',
+  registeredOffice: '46-A, Nai Basti Babu Ganj, Lucknow, Uttar Pradesh, India – 226020',
   // Field office as stated in Annual Report 2020-21 / 2021-22 headers.
-  fieldOffice: '1/58 Priyadarshani Colony, Sector D, Sitapur Road, Lucknow, Uttar Pradesh, India \u2013 226020',
+  fieldOffice: '1/58 Priyadarshani Colony, Sector D, Sitapur Road, Lucknow, Uttar Pradesh, India – 226020',
   email: 'aird.up.india@gmail.com',
   contactPerson: 'K. C. Tripathi',
   contactMobile: '9169888444',
@@ -26,7 +26,7 @@ export const AIRD = {
     accountName: 'AIRD.INDIA',
     // Full account number is intentionally NOT published on the public site.
     // Visitors are asked to contact AIRD directly for verified transfer details.
-    accountNumberMasked: '\u2022\u2022\u2022\u2022\u2022\u202285277',
+    accountNumberMasked: '••••••85277',
     ifsc: 'SBIN0003813',
   },
   trustee: {
@@ -43,7 +43,7 @@ export const AIRD = {
    * compliance") + Activity in past1.docx.
    */
   taxStatus:
-    'Registered under Sections 12A and 80G of the Income Tax Act in FY 2021\u201322; renewal application pending since December 2023.',
+    'Registered under Sections 12A and 80G of the Income Tax Act in FY 2021–22; renewal application pending since December 2023.',
 } as const;
 
 /**
@@ -88,10 +88,10 @@ export const NAV_TREE: NavItem[] = [
     to: '/about',
     children: [
       { label: 'Trust / In Brief', to: '/about/trust', desc: 'Registration, credentials & legal status' },
-      { label: 'Trustee', to: '/trustee/journey', desc: 'Managing Trustee \u2014 K. C. Tripathi (A)' },
+      { label: 'Trustee', to: '/trustee/journey', desc: 'Managing Trustee — K. C. Tripathi (A)' },
       { label: 'Journey of the Trustee', to: '/trustee/journey', desc: 'The life & work of the founder (B)' },
-      { label: 'Board of Trustees (FY 2020\u201325)', to: '/trustee/board-2020-2025', desc: 'Previous board roster (C)' },
-      { label: 'Board of Trustees (FY 2026\u201327)', to: '/trustee/board', desc: 'Current governing board (D)' },
+      { label: 'Board of Trustees (FY 2020–25)', to: '/trustee/board-2020-2025', desc: 'Previous board roster (C)' },
+      { label: 'Board of Trustees (FY 2026–27)', to: '/trustee/board', desc: 'Current governing board (D)' },
       { label: 'Strategy', to: '/strategy', desc: 'Participatory strategy for Gram Swaraj (E)' },
       { label: 'Concept', to: '/concept', desc: 'The case for a demonstration village (F)' },
       { label: 'Development Car', to: '/development-car', desc: 'The journey of the soul (G)' },
@@ -104,7 +104,7 @@ export const NAV_TREE: NavItem[] = [
       { label: 'Aim', to: '/about/aim-objectives', desc: 'The aim of AIRD (M)' },
       { label: 'Objectives', to: '/about/aim-objectives', desc: 'The objectives of AIRD (N)' },
       { label: 'KRANTI for Gram Swaraj', to: '/kranti', desc: 'Key to Reform & Adopt Noble Treatment Initiatives (O, P)' },
-      { label: 'Development Car \u2014 Slideshow', to: '/development-car', desc: 'Slide show on spiritual teachings (Q)' },
+      { label: 'Development Car — Slideshow', to: '/development-car', desc: 'Slide show on spiritual teachings (Q)' },
     ],
   },
   {

@@ -7,7 +7,7 @@ export default function VillageDirectoryPage() {
     <>
       <PageHero
         title="Village Directory"
-        subtitle="House-wise information of the model village \u2014 demographics, livelihoods, and participation."
+        subtitle="House-wise information of the model village — demographics, livelihoods, and participation."
         gradient="forest"
       />
       <Breadcrumb items={[{ label: 'Activities' }, { label: 'Village Directory' }]} />

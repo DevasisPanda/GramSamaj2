@@ -7,7 +7,7 @@ export default function Initiation() {
   return (
     <ContentPage
       title="Initiation"
-      subtitle="How AIRD began \u2014 from the Development Car to Project KRANTI."
+      subtitle="How AIRD began — from the Development Car to Project KRANTI."
       gradient="forest"
       crumbs={[{ label: 'Philosophy', to: '/philosophy' }, { label: 'Initiation' }]}
       sections={sections}

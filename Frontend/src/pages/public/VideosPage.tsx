@@ -7,7 +7,7 @@ export default function VideosPage() {
     <>
       <PageHero
         title="Videos"
-        subtitle="Documentary presentations and media coverage of AIRD\u2019s work in rural development."
+        subtitle="Documentary presentations and media coverage of AIRD’s work in rural development."
         gradient="forest"
       />
       <Breadcrumb items={[{ label: 'Activities' }, { label: 'Videos' }]} />

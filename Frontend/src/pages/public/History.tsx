@@ -12,8 +12,8 @@ export default function History() {
       paragraphs: [DEV_INDIA_HOME.intro, DEV_INDIA_HOME.summary],
     },
     {
-      heading: 'Rural Development Milestones (1871 \u2013 2019)',
-      bullets: DEV_INDIA_HOME.milestones.map((m) => `${m.year} \u2014 ${m.text}`),
+      heading: 'Rural Development Milestones (1871 – 2019)',
+      bullets: DEV_INDIA_HOME.milestones.map((m) => `${m.year} — ${m.text}`),
     },
     {
       heading: 'Current Challenges',
@@ -32,7 +32,7 @@ export default function History() {
   return (
     <ContentPage
       title="History of Rural Development"
-      subtitle="A century of rural development in India \u2014 from the 1870s to today."
+      subtitle="A century of rural development in India — from the 1870s to today."
       gradient="saffron"
       crumbs={[{ label: 'Philosophy', to: '/philosophy' }, { label: 'History of Rural Development' }]}
       sections={sections}

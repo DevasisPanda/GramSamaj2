@@ -19,7 +19,7 @@ export default function AboutTrust() {
   const { copy } = useCopyToClipboard();
   return (
     <>
-      <PageHero title="Trust \u2014 In Brief" subtitle={SERVICE_PRINCIPLE} gradient="saffron">
+      <PageHero title="Trust — In Brief" subtitle={SERVICE_PRINCIPLE} gradient="saffron">
         <p className="text-sm font-medium text-saffron-700 italic">
           &ldquo;{AIRD.tagline}&rdquo;
         </p>

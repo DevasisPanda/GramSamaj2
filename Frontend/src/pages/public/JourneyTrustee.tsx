@@ -14,7 +14,7 @@ export default function JourneyTrustee() {
   return (
     <ContentPage
       title="Journey of the Trustee"
-      subtitle="The life and work of K. C. Tripathi \u2014 from meditation to Participatory Action Research to Gram Swaraj."
+      subtitle="The life and work of K. C. Tripathi — from meditation to Participatory Action Research to Gram Swaraj."
       gradient="saffron"
       crumbs={[{ label: 'Trustee', to: '/trustee/board' }, { label: 'Journey of the Trustee' }]}
     >

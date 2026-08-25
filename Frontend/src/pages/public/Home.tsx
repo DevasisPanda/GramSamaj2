@@ -167,7 +167,7 @@ function TeachingsBlock() {
   const teachings = [
     { title: 'Arise, Awake & Stop Not', summary: 'Swami Vivekananda — life is a bundle of thoughts.', to: '/teachings' },
     { title: 'Ehipassiko — Come & See', summary: 'Gautama Buddha — direct experience over blind faith.', to: '/teachings' },
-    { title: 'The Goal of the Soul', summary: 'Vivekananda\u2019s whirlpool metaphor of the soul\u2019s journey.', to: '/teachings' },
+    { title: 'The Goal of the Soul', summary: 'Vivekananda’s whirlpool metaphor of the soul’s journey.', to: '/teachings' },
   ];
 
   return (
@@ -310,7 +310,7 @@ function EventCalendarBlock() {
         <span>Upcoming / Planned Activities</span>
         <span className="text-[9px] text-saffron-300 font-normal">KRANTI 2026&ndash;27</span>
       </div>
-      <ActivitiesCalendar />
+      <ActivitiesCalendar variant="compact" />
       <Accordion type="single" collapsible className="mt-1">
         <AccordionItem value="planned" className="border border-forest-800">
           <AccordionTrigger className="px-2 py-1 bg-forest-800 text-white font-bold hover:no-underline text-[10px]">
@@ -508,17 +508,17 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ROW 7: MEDIA & PARTICIPATION (50/50) */}
+        {/* ROW 7: PUBLIC PARTICIPATION (left) + MEDIA & DONORS (right) */}
         <div className="grid gap-1.5 lg:grid-cols-12 items-stretch">
-          {/* Left Half */}
-          <div className="lg:col-span-6">
+          {/* Left Half — Public Participation first, then Videos */}
+          <div className="lg:col-span-6 space-y-1.5">
+            <JoinHandsBanner />
             <VideoGalleryBlock />
           </div>
 
           {/* Right Half */}
-          <div className="lg:col-span-6 space-y-1.5">
+          <div className="lg:col-span-6">
             <DonorsBlock />
-            <JoinHandsBanner />
           </div>
         </div>
       </div>

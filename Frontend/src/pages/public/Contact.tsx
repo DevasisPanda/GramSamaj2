@@ -16,7 +16,7 @@ export default function Contact() {
     <>
       <PageHero
         title="Contact Us"
-        subtitle="Reach AIRD \u2014 we welcome individuals and institutions to join hands for Gram Swaraj."
+        subtitle="Reach AIRD — we welcome individuals and institutions to join hands for Gram Swaraj."
         gradient="saffron"
       />
       <Breadcrumb items={[{ label: 'Get Involved' }, { label: 'Contact Us' }]} />

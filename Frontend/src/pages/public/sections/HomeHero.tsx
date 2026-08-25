@@ -11,17 +11,17 @@ const VISION_CARDS = [
   },
   {
     title: 'Model Village',
-    body: 'Demonstration villages showcasing participatory planning, social accountability, digital transparency, and collaboration among government, community institutions, civil society, and academic organisations — accelerating Gandhi\u2019s vision of Gram Swaraj and the SDGs.',
+    body: 'Demonstration villages showcasing participatory planning, social accountability, digital transparency, and collaboration among government, community institutions, civil society, and academic organisations — accelerating Gandhi’s vision of Gram Swaraj and the SDGs.',
     icon: Sprout,
   },
   {
     title: 'The Development Car',
-    body: 'A symbolic vehicle for the soul\u2019s journey. Every soul is provided an invisible Development Car by the Supreme Power, strengthened by blessings earned through selfless service.',
+    body: 'A symbolic vehicle for the soul’s journey. Every soul is provided an invisible Development Car by the Supreme Power, strengthened by blessings earned through selfless service.',
     icon: ArrowRight,
   },
   {
     title: 'Goal of the Soul',
-    body: 'Inspired by Vivekananda\u2019s whirlpool: the soul, originally free and divine, becomes caught in worldly existence through attachment \u2014 and is liberated through knowledge, action, devotion, and meditation.',
+    body: 'Inspired by Vivekananda’s whirlpool: the soul, originally free and divine, becomes caught in worldly existence through attachment — and is liberated through knowledge, action, devotion, and meditation.',
     icon: Sprout,
   },
 ];

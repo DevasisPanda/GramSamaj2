@@ -14,7 +14,7 @@ export default function Gallery() {
     <>
       <PageHero
         title="Photo Gallery"
-        subtitle="Moments from the field \u2014 Gram Sabha meetings, community events, and rural development activities."
+        subtitle="Moments from the field — Gram Sabha meetings, community events, and rural development activities."
         gradient="forest"
       />
       <Breadcrumb items={[{ label: 'Activities' }, { label: 'Photo Gallery' }]} />

@@ -35,7 +35,7 @@ export const PHILOSOPHY_PILLARS: PhilosophyPillar[] = [
     icon: 'Sparkles',
     summary: 'One universal, invisible power known by many names.',
     body: [
-      'AIRD believes that the universe is governed by one universal and invisible power that is known by different names in different religious traditions \u2014 God, Allah, Ishwar, Bhagwan, Waheguru, or any other.',
+      'AIRD believes that the universe is governed by one universal and invisible power that is known by different names in different religious traditions — God, Allah, Ishwar, Bhagwan, Waheguru, or any other.',
       'This supreme power represents the source of creation, preservation, and transformation. Understanding the deeper realities of life requires self-reflection, inquiry, and personal experience rather than blind acceptance of inherited beliefs.',
     ],
   },
@@ -55,7 +55,7 @@ export const PHILOSOPHY_PILLARS: PhilosophyPillar[] = [
     icon: 'Brain',
     summary: 'Positive thoughts create courage and wisdom; negative thoughts create fear.',
     body: [
-      'Inspired by Swami Vivekananda\u2019s teaching that "We are what our thoughts have made us," AIRD recognizes that thoughts influence attitudes, actions, and ultimately destiny.',
+      'Inspired by Swami Vivekananda’s teaching that "We are what our thoughts have made us," AIRD recognizes that thoughts influence attitudes, actions, and ultimately destiny.',
       'Meditation, self-discipline, and self-reflection help individuals develop inner peace, clarity of purpose, and emotional balance. Social transformation begins with personal transformation.',
     ],
   },
@@ -66,7 +66,7 @@ export const PHILOSOPHY_PILLARS: PhilosophyPillar[] = [
     summary: 'People are active partners in development, not passive beneficiaries.',
     body: [
       'Sustainable progress is achieved only when communities participate in identifying problems, planning solutions, implementing activities, monitoring progress, and evaluating results.',
-      'This philosophy forms the foundation of AIRD\u2019s commitment to Participatory Action Research (PAR), community empowerment, social accountability, and people\u2019s governance.',
+      'This philosophy forms the foundation of AIRD’s commitment to Participatory Action Research (PAR), community empowerment, social accountability, and people’s governance.',
     ],
   },
   {
@@ -84,26 +84,26 @@ export const PHILOSOPHY_PILLARS: PhilosophyPillar[] = [
 // ---- The Development Car ----
 export const DEVELOPMENT_CAR = {
   title: 'The Development Car (DC)',
-  subtitle: 'A symbolic vehicle for the soul\u2019s journey',
+  subtitle: 'A symbolic vehicle for the soul’s journey',
   intro:
     'Every human being is a combination of a visible body and an invisible soul. The soul is provided with an invisible Development Car (DC) by the Supreme Power, together with an invisible driver, for its journey on Earth.',
   blessing:
     'When we earn blessings from the heart of a person, the DC becomes more powerful and the driver healthier.',
   curse:
-    'Earning a curse damages the DC and makes the driver unhealthy, making the soul\u2019s return journey difficult.',
+    'Earning a curse damages the DC and makes the driver unhealthy, making the soul’s return journey difficult.',
   core:
     'Serve humanity. Protect nature. Strengthen communities. Earn blessings through service rather than recognition through power.',
   facts: [
     'The body is visible and temporary; the soul is invisible and, according to many spiritual traditions, eternal.',
-    'The time, date, and manner of every soul\u2019s departure from Earth are fixed, yet unknown to human beings.',
-    'There is no example on Earth of a person who was born but did not die \u2014 timely and painless death is the biggest gift to a visiting soul.',
-    'Improve your thoughts to work for attaining salvation \u2014 Moksha.',
+    'The time, date, and manner of every soul’s departure from Earth are fixed, yet unknown to human beings.',
+    'There is no example on Earth of a person who was born but did not die — timely and painless death is the biggest gift to a visiting soul.',
+    'Improve your thoughts to work for attaining salvation — Moksha.',
   ],
 };
 
 // ---- Vivekananda's Whirlpool Theory ----
 export const WHIRLPOOL = {
-  title: 'Swami Vivekananda\u2019s Whirlpool Theory',
+  title: 'Swami Vivekananda’s Whirlpool Theory',
   subtitle: 'The journey of the soul through worldly existence',
   intro:
     'The individual soul (Atman) is originally free, pure, and divine. When it comes into contact with the world of name and form (Maya), it becomes caught in the whirlpool of worldly existence (Samsara).',
@@ -116,24 +116,24 @@ export const WHIRLPOOL = {
     { id: 'ignorance', label: 'Ignorance (Avidya)' },
   ],
   purifiers: [
-    { id: 'jnana', label: 'Knowledge \u2014 Jnana Yoga' },
-    { id: 'karma', label: 'Selfless Action \u2014 Karma Yoga' },
-    { id: 'bhakti', label: 'Devotion \u2014 Bhakti Yoga' },
-    { id: 'raja', label: 'Meditation \u2014 Raja Yoga' },
+    { id: 'jnana', label: 'Knowledge — Jnana Yoga' },
+    { id: 'karma', label: 'Selfless Action — Karma Yoga' },
+    { id: 'bhakti', label: 'Devotion — Bhakti Yoga' },
+    { id: 'raja', label: 'Meditation — Raja Yoga' },
   ],
   salvation:
-    'As ignorance is removed, the soul recognizes its identity with the Universal spirit (Brahman) and is liberated (Moksha) \u2014 it escapes the whirlpool and rejoins the free-flowing river.',
+    'As ignorance is removed, the soul recognizes its identity with the Universal spirit (Brahman) and is liberated (Moksha) — it escapes the whirlpool and rejoins the free-flowing river.',
 };
 
 // ---- Buddha's Ehipassiko ----
 export const EHIPASSIKO = {
-  title: 'Gautama Buddha\u2019s \u201cEhipassiko\u201d',
-  subtitle: '\u201cCome and see for yourself\u201d',
+  title: 'Gautama Buddha’s “Ehipassiko”',
+  subtitle: '“Come and see for yourself”',
   intro:
-    'One of the distinctive features of Gautama Buddha\u2019s teaching is the principle of Ehipassiko, a Pali word meaning \u201ccome and see for yourself.\u201d This principle reflects the Buddha\u2019s emphasis on direct experience rather than blind faith.',
+    'One of the distinctive features of Gautama Buddha’s teaching is the principle of Ehipassiko, a Pali word meaning “come and see for yourself.” This principle reflects the Buddha’s emphasis on direct experience rather than blind faith.',
   body: [
     'The Buddha encouraged people not to accept any teaching merely because it was ancient, written in scripture, taught by a respected teacher, or followed by the majority.',
-    'He advised them to examine, question, and verify the truth through their own experience and understanding. True wisdom arises from investigation, meditation, and lived experience \u2014 not from unquestioning belief.',
+    'He advised them to examine, question, and verify the truth through their own experience and understanding. True wisdom arises from investigation, meditation, and lived experience — not from unquestioning belief.',
     'In an age of abundant information and diverse beliefs, Ehipassiko reminds us to cultivate an open yet discerning mind: to question honestly, examine carefully, and accept only what proves true and beneficial through experience.',
   ],
 };
@@ -150,12 +150,12 @@ export const THREE_WORLDS = [
     id: 'air',
     name: 'World of Air',
     description:
-      'Where human beings live, work, and serve society \u2014 growing living materials for self-consumption and for the body developing in the third world.',
+      'Where human beings live, work, and serve society — growing living materials for self-consumption and for the body developing in the third world.',
   },
   {
     id: 'water',
     name: 'World of Water',
     description:
-      'Where life begins in the mother\u2019s womb. A mother provides food and drink through the navel cord to the body developing here.',
+      'Where life begins in the mother’s womb. A mother provides food and drink through the navel cord to the body developing here.',
   },
 ];

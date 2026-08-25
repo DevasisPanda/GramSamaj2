@@ -47,7 +47,7 @@ export function ImportantLinksSection() {
           Important Websites &amp; Resources
         </h2>
         <p className="text-center text-ink/60 mb-10 max-w-2xl mx-auto">
-          {'Key government portals, development schemes, and institutional frameworks that guide AIRD\u2019s work towards Gram Swaraj.'}
+          {'Key government portals, development schemes, and institutional frameworks that guide AIRD’s work towards Gram Swaraj.'}
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

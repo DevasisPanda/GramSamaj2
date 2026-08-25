@@ -408,7 +408,7 @@ export default function Join() {
                         <p className="mt-1 text-[11px] text-ink/50 leading-snug">{tier.eligibility}</p>
                         <div className="mt-3 space-y-0.5">
                           <div className="text-sm font-bold text-saffron-700">
-                            {tier.annual != null ? formatINR(tier.annual) : '\u2014'} <span className="text-[10px] font-normal text-ink/40">/ year</span>
+                            {tier.annual != null ? formatINR(tier.annual) : '—'} <span className="text-[10px] font-normal text-ink/40">/ year</span>
                           </div>
                           <div className="text-xs text-forest-700">
                             Life: {tier.life != null ? formatINR(tier.life) : 'N/A'}
@@ -461,7 +461,7 @@ export default function Join() {
                       ['Email', form.email],
                       ['Role', form.role],
                       ['Category', `${form.category} ${form.isLife ? '(Life)' : '(Annual)'}`],
-                      ['Fee', selectedTier ? formatINR(form.isLife ? selectedTier.life! : selectedTier.annual!) : '\u2014'],
+                      ['Fee', selectedTier ? formatINR(form.isLife ? selectedTier.life! : selectedTier.annual!) : '—'],
                     ].map(([k, v]) => (
                       <div key={k} className="flex justify-between border-b border-saffron-50 pb-1.5">
                         <dt className="text-ink/40">{k}</dt>

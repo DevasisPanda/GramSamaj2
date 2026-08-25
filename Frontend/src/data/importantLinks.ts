@@ -16,7 +16,7 @@ export const IMPORTANT_LINKS: ImportantLink[] = [
     label: 'DDU-SIRD, Uttar Pradesh',
     url: 'https://sird.up.gov.in/',
     description:
-      'Deendayal Upadhyaya State Institute of Rural Development \u2014 apex state training & capacity-building institute for rural development & Panchayati Raj. KRANTI Phase II expands across its 17 Regional Institutes (RIRDs).',
+      'Deendayal Upadhyaya State Institute of Rural Development — apex state training & capacity-building institute for rural development & Panchayati Raj. KRANTI Phase II expands across its 17 Regional Institutes (RIRDs).',
     icon: 'Building2',
   },
   {
@@ -24,7 +24,7 @@ export const IMPORTANT_LINKS: ImportantLink[] = [
     label: 'Sustainable Development Goals (SDGs)',
     url: 'https://en.wikipedia.org/wiki/Sustainable_Development_Goals',
     description:
-      'The United Nations Sustainable Development Goals that AIRD\u2019s model villages contribute towards.',
+      'The United Nations Sustainable Development Goals that AIRD’s model villages contribute towards.',
     icon: 'Globe2',
   },
   {
@@ -32,7 +32,7 @@ export const IMPORTANT_LINKS: ImportantLink[] = [
     label: 'Gram Swaraj Abhiyan (RGSAPortal)',
     url: 'https://rgsa.gov.in/index.htm',
     description:
-      'Rashtriya Gram Swaraj Abhiyan \u2014 central scheme strengthening Panchayati Raj Institutions and Gram Swaraj.',
+      'Rashtriya Gram Swaraj Abhiyan — central scheme strengthening Panchayati Raj Institutions and Gram Swaraj.',
     icon: 'Landmark',
   },
   {
@@ -40,7 +40,7 @@ export const IMPORTANT_LINKS: ImportantLink[] = [
     label: 'GPDP Portal',
     url: 'https://gpdp.nic.in/',
     description:
-      'Gram Panchayat Development Plan portal \u2014 participatory village-level development planning.',
+      'Gram Panchayat Development Plan portal — participatory village-level development planning.',
     icon: 'ClipboardList',
   },
   {
@@ -48,7 +48,7 @@ export const IMPORTANT_LINKS: ImportantLink[] = [
     label: 'DAY-NRLM',
     url: 'https://www.myscheme.gov.in/schemes/day-nrlm',
     description:
-      'Deendayal Antyodaya Yojana \u2013 National Rural Livelihoods Mission: reducing poverty through women-led SHGs.',
+      'Deendayal Antyodaya Yojana – National Rural Livelihoods Mission: reducing poverty through women-led SHGs.',
     icon: 'Users',
   },
   {
@@ -56,7 +56,7 @@ export const IMPORTANT_LINKS: ImportantLink[] = [
     label: 'MGNREGA / Viksit Bharat',
     url: 'https://www.facebook.com/IndiaRuralDev',
     description:
-      'Mahatma Gandhi National Rural Employment Guarantee Act \u2014 social audit & rural employment.',
+      'Mahatma Gandhi National Rural Employment Guarantee Act — social audit & rural employment.',
     icon: 'HardHat',
   },
   {

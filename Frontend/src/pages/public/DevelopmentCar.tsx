@@ -11,7 +11,7 @@ export default function DevelopmentCar() {
   return (
     <ContentPage
       title="Development Car"
-      subtitle="The journey of the soul \u2014 a spiritual metaphor for selfless service."
+      subtitle="The journey of the soul — a spiritual metaphor for selfless service."
       gradient="forest"
       crumbs={[{ label: 'About Us', to: '/about' }, { label: 'Development Car' }]}
     >

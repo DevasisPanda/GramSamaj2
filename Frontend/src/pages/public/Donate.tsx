@@ -216,7 +216,7 @@ export default function Donate() {
                 )}
               </Button>
               <p className="text-center text-[11px] text-ink/40">
-                {'Secure payment via Razorpay. ' + (import.meta.env.VITE_RAZORPAY_KEY_ID ? 'Live mode.' : 'Demo mode \u2014 add VITE_RAZORPAY_KEY_ID to enable live payments.')}
+                {'Secure payment via Razorpay. ' + (import.meta.env.VITE_RAZORPAY_KEY_ID ? 'Live mode.' : 'Demo mode — add VITE_RAZORPAY_KEY_ID to enable live payments.')}
               </p>
             </CardContent>
           </Card>

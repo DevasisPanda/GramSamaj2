@@ -25,7 +25,7 @@ export const PAST_ACTIVITIES = {
     },
     {
       period: '2021–22',
-      text: 'Earth Day celebrated as a tribute to Prof. M. M. Hoda (22 April 2021); Foundation Day with meditation and reflection at Ramakrishna Math (3 December 2021); five-day participatory governance workshop (26–30 January 2022); formation of a Project Implementation Team (PIT) of active SHG leaders; development experts\u2019 visit to Village Garhi (4 March 2022); Annual Meeting of the Board of Trustees approved the KRANTI roadmap (30 March 2022); approval under Sections 12A and 80G of the Income Tax Act.',
+      text: 'Earth Day celebrated as a tribute to Prof. M. M. Hoda (22 April 2021); Foundation Day with meditation and reflection at Ramakrishna Math (3 December 2021); five-day participatory governance workshop (26–30 January 2022); formation of a Project Implementation Team (PIT) of active SHG leaders; development experts’ visit to Village Garhi (4 March 2022); Annual Meeting of the Board of Trustees approved the KRANTI roadmap (30 March 2022); approval under Sections 12A and 80G of the Income Tax Act.',
     },
     {
       period: '2019–2026',
@@ -33,7 +33,7 @@ export const PAST_ACTIVITIES = {
     },
   ],
   flagship: {
-    heading: 'Earth Day — AIRD\u2019s flagship community programme',
+    heading: 'Earth Day — AIRD’s flagship community programme',
     items: [
       'Slogan competitions',
       'Poster competitions',
@@ -45,9 +45,9 @@ export const PAST_ACTIVITIES = {
     note: 'Women SHGs and village children actively participated every year.',
   },
   shg: {
-    heading: 'Strengthening women\u2019s Self-Help Groups',
+    heading: 'Strengthening women’s Self-Help Groups',
     intro:
-      'Special emphasis was placed on strengthening women\u2019s SHGs — recognized as the strongest institution for promoting community participation — through:',
+      'Special emphasis was placed on strengthening women’s SHGs — recognized as the strongest institution for promoting community participation — through:',
     items: [
       'Transparency in bookkeeping',
       'Electronic recording of transactions',
@@ -82,7 +82,7 @@ export const PAST_ACTIVITIES = {
   challenges: [
     'Limited financial resources — most activities were conducted through voluntary contributions and returnable donations; whenever implementation was postponed, AIRD returned the donated money instead of keeping unused funds.',
     'Health challenge — the Convener, Mrs. Neera Tripathi, underwent treatment for breast cancer during 2022; the organization continued its activities with support from trustees and volunteers.',
-    'Regulatory compliance — AIRD\u2019s application under Sections 12A and 80G could not be renewed due to limited financial transactions; all statutory requirements will be completed before reapplying.',
+    'Regulatory compliance — AIRD’s application under Sections 12A and 80G could not be renewed due to limited financial transactions; all statutory requirements will be completed before reapplying.',
     'Community participation — the greatest challenge remained sustaining community participation without dedicated local facilitators.',
   ],
   finance: {
@@ -150,28 +150,27 @@ export const EVENTS: ActivityEvent[] = [
   // ---- Historical milestones ----
   { id: 'e1', date: '2020-01-31', title: 'AIRD Foundation Day', description: 'Appropriate Institute of Rural Development registered under Public Charitable Trust Act (PCTA) 1882 (Reg. 9002139 IV-66/2020).', category: 'administrative', isCompleted: true },
   { id: 'e2', date: '2026-04-22', title: 'Earth Day', description: 'An unannounced Board visit to Village Garhi to assess whether earlier awareness and development initiatives had continued independently. Awareness had grown, but the village could not yet sustain collective activities without mentoring.', category: 'environmental', isCompleted: true },
-  { id: 'e3', date: '2026-04-25', title: 'National Panchayati Raj Day', description: 'SHGs were encouraged to organize the programme independently with elected representatives and villagers; no meeting materialized \u2014 a lesson that village institutions still require sustained capacity building and local leadership.', category: 'planning', isCompleted: true },
-  { id: 'e4', date: '2026-09-25', title: 'Bank Uncle Day', description: 'Observed on the birthday of Mr. Christopher Baron (\u201cBank Uncle\u201d), the London supporter whose philosophy of serving the needy inspired AIRD; special prayers are offered in his memory following his passing in September 2025.', category: 'spiritual', isCompleted: false },
+  { id: 'e3', date: '2026-04-25', title: 'National Panchayati Raj Day', description: 'SHGs were encouraged to organize the programme independently with elected representatives and villagers; no meeting materialized — a lesson that village institutions still require sustained capacity building and local leadership.', category: 'planning', isCompleted: true },
+  { id: 'e4', date: '2026-09-25', title: 'Bank Uncle Day', description: 'Observed on the birthday of Mr. Christopher Baron (“Bank Uncle”), the London supporter whose philosophy of serving the needy inspired AIRD; special prayers are offered in his memory following his passing in September 2025.', category: 'spiritual', isCompleted: false },
 
   // ---- Recurring observances (from the yearly reports) ----
-  { id: 'e13', date: '2026-04-22', title: 'Earth Day \u2014 AIRD\u2019s flagship programme', description: 'Annual environmental awareness with SHGs and children: slogan & poster competitions, plantation drives, sapling distribution, rallies and awareness meetings since 22 April 2020.', category: 'environmental', isCompleted: true },
   { id: 'e14', date: '2026-01-12', title: 'National Youth Day', description: 'Swami Vivekananda Jayanti observed with meditation (Ramakrishna Math) and meetings with village youth on their role in Gram Sabha participation and village development.', category: 'spiritual', isCompleted: true },
   { id: 'e15', date: '2025-12-03', title: 'Development Car Day', description: 'Commemorates the birthday of the founder of the Development Car concept: meditation, reflection on spiritual development, and renewing the commitment to serve the needy.', category: 'spiritual', isCompleted: true },
-  { id: 'e16', date: '2026-01-31', title: 'Foundation Day', description: 'Anniversary of AIRD\u2019s registration as a Public Charitable Trust (31 January 2020), marked with meditation at Ramakrishna Math and review by the Board of Trustees.', category: 'administrative', isCompleted: true },
+  { id: 'e16', date: '2026-01-31', title: 'Foundation Day', description: 'Anniversary of AIRD’s registration as a Public Charitable Trust (31 January 2020), marked with meditation at Ramakrishna Math and review by the Board of Trustees.', category: 'administrative', isCompleted: true },
 
   // ---- Upcoming observances ----
   { id: 'e17', date: '2026-12-03', title: 'Development Car Day', description: 'Meditation and reflections on integrating spiritual values with participatory rural development.', category: 'spiritual', isCompleted: false },
-  { id: 'e18', date: '2027-01-12', title: 'National Youth Day', description: 'Swami Vivekananda Jayanti \u2014 meditation and youth engagement for Gram Swaraj.', category: 'spiritual', isCompleted: false },
-  { id: 'e19', date: '2027-01-31', title: 'Foundation Day', description: 'Registration anniversary of the trust \u2014 meditation programme and Board review.', category: 'administrative', isCompleted: false },
+  { id: 'e18', date: '2027-01-12', title: 'National Youth Day', description: 'Swami Vivekananda Jayanti — meditation and youth engagement for Gram Swaraj.', category: 'spiritual', isCompleted: false },
+  { id: 'e19', date: '2027-01-31', title: 'Foundation Day', description: 'Registration anniversary of the trust — meditation programme and Board review.', category: 'administrative', isCompleted: false },
 
 
   // ---- Proposed KRANTI 2026-2027 schedule ----
-  { id: 'e5', date: '2026-08-15', title: 'KRANTI Phase 1 \u2014 Launch & Baseline', description: 'Selection of model village, community consultations, formation of Project Implementation Team (PIT), and baseline village information collection.', category: 'planning', isCompleted: false },
+  { id: 'e5', date: '2026-08-15', title: 'KRANTI Phase 1 — Launch & Baseline', description: 'Selection of model village, community consultations, formation of Project Implementation Team (PIT), and baseline village information collection.', category: 'planning', isCompleted: false },
   { id: 'e6', date: '2026-09-25', title: 'KRANTI Formal Launch', description: 'Official launch of Key to Reform & Adopt Noble Treatment Initiatives (KRANTI) at Bakshi ka Talab block, Lucknow.', category: 'administrative', isCompleted: false },
   { id: 'e7', date: '2026-09-01', title: 'Spiritual Activation & Maitri Bhoj', description: 'Spiritual camps, community meetings, introduction of Maitri Bhoj gatherings on Pooranmasi & Amavasya, awareness on Gram Swaraj.', category: 'spiritual', isCompleted: false },
   { id: 'e8', date: '2026-09-25', title: 'Youth Change Agent Capacity Training', description: 'Practical training of rural youth, preparation of social/resource/problem maps, e-information bank establishment.', category: 'planning', isCompleted: false },
   { id: 'e9', date: '2026-11-15', title: 'Participatory Action Study (PAS)', description: 'Study and documentation of Gram Sabha, Gram Panchayat committees, SHGs, MGNREGA activities, and social audit processes.', category: 'planning', isCompleted: false },
   { id: 'e10', date: '2026-12-03', title: 'Collective Action & Department Interfacing', description: 'Identification of priority village issue, formation of working groups, interface meetings with government departments, action plan.', category: 'planning', isCompleted: false },
   { id: 'e11', date: '2027-02-02', title: 'Implementation & Web Updates', description: 'Implementation of community action initiatives, regular Gram Sabha, documentation of progress, project website updates.', category: 'administrative', isCompleted: false },
-  { id: 'e12', date: '2027-08-11', title: 'Final Evaluation & Phase II Planning', description: 'Evaluation workshop, presentation of project reports, documentation of best practices, preparation for KRANTI Phase II across DDU-SIRD\u2019s 17 RIRDs.', category: 'administrative', isCompleted: false },
+  { id: 'e12', date: '2027-08-11', title: 'Final Evaluation & Phase II Planning', description: 'Evaluation workshop, presentation of project reports, documentation of best practices, preparation for KRANTI Phase II across DDU-SIRD’s 17 RIRDs.', category: 'administrative', isCompleted: false },
 ];

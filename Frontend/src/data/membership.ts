@@ -30,14 +30,14 @@ export const MEMBERSHIP_TIERS: MembershipTier[] = [
     id: 'EXECUTIVE',
     name: 'Executive Member',
     eligibility:
-      'Individuals willing to actively guide, support, and participate in AIRD\u2019s programmes and institutional development.',
+      'Individuals willing to actively guide, support, and participate in AIRD’s programmes and institutional development.',
     annual: 1000,
     life: 5000,
   },
 ];
 
 export const MEMBERSHIP_MOTTO =
-  'Join Hands \u2022 Learn Together \u2022 Serve Together \u2022 Build Gram Swaraj';
+  'Join Hands • Learn Together • Serve Together • Build Gram Swaraj';
 
 /**
  * Client ruling (D2): both fee documents stand. The General member annual fee
@@ -46,7 +46,7 @@ export const MEMBERSHIP_MOTTO =
  * "Membership and fee.docx".
  */
 export const MEMBERSHIP_MIN_DONATION_NOTE =
-  'The General Member annual contribution of \u20b910 is a minimum donation \u2014 an entry point for students, villagers, and volunteers. Standard contributions are as per the Special and Executive slabs above.';
+  'The General Member annual contribution of ₹10 is a minimum donation — an entry point for students, villagers, and volunteers. Standard contributions are as per the Special and Executive slabs above.';
 
 /** Benefits of membership — complete content from "Benefits of memeber.docx". */
 export const MEMBERSHIP_INTRO =
@@ -60,7 +60,7 @@ export const MEMBERSHIP_CATEGORY_BENEFITS: { id: MembershipCategory; title: stri
   {
     id: 'GENERAL',
     title: 'General Members',
-    body: 'General Members receive regular updates on AIRD\u2019s activities and are encouraged to participate in field visits, community meetings, research, and volunteer activities. They will receive quarterly reports highlighting the achievements of KRANTI, along with the constraints, facilitating factors, lessons learned, and future plans.',
+    body: 'General Members receive regular updates on AIRD’s activities and are encouraged to participate in field visits, community meetings, research, and volunteer activities. They will receive quarterly reports highlighting the achievements of KRANTI, along with the constraints, facilitating factors, lessons learned, and future plans.',
   },
   {
     id: 'SPECIAL',
@@ -70,7 +70,7 @@ export const MEMBERSHIP_CATEGORY_BENEFITS: { id: MembershipCategory; title: stri
   {
     id: 'EXECUTIVE',
     title: 'Executive Members',
-    body: 'Executive Members are invited to participate in meetings of the Board of Trustees to provide strategic guidance and professional advice for strengthening AIRD\u2019s programmes. Their experience and expertise contribute to achieving AIRD\u2019s vision of demonstrating Gram Swaraj through a live village model rather than only through theoretical discussions or documents.',
+    body: 'Executive Members are invited to participate in meetings of the Board of Trustees to provide strategic guidance and professional advice for strengthening AIRD’s programmes. Their experience and expertise contribute to achieving AIRD’s vision of demonstrating Gram Swaraj through a live village model rather than only through theoretical discussions or documents.',
   },
 ];
 
@@ -79,14 +79,14 @@ export const MEMBERSHIP_BENEFITS: { title: string; body: string }[] = [
   { title: 'Participate in Community Development', body: 'Take part in village meetings, Gram Sabha discussions, and Maitri Bhoj to understand local issues, promote social harmony, strengthen public service delivery, and support sustainable management of village resources.' },
   { title: 'Build Meaningful Relationships', body: 'Develop direct friendships with villagers through one-to-one interaction, enabling mutual learning, exchange of ideas, and collaborative action for community development.' },
   { title: 'Experience Rural Life', body: 'Members wishing to stay in the village will be welcomed as guests by local families, providing a unique opportunity to experience rural hospitality, traditional food, local culture, and everyday village life.' },
-  { title: 'Work with Village Institutions', body: 'Collaborate directly with Self-Help Groups (SHGs), Gram Panchayats, Village Organizations, youth groups, farmers\u2019 groups, and other community institutions to strengthen participatory governance and local development.' },
+  { title: 'Work with Village Institutions', body: 'Collaborate directly with Self-Help Groups (SHGs), Gram Panchayats, Village Organizations, youth groups, farmers’ groups, and other community institutions to strengthen participatory governance and local development.' },
   { title: 'Participate in Research and Action Learning', body: 'Engage in village studies, Participatory Action Research (PAR), social audits, impact assessments, and documentation of best practices to better understand rural development challenges and practical solutions.' },
   { title: 'Practical Training', body: 'Gain hands-on experience in community mobilization, participatory planning, project implementation, monitoring, evaluation, digital documentation, and social accountability systems.' },
   { title: 'Apply Professional Skills', body: 'Professionals, researchers, students, and volunteers can contribute their expertise in agriculture, livelihoods, education, health, environment, governance, information technology, finance, communication, research, and other development sectors.' },
   { title: 'Networking and Collaboration', body: 'Interact with government departments, universities, research institutions, NGOs, corporate organizations, financial institutions, and development professionals working towards sustainable rural development.' },
   { title: 'Recognition and Certification', body: 'Members who make significant contributions to the implementation of Project KRANTI may receive certificates of participation, appreciation, or recognition. Outstanding volunteers may also be considered for future opportunities as project associates.' },
   { title: 'Learn from a Live Demonstration Model', body: 'Observe and participate in the planning, implementation, monitoring, and social audit of development programmes in a real village setting — valuable practical exposure beyond classroom teaching and conventional training programmes.' },
-  { title: 'Contribute to Gram Swaraj', body: 'Become part of a collective movement to establish a live model of Gram Swaraj, demonstrating transparency, accountability, people\u2019s participation, women\u2019s empowerment, youth leadership, and sustainable management of local resources.' },
+  { title: 'Contribute to Gram Swaraj', body: 'Become part of a collective movement to establish a live model of Gram Swaraj, demonstrating transparency, accountability, people’s participation, women’s empowerment, youth leadership, and sustainable management of local resources.' },
 ];
 
 /** Declaration groups from the official "Membership form.docx". */

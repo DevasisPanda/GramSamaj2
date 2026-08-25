@@ -24,7 +24,7 @@ export function Logo({ className, size = 'md', variant = 'default' }: LogoProps)
   return (
     <img
       src="/aird-logo.png"
-      alt="AIRD \u2014 Appropriate Institute of Rural Development official emblem"
+      alt="AIRD — Appropriate Institute of Rural Development official emblem"
       className={cn(
         'shrink-0 object-contain',
         SIZE_MAP[size],
