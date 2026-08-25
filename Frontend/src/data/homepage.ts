@@ -287,7 +287,7 @@ export const KRANTI_HOME = {
   aim:
     'To develop a village as a live model that demonstrates the process of strengthening people\u2019s governance and participatory development \u2014 not only in theory but through real community participation and action at the village level.',
   intro:
-    'AIRD is preparing to launch Project KRANTI for establishing the first live model on the process of strengthening Gram Swaraj \u2014 not only on paper but in a village of Bakshi ka Talab block of Lucknow. (Launch date to be confirmed.)',
+    'The AIRD is planning to launch Project KRANTI on 25th September 2026 for establishing the first live model on the process of strengthening Gram Swaraj \u2014 not only on paper but in a village of Bakshi ka Talab block of Lucknow.',
   components: [
     'Spiritual awareness camps',
     'Capacity building of rural youth & e-information bank',

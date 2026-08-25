@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { CalendarClock } from 'lucide-react';
 import { KRANTI_HOME } from '@/data/homepage';
-import { KRANTI_PHASES } from '@/data/kranti';
+import { KRANTI, KRANTI_PHASES } from '@/data/kranti';
+import { formatDate } from '@/lib/utils';
 
 export function KrantiPreview() {
   return (
@@ -15,6 +17,10 @@ export function KrantiPreview() {
           Key to Reform and Adopt Noble Treatment Initiatives (KRANTI)
         </span>
         {KRANTI_HOME.aim}
+        <span className="mt-1 flex items-center gap-1 font-semibold text-forest-800">
+          <CalendarClock className="h-3 w-3" />
+          Launching {formatDate(KRANTI.launchDate)} &bull; {KRANTI.location}
+        </span>
       </div>
 
       {/* 5 Core Pillars Table */}

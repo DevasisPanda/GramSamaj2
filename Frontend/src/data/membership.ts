@@ -39,6 +39,15 @@ export const MEMBERSHIP_TIERS: MembershipTier[] = [
 export const MEMBERSHIP_MOTTO =
   'Join Hands \u2022 Learn Together \u2022 Serve Together \u2022 Build Gram Swaraj';
 
+/**
+ * Client ruling (D2): both fee documents stand. The General member annual fee
+ * of Rs. 10 (Types of member and membership fee.docx) is a MINIMUM DONATION
+ * entry point; the higher slabs are the standard rates per
+ * "Membership and fee.docx".
+ */
+export const MEMBERSHIP_MIN_DONATION_NOTE =
+  'The General Member annual contribution of \u20b910 is a minimum donation \u2014 an entry point for students, villagers, and volunteers. Standard contributions are as per the Special and Executive slabs above.';
+
 /** Benefits of membership — complete content from "Benefits of memeber.docx". */
 export const MEMBERSHIP_INTRO =
   'AIRD believes that every member is not merely a supporter but a partner in building a live model of Gram Swaraj. Membership offers opportunities for learning, service, research, networking, and active participation in community-led rural development. Members may contribute according to their interests, expertise, and availability while working alongside rural communities.';

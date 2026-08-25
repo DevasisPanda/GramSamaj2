@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ContentPage } from '@/components/shared/ContentPage';
-import { DEVELOPMENT_INDIA_INTRO, DEVELOPMENT_CAR_SECTIONS } from '@/data/content';
+import { DEV_INDIA_HOME } from '@/data/homepage';
 
 export default function DevelopmentInIndia() {
   return (
@@ -11,7 +11,8 @@ export default function DevelopmentInIndia() {
       crumbs={[{ label: 'KRANTI', to: '/kranti' }, { label: 'Development in India' }]}
     >
       <section className="prose-aird mx-auto max-w-3xl">
-        <p className="mb-6 leading-relaxed text-ink/80">{DEVELOPMENT_INDIA_INTRO}</p>
+        <p className="mb-6 leading-relaxed text-ink/80">{DEV_INDIA_HOME.intro}</p>
+        <p className="mb-6 leading-relaxed text-ink/80">{DEV_INDIA_HOME.summary}</p>
         <Link
           to="/history"
           className="inline-flex items-center gap-2 rounded-lg bg-saffron-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-saffron-700"
@@ -37,8 +38,6 @@ export default function DevelopmentInIndia() {
           </ul>
         </div>
       </section>
-      {/* reuse car sections for depth */}
-      <span className="sr-only">{DEVELOPMENT_CAR_SECTIONS.length}</span>
     </ContentPage>
   );
 }

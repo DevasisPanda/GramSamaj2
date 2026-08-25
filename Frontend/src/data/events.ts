@@ -128,17 +128,42 @@ export const PLANNED_ACTIVITIES = {
 };
 
 /**
- * Activities Calendar entries. Past milestones (Earth Day, National Panchayati
- * Raj Day, Bank Uncle Day, Foundation Day) and the proposed KRANTI schedule
- * from "Activity planned for 2026-2027.docx". `isCompleted` distinguishes
- * history from upcoming.
+ * Activities Calendar entries.
+ *
+ * Historical milestones and recurring observances are drawn from the yearly
+ * reports (annual report 2020-2021, AR 2021-22, 22-23, 23-24, 24-25, 25-26):
+ *   - Earth Day .................. 22 April (flagship; tribute to Prof. M. M. Hoda)
+ *   - National Panchayati Raj Day 25 April
+ *   - Bank Uncle Day ............. 25 September (birthday of Mr. Christopher Baron,
+ *                                  "Bank Uncle", London supporter of community
+ *                                  development; remembered in prayer since his
+ *                                  passing in September 2025)
+ *   - Development Car Day ........ 3 December (birthday of the founder of the
+ *                                  Development Car concept)
+ *   - Foundation Day ............. 31 January (trust registration anniversary,
+ *                                  31 January 2020)
+ *   - National Youth Day ......... 12 January (Swami Vivekananda Jayanti)
+ * Planned KRANTI schedule comes from "Activity planned for 2026-2027.docx".
+ * `isCompleted` distinguishes history from upcoming.
  */
 export const EVENTS: ActivityEvent[] = [
   // ---- Historical milestones ----
   { id: 'e1', date: '2020-01-31', title: 'AIRD Foundation Day', description: 'Appropriate Institute of Rural Development registered under Public Charitable Trust Act (PCTA) 1882 (Reg. 9002139 IV-66/2020).', category: 'administrative', isCompleted: true },
-  { id: 'e2', date: '2026-04-22', title: 'Earth Day', description: 'Community awareness on protecting Mother Earth \u2014 soil testing, organic farming, and tree plantation drives in Barhi Garhi.', category: 'environmental', isCompleted: true },
-  { id: 'e3', date: '2026-04-24', title: 'National Panchayati Raj Day', description: 'Celebrating grassroots democracy. Strengthening Gram Sabha participation and social accountability.', category: 'planning', isCompleted: true },
-  { id: 'e4', date: '2026-05-01', title: 'Bank Uncle Day', description: 'Villager-bank interface to spread awareness on accounts, loans, and financial inclusion schemes.', category: 'planning', isCompleted: true },
+  { id: 'e2', date: '2026-04-22', title: 'Earth Day', description: 'An unannounced Board visit to Village Garhi to assess whether earlier awareness and development initiatives had continued independently. Awareness had grown, but the village could not yet sustain collective activities without mentoring.', category: 'environmental', isCompleted: true },
+  { id: 'e3', date: '2026-04-25', title: 'National Panchayati Raj Day', description: 'SHGs were encouraged to organize the programme independently with elected representatives and villagers; no meeting materialized \u2014 a lesson that village institutions still require sustained capacity building and local leadership.', category: 'planning', isCompleted: true },
+  { id: 'e4', date: '2026-09-25', title: 'Bank Uncle Day', description: 'Observed on the birthday of Mr. Christopher Baron (\u201cBank Uncle\u201d), the London supporter whose philosophy of serving the needy inspired AIRD; special prayers are offered in his memory following his passing in September 2025.', category: 'spiritual', isCompleted: false },
+
+  // ---- Recurring observances (from the yearly reports) ----
+  { id: 'e13', date: '2026-04-22', title: 'Earth Day \u2014 AIRD\u2019s flagship programme', description: 'Annual environmental awareness with SHGs and children: slogan & poster competitions, plantation drives, sapling distribution, rallies and awareness meetings since 22 April 2020.', category: 'environmental', isCompleted: true },
+  { id: 'e14', date: '2026-01-12', title: 'National Youth Day', description: 'Swami Vivekananda Jayanti observed with meditation (Ramakrishna Math) and meetings with village youth on their role in Gram Sabha participation and village development.', category: 'spiritual', isCompleted: true },
+  { id: 'e15', date: '2025-12-03', title: 'Development Car Day', description: 'Commemorates the birthday of the founder of the Development Car concept: meditation, reflection on spiritual development, and renewing the commitment to serve the needy.', category: 'spiritual', isCompleted: true },
+  { id: 'e16', date: '2026-01-31', title: 'Foundation Day', description: 'Anniversary of AIRD\u2019s registration as a Public Charitable Trust (31 January 2020), marked with meditation at Ramakrishna Math and review by the Board of Trustees.', category: 'administrative', isCompleted: true },
+
+  // ---- Upcoming observances ----
+  { id: 'e17', date: '2026-12-03', title: 'Development Car Day', description: 'Meditation and reflections on integrating spiritual values with participatory rural development.', category: 'spiritual', isCompleted: false },
+  { id: 'e18', date: '2027-01-12', title: 'National Youth Day', description: 'Swami Vivekananda Jayanti \u2014 meditation and youth engagement for Gram Swaraj.', category: 'spiritual', isCompleted: false },
+  { id: 'e19', date: '2027-01-31', title: 'Foundation Day', description: 'Registration anniversary of the trust \u2014 meditation programme and Board review.', category: 'administrative', isCompleted: false },
+
 
   // ---- Proposed KRANTI 2026-2027 schedule ----
   { id: 'e5', date: '2026-08-15', title: 'KRANTI Phase 1 \u2014 Launch & Baseline', description: 'Selection of model village, community consultations, formation of Project Implementation Team (PIT), and baseline village information collection.', category: 'planning', isCompleted: false },

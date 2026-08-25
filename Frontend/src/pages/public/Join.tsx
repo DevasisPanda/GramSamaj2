@@ -16,7 +16,7 @@ import { useMembershipTiers, useCreateMember } from '@/hooks/useApi';
 import {
   JOIN_ROLES, MEMBERSHIP_BENEFITS, MEMBERSHIP_TIERS, MEMBERSHIP_MOTTO,
   MEMBERSHIP_INTRO, MEMBERSHIP_CLOSING, MEMBERSHIP_CATEGORY_BENEFITS,
-  MEMBERSHIP_DECLARATIONS,
+  MEMBERSHIP_DECLARATIONS, MEMBERSHIP_MIN_DONATION_NOTE,
 } from '@/data/membership';
 import { formatINR, cn } from '@/lib/utils';
 import { generateCertificatePDF, generateMembershipCardPNG } from '@/utils/documentEngine';
@@ -228,6 +228,9 @@ export default function Join() {
               </tbody>
             </table>
           </div>
+          <p className="mb-2 text-xs leading-relaxed text-ink/55">
+            {MEMBERSHIP_MIN_DONATION_NOTE}
+          </p>
           <p className="mb-6 text-center text-sm font-semibold italic text-saffron-800">
             &ldquo;{MEMBERSHIP_MOTTO}&rdquo;
           </p>

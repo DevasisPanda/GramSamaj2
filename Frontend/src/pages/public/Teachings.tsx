@@ -1,12 +1,13 @@
 import { ContentPage } from '@/components/shared/ContentPage';
 import { WhirlpoolCanvas } from './sections/WhirlpoolCanvas';
 import { ARISE_AWAKE, GOAL_OF_SOUL, EHIPASSIKO_HOME } from '@/data/homepage';
+import { FACTS_OF_LIFE, HUMANITY_AND_RELIGION } from '@/data/contentVerbatim';
 
 /**
- * Teachings — a section distinct from Philosophy, with its own source
- * documents: "Arise! Awake and Stop not.docx" (Swami Vivekananda),
- * "Dont believe on God.docx" (Gautama Buddha's Ehipassiko) and
- * "Goal of soul.docx" (the Whirlpool). Never merged with /philosophy.
+ * Teachings — a section distinct from Philosophy. Sources (all verbatim):
+ * "Arise! Awake and Stop not.docx", "Dont believe on God.docx" (Ehipassiko),
+ * "Goal of soul.docx" (Whirlpool), "Facts of life.docx" (=j) and
+ * "Humanity and Religion.docx". Never merged with /philosophy.
  */
 export default function Teachings() {
   return (
@@ -28,6 +29,14 @@ export default function Teachings() {
           heading: 'The Goal of the Soul',
           paragraphs: [GOAL_OF_SOUL.intro, ...GOAL_OF_SOUL.body],
           bullets: GOAL_OF_SOUL.summary,
+        },
+        {
+          heading: 'Facts of Life',
+          paragraphs: FACTS_OF_LIFE,
+        },
+        {
+          heading: 'Humanity and Religion',
+          paragraphs: HUMANITY_AND_RELIGION,
         },
       ]}
       aside={
