@@ -1,0 +1,9 @@
+Category of member
+Annual membership
+Life membership
+General member
+100
+500
+Executive member
+1000
+5000

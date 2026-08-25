@@ -13,8 +13,11 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useMembershipTiers, useCreateMember } from '@/hooks/useApi';
-import { JOIN_ROLES, MEMBERSHIP_BENEFITS } from '@/data/membership';
-import { MEMBERSHIP_MOTTO } from '@/data/membership';
+import {
+  JOIN_ROLES, MEMBERSHIP_BENEFITS, MEMBERSHIP_TIERS, MEMBERSHIP_MOTTO,
+  MEMBERSHIP_INTRO, MEMBERSHIP_CLOSING, MEMBERSHIP_CATEGORY_BENEFITS,
+  MEMBERSHIP_DECLARATIONS,
+} from '@/data/membership';
 import { formatINR, cn } from '@/lib/utils';
 import { generateCertificatePDF, generateMembershipCardPNG } from '@/utils/documentEngine';
 import type { MembershipCategory, MembershipRecord } from '@/lib/types';
@@ -189,8 +192,125 @@ export default function Join() {
       </PageHero>
       <Breadcrumb items={[{ label: 'Get Involved' }, { label: 'Membership' }]} />
 
+      {/* ---- Documented membership information (source: Work/ documents) ---- */}
       <section className="section-py">
+        <div className="container-px max-w-5xl">
+          {/* Intro */}
+          <p className="mb-4 text-sm leading-relaxed text-ink/80">{MEMBERSHIP_INTRO}</p>
+
+          {/* Categories & fees table */}
+          <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
+            Membership Categories &amp; Subscription
+          </h2>
+          <div className="mb-2 overflow-x-auto">
+            <table className="w-full min-w-[560px] border-collapse text-left text-sm">
+              <thead className="bg-forest-800 text-white">
+                <tr className="text-xs font-bold uppercase tracking-wide">
+                  <th className="border border-forest-700 p-2">Category</th>
+                  <th className="border border-forest-700 p-2">Eligibility</th>
+                  <th className="border border-forest-700 p-2">Annual (Rs.)</th>
+                  <th className="border border-forest-700 p-2">Life (Rs.)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {MEMBERSHIP_TIERS.map((tier, i) => (
+                  <tr key={tier.id} className={i % 2 === 0 ? 'bg-white' : 'bg-saffron-50/60'}>
+                    <td className="border border-gray-300 p-2 font-semibold text-ink">{tier.name}</td>
+                    <td className="border border-gray-300 p-2 text-ink/70 leading-snug">{tier.eligibility}</td>
+                    <td className="border border-gray-300 p-2 font-bold text-saffron-700">
+                      {tier.annual != null ? formatINR(tier.annual) : '—'}
+                    </td>
+                    <td className="border border-gray-300 p-2 font-bold text-forest-700">
+                      {tier.life != null ? formatINR(tier.life) : 'Not Applicable'}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mb-6 text-center text-sm font-semibold italic text-saffron-800">
+            &ldquo;{MEMBERSHIP_MOTTO}&rdquo;
+          </p>
+
+          {/* Benefits by category */}
+          <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
+            Benefits by Membership Category
+          </h2>
+          <div className="mb-6 grid gap-4 md:grid-cols-3">
+            {MEMBERSHIP_CATEGORY_BENEFITS.map((cb) => (
+              <Card key={cb.id} className="border-l-4 border-l-forest-600">
+                <CardContent>
+                  <h3 className="font-bold text-ink">{cb.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{cb.body}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Opportunities for all members */}
+          <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
+            Opportunities for All Members
+          </h2>
+          <p className="mb-4 text-sm text-ink/70">
+            Regardless of membership category, every member has the opportunity to become an active
+            partner in AIRD&rsquo;s mission:
+          </p>
+          <div className="mb-6 grid gap-3 sm:grid-cols-2">
+            {MEMBERSHIP_BENEFITS.map((b) => (
+              <div key={b.title} className="card-surface p-4">
+                <div className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-forest-600" />
+                  <div>
+                    <h3 className="text-sm font-bold text-ink">{b.title}</h3>
+                    <p className="mt-1 text-xs leading-relaxed text-ink/60">{b.body}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Official membership form declarations */}
+          <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
+            The Official Membership Form
+          </h2>
+          <p className="mb-4 text-sm leading-relaxed text-ink/70">
+            The official AIRD membership form records the applicant&rsquo;s details (name, Aadhar
+            number, educational qualification, mobile / WhatsApp number, e-mail, expertise, and
+            joining role) together with the following declarations:
+          </p>
+          <div className="mb-6 grid gap-3 sm:grid-cols-2">
+            {[
+              MEMBERSHIP_DECLARATIONS.agree,
+              MEMBERSHIP_DECLARATIONS.wish,
+              MEMBERSHIP_DECLARATIONS.may,
+              MEMBERSHIP_DECLARATIONS.lookingForward,
+            ].map((group) => (
+              <div key={group.heading} className="rounded-xl bg-saffron-50/60 p-4">
+                <h3 className="text-sm font-bold text-saffron-800">{group.heading}:</h3>
+                <ul className="mt-2 space-y-1">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex gap-2 text-xs leading-relaxed text-ink/70">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron-500" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <p className="mb-2 rounded-xl bg-forest-50 p-4 text-sm leading-relaxed text-ink/80">
+            {MEMBERSHIP_CLOSING}
+          </p>
+        </div>
+      </section>
+
+      {/* ---- Membership application wizard ---- */}
+      <section className="section-py pt-0">
         <div className="container-px max-w-3xl">
+          <h2 className="mb-6 text-center text-2xl font-bold text-gradient-saffron">
+            Apply for Membership
+          </h2>
           {/* Stepper */}
           <div className="mb-8 flex items-center justify-center gap-2">
             {STEPS.map((label, i) => (

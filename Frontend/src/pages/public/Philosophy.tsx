@@ -1,15 +1,12 @@
 import {
-  Heart, Sparkles, Brain, Users, Leaf, Compass, Eye, BookOpen, Droplets, Wind, Sun,
+  Heart, Sparkles, Brain, Users, Leaf, Compass, Sun, Wind, Droplets,
 } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
-import { DevelopmentCarSlider } from './sections/DevelopmentCarSlider';
-import { WhirlpoolCanvas } from './sections/WhirlpoolCanvas';
 import {
-  PHILOSOPHY_INTRO, PHILOSOPHY_GUIDING_PRINCIPLE, PHILOSOPHY_PILLARS,
-  EHIPASSIKO, THREE_WORLDS,
+  PHILOSOPHY_INTRO, PHILOSOPHY_GUIDING_PRINCIPLE, PHILOSOPHY_PILLARS, THREE_WORLDS,
 } from '@/data/philosophy';
 
 const PILLAR_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -18,15 +15,20 @@ const PILLAR_ICONS: Record<string, React.ComponentType<{ className?: string }>> 
 
 const WORLD_ICONS = [Sun, Wind, Droplets];
 
+/**
+ * Philosophy — AIRD's own philosophy, sourced from "Philosophy.docx".
+ * Spiritual Teachings are a separate section (/teachings) with their own
+ * source documents; the two are intentionally never merged here.
+ */
 export default function Philosophy() {
   return (
     <>
-      <PageHero title="Philosophy & Teachings" subtitle={PHILOSOPHY_INTRO} gradient="forest">
+      <PageHero title="Philosophy" subtitle={PHILOSOPHY_INTRO} gradient="forest">
         <p className="text-sm font-medium text-forest-800 italic bg-white/60 inline-block rounded-lg px-3 py-1.5">
           &ldquo;{PHILOSOPHY_GUIDING_PRINCIPLE}&rdquo;
         </p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'Philosophy' }]} />
+      <Breadcrumb items={[{ label: 'About Us', to: '/about' }, { label: 'Philosophy' }]} />
 
       {/* Six pillars */}
       <section className="section-py">
@@ -91,66 +93,6 @@ export default function Philosophy() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* Development Car */}
-      <section className="section-py">
-        <div className="container-px">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gradient-saffron">Interactive Teachings</h2>
-            <p className="mt-2 text-ink/60">Explore AIRD&rsquo;s spiritual metaphors hands-on.</p>
-          </div>
-          <div className="mx-auto max-w-4xl">
-            <DevelopmentCarSlider />
-          </div>
-        </div>
-      </section>
-
-      {/* Whirlpool */}
-      <section className="section-py bg-gradient-to-b from-white to-forest-50/30">
-        <div className="container-px">
-          <div className="mx-auto max-w-4xl">
-            <WhirlpoolCanvas />
-          </div>
-        </div>
-      </section>
-
-      {/* Ehipassiko */}
-      <section className="section-py">
-        <div className="container-px">
-          <Card className="mx-auto max-w-4xl bg-gradient-to-br from-saffron-50 to-white">
-            <CardContent>
-              <div className="flex items-start gap-4">
-                <div className="inline-flex rounded-xl bg-saffron-500 p-3 text-white shrink-0">
-                  <Eye className="h-6 w-6" />
-                </div>
-                <div>
-                  <h2 className="text-xl md:text-2xl font-bold text-gradient-saffron">{EHIPASSIKO.title}</h2>
-                  <p className="text-sm font-medium text-saffron-700 italic">{EHIPASSIKO.subtitle}</p>
-                  <p className="mt-3 text-sm text-ink/70 leading-relaxed">{EHIPASSIKO.intro}</p>
-                  <div className="mt-4 space-y-2">
-                    {EHIPASSIKO.body.map((p, i) => (
-                      <p key={i} className="text-sm text-ink/60 leading-relaxed">{p}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Mini "come and see" sandbox */}
-              <div className="mt-6 rounded-xl bg-white p-4 border border-saffron-100">
-                <p className="text-xs font-semibold text-ink/60 mb-2 flex items-center gap-1">
-                  <BookOpen className="h-3.5 w-3.5" /> Try it: examine a teaching
-                </p>
-                <p className="text-xs text-ink/50">
-                  {'Buddha advised: do not accept any teaching merely because it is ancient or widely followed. Test it in your own experience \u2014 does it reduce suffering and cultivate compassion?'}
-                </p>
-                <blockquote className="mt-3 border-l-2 border-saffron-400 pl-3 text-sm italic text-ink/70">
-                  &ldquo;Come and see for yourself.&rdquo;
-                </blockquote>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </section>
     </>

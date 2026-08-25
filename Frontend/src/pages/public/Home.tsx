@@ -9,6 +9,7 @@ import { DonorsRoll } from './sections/DonorsRoll';
 import { VillageDirectory } from './sections/VillageDirectory';
 import { VideoCarousel } from './sections/VideoCarousel';
 import { HeroDandi } from './sections/HeroDandi';
+import { PastActivities } from './sections/PastActivities';
 import { GramSwarajSection } from './sections/GramSwarajSection';
 import { HumanitySection } from './sections/HumanitySection';
 import { KrantiPreview } from './sections/KrantiPreview';
@@ -17,76 +18,119 @@ import { NoticeBoard } from './sections/NoticeBoard';
 import {
   AIRD_NARRATIVE, DEMO_VILLAGE, DEV_INDIA_HOME, WHO_CAN_JOIN,
 } from '@/data/homepage';
-import { DEVELOPMENT_CAR } from '@/data/philosophy';
-import { HomeHeroSlider } from './sections/HomeHeroSlider';
+import { PHILOSOPHY_GUIDING_PRINCIPLE } from '@/data/philosophy';
+import { PLANNED_ACTIVITIES } from '@/data/events';
 
 /* ------------------------------------------------------------------ */
-/* About AIRD — Compact Profile Block                                 */
+/* About AIRD — first major informational section after the hero       */
+/* Source: Contents for HP Final.docx / AIRD in brief.docx            */
 /* ------------------------------------------------------------------ */
 function AboutSection() {
   return (
-    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+    <div className="bg-white border border-forest-900 mb-1.5 p-1.5 sm:p-2">
       <div className="govt-header-bar mb-1.5">
         <span>About AIRD Trust</span>
-        <span className="text-[9px] text-saffron-300 font-normal">Registered 2020</span>
+        <span className="text-[9px] text-saffron-300 font-normal">Registered 31 January 2020</span>
       </div>
 
-      <div className="flex items-center gap-1.5 mb-1.5 pb-1 border-b border-gray-200">
-        <img
-          src="/aird-logo.png"
-          alt="AIRD emblem"
-          className="h-10 w-10 object-contain shrink-0"
-        />
-        <div>
-          <h2 className="text-[11px] font-bold text-forest-900 uppercase leading-tight">
-            Appropriate Institute of Rural Development
-          </h2>
-          <span className="text-[9px] text-gray-600 font-semibold">Lucknow, Uttar Pradesh</span>
+      <div className="grid gap-2 lg:grid-cols-12">
+        {/* Narrative — left */}
+        <div className="lg:col-span-8">
+          <div className="flex items-center gap-2 mb-1.5 pb-1.5 border-b border-gray-200">
+            <img
+              src="/aird-logo.png"
+              alt="AIRD emblem"
+              className="h-11 w-11 object-contain shrink-0"
+            />
+            <div>
+              <h2 className="text-xs sm:text-sm font-bold text-forest-900 uppercase leading-tight">
+                Appropriate Institute of Rural Development
+              </h2>
+              <span className="text-[9px] sm:text-[10px] text-gray-600 font-semibold">
+                Lucknow, Uttar Pradesh &bull; A Public Charitable Trust for Gram Swaraj
+              </span>
+            </div>
+          </div>
+
+          <p className="text-[10px] sm:text-[11px] text-gray-800 leading-snug mb-1">
+            {AIRD_NARRATIVE.short[0]}
+          </p>
+          <p className="text-[10px] sm:text-[11px] text-gray-800 leading-snug mb-1">
+            {AIRD_NARRATIVE.short[1]}
+          </p>
+
+          <Accordion type="single" collapsible>
+            <AccordionItem value="about-more" className="border-0">
+              <AccordionTrigger className="py-0.5 text-[10px] font-bold uppercase text-saffron-800 hover:no-underline">
+                Read Full Profile &raquo;
+              </AccordionTrigger>
+              <AccordionContent className="pt-1 text-[10px] text-gray-700 leading-tight space-y-1 border-t">
+                {AIRD_NARRATIVE.more.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
-      </div>
 
-      <p className="text-[10px] text-gray-800 leading-snug mb-1">
-        {AIRD_NARRATIVE.short[0]}
-      </p>
+        {/* Credentials — right */}
+        <div className="lg:col-span-4">
+          <table className="w-full text-left text-[10px] border border-forest-800 border-collapse mb-1.5">
+            <thead className="bg-forest-800 text-white font-bold uppercase text-[9px]">
+              <tr>
+                <th className="p-1 border border-forest-700">Specification</th>
+                <th className="p-1 border border-forest-700">Official Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-300">
+              <tr>
+                <td className="p-1 font-bold border border-gray-300 text-forest-900">Registration</td>
+                <td className="p-1 border border-gray-300">Public Charitable Trust (PCTA 1882) &mdash; 9002139 IV-66/2020</td>
+              </tr>
+              <tr className="bg-forest-50/40">
+                <td className="p-1 font-bold border border-gray-300 text-forest-900">NITI Aayog</td>
+                <td className="p-1 border border-gray-300">NGO Darpan: UP/2022/0303967</td>
+              </tr>
+              <tr>
+                <td className="p-1 font-bold border border-gray-300 text-forest-900">Headquarters</td>
+                <td className="p-1 border border-gray-300">Lucknow, Uttar Pradesh, India</td>
+              </tr>
+            </tbody>
+          </table>
 
-      <Accordion type="single" collapsible>
-        <AccordionItem value="about-more" className="border-0">
-          <AccordionTrigger className="py-0.5 text-[10px] font-bold uppercase text-saffron-800 hover:no-underline">
-            Read Profile &raquo;
-          </AccordionTrigger>
-          <AccordionContent className="pt-1 text-[10px] text-gray-700 leading-tight space-y-1 border-t">
-            {AIRD_NARRATIVE.more.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-
-      <div className="mt-1 text-right border-t pt-0.5">
-        <Link to="/about" className="govt-link text-[10px]">
-          Full Profile &rarr;
-        </Link>
+          <div className="flex flex-col gap-0.5 text-[10px] font-bold pt-1 border-t border-forest-800">
+            <Link to="/about" className="govt-link">
+              &raquo; Full Profile of AIRD
+            </Link>
+            <Link to="/about/trust" className="govt-link">
+              &raquo; Trust &amp; Registration Details
+            </Link>
+            <Link to="/about/vision-mission" className="govt-link">
+              &raquo; Vision &amp; Mission
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/* Spiritual Foundations — Philosophy Block                           */
+/* Philosophy — separate block (source: Philosophy.docx)               */
 /* ------------------------------------------------------------------ */
-function SpiritualFoundations() {
+function PhilosophyBlock() {
   const pillars = [
-    { title: 'Goal of the Soul', summary: 'The soul is originally free, pure, and divine.', to: '/philosophy' },
-    { title: 'Arise, Awake & Stop Not', summary: 'Vivekananda taught that every thought shapes character.', to: '/teachings' },
-    { title: 'Ehipassiko', summary: 'Buddha’s principle of direct experience over blind faith.', to: '/teachings' },
-    { title: 'Development Car', summary: 'Supreme Power journey & blessings philosophy.', to: '/development-car' },
+    { title: 'Belief in a Universal Power', summary: 'One universal, invisible power known by many names.', to: '/philosophy' },
+    { title: 'Service as a Path to Wisdom', summary: 'Selfless service to humanity is one of the highest forms of worship.', to: '/philosophy' },
+    { title: 'Humanity Before Division', summary: 'Every person is born first as a human being; divisions come later.', to: '/philosophy' },
+    { title: 'Gram Swaraj & Collective Responsibility', summary: 'Villages as self-reliant, participatory, accountable communities.', to: '/philosophy' },
   ];
 
   return (
     <div className="bg-white border border-forest-900 mb-1 p-1.5">
       <div className="govt-header-bar mb-1.5">
-        <span>Spiritual Foundations</span>
-        <span className="text-[9px] text-saffron-300 font-normal">Philosophy</span>
+        <span>Our Philosophy</span>
+        <span className="text-[9px] text-saffron-300 font-normal">AIRD</span>
       </div>
 
       <div className="space-y-1 text-[10px]">
@@ -102,7 +146,52 @@ function SpiritualFoundations() {
       </div>
 
       <div className="mt-1 text-[9px] italic font-semibold text-forest-900 bg-forest-50 p-1 text-center border-t border-forest-800">
-        {DEVELOPMENT_CAR.core}
+        &ldquo;{PHILOSOPHY_GUIDING_PRINCIPLE}&rdquo;
+      </div>
+
+      <div className="text-right border-t pt-0.5 mt-1">
+        <Link to="/philosophy" className="govt-link text-[10px]">
+          Read More Philosophy &rarr;
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Teachings — separate block (sources: Arise! Awake and Stop          */
+/* not.docx, Dont believe on God.docx, Goal of soul.docx)              */
+/* ------------------------------------------------------------------ */
+function TeachingsBlock() {
+  const teachings = [
+    { title: 'Arise, Awake & Stop Not', summary: 'Swami Vivekananda — life is a bundle of thoughts.', to: '/teachings' },
+    { title: 'Ehipassiko — Come & See', summary: 'Gautama Buddha — direct experience over blind faith.', to: '/teachings' },
+    { title: 'The Goal of the Soul', summary: 'Vivekananda\u2019s whirlpool metaphor of the soul\u2019s journey.', to: '/teachings' },
+  ];
+
+  return (
+    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+      <div className="govt-header-bar mb-1.5">
+        <span>Spiritual Teachings</span>
+        <span className="text-[9px] text-saffron-300 font-normal">Awakening</span>
+      </div>
+
+      <div className="space-y-1 text-[10px]">
+        {teachings.map((t) => (
+          <div key={t.title} className="border-b border-gray-200 pb-0.5">
+            <div className="font-bold text-forest-900 flex items-center justify-between">
+              <span>&bull; {t.title}</span>
+              <Link to={t.to} className="text-[9px] text-forest-800 underline">Read &raquo;</Link>
+            </div>
+            <p className="text-gray-700 leading-tight">{t.summary}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="text-right border-t pt-0.5 mt-1">
+        <Link to="/teachings" className="govt-link text-[10px]">
+          Read More Teachings &rarr;
+        </Link>
       </div>
     </div>
   );
@@ -146,9 +235,6 @@ function DecentralisedSection() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* What We Can Do — Checklist                                         */
-/* ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------ */
 /* What We Can Do — Checklist                                         */
 /* ------------------------------------------------------------------ */
@@ -213,15 +299,42 @@ function JoinHandsBanner() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Event Calendar Block — Center Column                               */
+/* Upcoming / Planned Activities — KRANTI calendar (distinct from      */
+/* the Past Activities section)                                        */
 /* ------------------------------------------------------------------ */
 function EventCalendarBlock() {
   return (
     <div className="bg-white border border-forest-900 p-1.5 mb-1">
       <div className="govt-header-bar mb-1.5">
-        <span>Activities &amp; Event Calendar</span>
+        <span>Upcoming / Planned Activities</span>
+        <span className="text-[9px] text-saffron-300 font-normal">KRANTI 2026&ndash;27</span>
       </div>
       <ActivitiesCalendar />
+      <Accordion type="single" collapsible className="mt-1">
+        <AccordionItem value="planned" className="border border-forest-800">
+          <AccordionTrigger className="px-2 py-1 bg-forest-800 text-white font-bold hover:no-underline text-[10px]">
+            {PLANNED_ACTIVITIES.heading}
+          </AccordionTrigger>
+          <AccordionContent className="p-1.5">
+            <table className="w-full text-left text-[9px] border border-gray-300 border-collapse">
+              <thead className="bg-forest-800 text-white font-bold uppercase text-[9px]">
+                <tr>
+                  <th className="p-1 border border-forest-700">Proposed Activity</th>
+                  <th className="p-1 border border-forest-700 w-36">Duration</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {PLANNED_ACTIVITIES.items.map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
+                    <td className="p-1 text-gray-800 leading-tight">{row.activity}</td>
+                    <td className="p-1 font-semibold text-forest-900 leading-tight">{row.duration}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
       <div className="text-right border-t pt-0.5 mt-1">
         <Link to="/activities" className="govt-link text-[10px]">
           Read More Event Calendar &rarr;
@@ -270,7 +383,8 @@ function DonorsBlock() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Homepage — Uniform Aligned 3-Column Portal Layout                  */
+/* Homepage — hero first, then About AIRD, Gram Swaraj, Human &        */
+/* Humanity, then the remaining documented sections.                   */
 /* ------------------------------------------------------------------ */
 export default function Home() {
   return (
@@ -280,28 +394,23 @@ export default function Home() {
 
       {/* 2. Main Portal Container */}
       <div className="container-px py-1 space-y-1.5">
-        {/* ROW 1: TOP HERO SECTION (Uniform 3-Column Grid: 3 - 6 - 3) */}
+        {/* ROW 1: FULL-WIDTH HERO — Dandi March background */}
+        <HeroDandi />
+
+        {/* ROW 2: ABOUT AIRD — first major informational section */}
+        <AboutSection />
+
+        {/* ROW 3: GRAM SWARAJ / PEOPLE'S GOVERNANCE + HUMAN & HUMANITY */}
         <div className="grid gap-1.5 lg:grid-cols-12 items-stretch">
-          {/* Left Column (3 Cols / 25%) */}
-          <div className="lg:col-span-3 space-y-1.5">
-            <QuickLinksGrid />
-            <AboutSection />
+          <div className="lg:col-span-8">
+            <GramSwarajSection />
           </div>
-
-          {/* Center Column (6 Cols / 50%) */}
-          <div className="lg:col-span-6 space-y-1.5">
-            <HomeHeroSlider />
-            <HeroDandi />
-          </div>
-
-          {/* Right Column (3 Cols / 25%) */}
-          <div className="lg:col-span-3 space-y-1.5">
-            <NoticeBoard />
-            <JoinHandsBanner />
+          <div className="lg:col-span-4">
+            <HumanitySection />
           </div>
         </div>
 
-        {/* ROW 2: FULL-WIDTH DEDICATED VILLAGE DIRECTORY (1 Solo Row as content is huge) */}
+        {/* ROW 4: FULL-WIDTH DEDICATED VILLAGE DIRECTORY */}
         <div className="bg-white border border-forest-900 p-1.5 sm:p-2">
           <div className="govt-header-bar mb-1.5">
             <span>Official Village Directory &amp; Supporter Database</span>
@@ -315,54 +424,52 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ROW 3: GOVERNANCE & ROADMAP SECTION (Uniform 3-Column Grid: 3 - 6 - 3) */}
+        {/* ROW 5: GOVERNANCE & ROADMAP (3-6-3) */}
         <div className="grid gap-1.5 lg:grid-cols-12 items-stretch">
-          {/* Left Column (3 Cols / 25%) */}
+          {/* Left Column */}
           <div className="lg:col-span-3 space-y-1.5">
-            <SpiritualFoundations />
-            <WhatWeCanDo />
+            <QuickLinksGrid />
+            <NoticeBoard />
           </div>
 
-          {/* Center Column (6 Cols / 50%) */}
+          {/* Center Column */}
           <div className="lg:col-span-6 space-y-1.5">
-            <GramSwarajSection />
             <KrantiPreview />
+            <DecentralisedSection />
           </div>
 
-          {/* Right Column (3 Cols / 25%) */}
+          {/* Right Column — Philosophy and Teachings as separate blocks */}
           <div className="lg:col-span-3 space-y-1.5">
-            <HumanitySection />
-            <DecentralisedSection />
+            <PhilosophyBlock />
+            <TeachingsBlock />
+            <WhatWeCanDo />
           </div>
         </div>
 
-        {/* ROW 4: MEDIA & ACTIVITIES (50/50 Split: 6 Cols - 6 Cols) */}
-        <div className="grid gap-1.5 lg:grid-cols-12 items-stretch">
-          {/* Left Half (6 Cols / 50%) */}
+        {/* ROW 6: PAST ACTIVITIES + UPCOMING/PLANNED (50/50) */}
+        <div className="grid gap-1.5 lg:grid-cols-12 items-start">
+          <div className="lg:col-span-6">
+            <PastActivities />
+          </div>
           <div className="lg:col-span-6">
             <EventCalendarBlock />
           </div>
+        </div>
 
-          {/* Right Half (6 Cols / 50%) */}
-          <div className="lg:col-span-6 space-y-1.5">
+        {/* ROW 7: MEDIA & PARTICIPATION (50/50) */}
+        <div className="grid gap-1.5 lg:grid-cols-12 items-stretch">
+          {/* Left Half */}
+          <div className="lg:col-span-6">
             <VideoGalleryBlock />
+          </div>
+
+          {/* Right Half */}
+          <div className="lg:col-span-6 space-y-1.5">
             <DonorsBlock />
+            <JoinHandsBanner />
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

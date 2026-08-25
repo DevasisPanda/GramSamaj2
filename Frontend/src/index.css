@@ -28,7 +28,7 @@
 
 @layer components {
   .container-px {
-    @apply mx-auto w-full max-w-[1530px] px-1 sm:px-2;
+    @apply mx-auto w-full max-w-[1530px] px-3 sm:px-4 md:px-6 lg:px-8;
   }
 
   .section-py {
