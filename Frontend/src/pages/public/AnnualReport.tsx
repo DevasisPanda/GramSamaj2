@@ -1,19 +1,15 @@
-import { useState } from 'react';
-import { FileText, CalendarDays, ChevronDown, IndianRupee, ListChecks } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FileText, CalendarDays, ArrowRight, IndianRupee } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { ANNUAL_REPORTS } from '@/data/annualReports';
-import { cn } from '@/lib/utils';
 
 /**
- * Annual Reports page — surfaces the six documented yearly reports
- * (2020-21 → 2025-26) with activity highlights and the financial figures
- * stated inside them (client decision D12). Download stubs remain until
- * signed PDFs are supplied.
+ * Annual Reports index — one card per documented yearly report
+ * (2020-21 → 2025-26). Each card links to the FULL verbatim report page at
+ * /annual-report/:reportId (content auto-generated from Work/*.docx).
  */
 export default function AnnualReport() {
-  const [openId, setOpenId] = useState<string | null>(ANNUAL_REPORTS[0]?.id ?? null);
-
   return (
     <>
       <PageHero
@@ -25,86 +21,56 @@ export default function AnnualReport() {
 
       <section className="container-px section-py">
         <div className="mx-auto max-w-3xl space-y-4">
-          {ANNUAL_REPORTS.map((r) => {
-            const open = openId === r.id;
-            return (
-              <div
-                key={r.id}
-                className="overflow-hidden rounded-xl border border-saffron-100 bg-white transition-shadow hover:shadow-md"
-              >
-                {/* Header row */}
-                <button
-                  onClick={() => setOpenId(open ? null : r.id)}
-                  aria-expanded={open}
-                  className="flex w-full items-center justify-between gap-4 p-5 text-left"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-lg bg-saffron-100 p-2.5 text-saffron-600">
-                      <FileText className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-ink">{r.label}</div>
-                      <div className="flex items-center gap-1.5 text-xs text-ink/50">
-                        <CalendarDays className="h-3 w-3" /> {r.year}
-                      </div>
+          {ANNUAL_REPORTS.map((r) => (
+            <div
+              key={r.id}
+              className="rounded-xl border border-saffron-100 bg-white p-5 transition-shadow hover:shadow-md"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-lg bg-saffron-100 p-2.5 text-saffron-600">
+                    <FileText className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-ink">{r.label}</div>
+                    <div className="flex items-center gap-1.5 text-xs text-ink/50">
+                      <CalendarDays className="h-3 w-3" /> {r.year}
                     </div>
                   </div>
-                  <span className="inline-flex items-center gap-2">
-                    <span
-                      className={cn(
-                        'rounded-full px-3 py-1 text-xs font-semibold',
-                        open ? 'bg-saffron-600 text-white' : 'bg-forest-100 text-forest-700',
-                      )}
-                    >
-                      {open ? 'Close' : 'Read report'}
-                    </span>
-                    <ChevronDown
-                      className={cn('h-4 w-4 text-ink/40 transition-transform', open && 'rotate-180')}
-                    />
-                  </span>
-                </button>
-
-                {/* Body */}
-                {open && (
-                  <div className="border-t border-saffron-100 px-5 pb-5 pt-4">
-                    <p className="mb-4 text-sm leading-relaxed text-ink/75">{r.intro}</p>
-
-                    <h4 className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-saffron-700">
-                      <ListChecks className="h-3.5 w-3.5" /> Activities &amp; progress
-                    </h4>
-                    <ul className="mb-5 space-y-2">
-                      {r.activities.map((a, i) => (
-                        <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-ink/70">
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron-500" />
-                          <span>{a}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {r.financials.length > 0 && (
-                      <>
-                        <h4 className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-forest-700">
-                          <IndianRupee className="h-3.5 w-3.5" /> Financial overview (as reported)
-                        </h4>
-                        <dl className="grid gap-2 sm:grid-cols-2">
-                          {r.financials.map((f) => (
-                            <div key={f.label} className="rounded-lg bg-forest-50/60 px-3 py-2">
-                              <dt className="text-[11px] font-medium text-ink/50">{f.label}</dt>
-                              <dd className="text-sm font-semibold text-forest-800">{f.value}</dd>
-                            </div>
-                          ))}
-                        </dl>
-                      </>
-                    )}
-
-                    <p className="mt-4 text-[11px] text-ink/35">
-                      Signed PDF download will be available once the certified report file is provided.
-                    </p>
-                  </div>
-                )}
+                </div>
               </div>
-            );
-          })}
+
+              {/* Intro excerpt (verbatim opening of the report) */}
+              <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink/65">{r.intro}</p>
+
+              {/* Financial chips preview */}
+              {r.financials.length > 0 && (
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {r.financials.slice(0, 3).map((f) => (
+                    <span
+                      key={f.label}
+                      className="inline-flex max-w-full items-center gap-1 rounded-full bg-forest-50 px-2.5 py-0.5 text-[11px] font-medium text-forest-700"
+                    >
+                      <IndianRupee className="h-3 w-3 shrink-0" />
+                      <span className="truncate">{f.label}: {f.value}</span>
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-saffron-50 pt-3">
+                <Link
+                  to={`/annual-report/${r.id}`}
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-saffron-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-saffron-700"
+                >
+                  Read Full Report <ArrowRight className="h-4 w-4" />
+                </Link>
+                <span className="text-[11px] text-ink/35">
+                  Signed PDF download available once the certified file is provided.
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </>

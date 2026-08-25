@@ -41,6 +41,7 @@ const VideosPage         = lazy(() => import('@/pages/public/VideosPage'));
 const DonorsPage         = lazy(() => import('@/pages/public/DonorsPage'));
 const VillageDirPage     = lazy(() => import('@/pages/public/VillageDirectoryPage'));
 const AnnualReport       = lazy(() => import('@/pages/public/AnnualReport'));
+const AnnualReportDetail = lazy(() => import('@/pages/public/AnnualReportDetail'));
 const Membership         = lazy(() => import('@/pages/public/Join'));
 const Contact            = lazy(() => import('@/pages/public/Contact'));
 
@@ -124,6 +125,7 @@ function AppRoutes() {
         <Route path="/donors" element={<PageSuspense><DonorsPage /></PageSuspense>} />
         <Route path="/village-directory" element={<PageSuspense><VillageDirPage /></PageSuspense>} />
         <Route path="/annual-report" element={<PageSuspense><AnnualReport /></PageSuspense>} />
+        <Route path="/annual-report/:reportId" element={<PageSuspense><AnnualReportDetail /></PageSuspense>} />
 
         {/* Get Involved */}
         <Route path="/membership" element={<PageSuspense><Membership /></PageSuspense>} />

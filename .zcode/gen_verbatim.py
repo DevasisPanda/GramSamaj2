@@ -99,4 +99,75 @@ jb = [
     "export const JOURNEY_AUTOBIOGRAPHY: string[] = [\n%s\n];\n" % ",\n".join("  " + ts_str(p) for p in autobio),
 ]
 emit(os.path.join(OUT, "journeyFull.ts"), jb[0], jb[1:])
+
+# ---------------------------------------------------------------- annualReportFull.ts
+INLINE_HEADING = re.compile(r"^([A-Z][^:]{3,60}):\s+(.+)$")
+
+def heading_like(line):
+    """Standalone sub-heading: short, ASCII-initial, no sentence punctuation.
+    Devanagari lines (slogans etc.) are always body text."""
+    if not re.match(r"[A-Za-z0-9]", line):
+        return False
+    if len(line) > 70:
+        return False
+    if line.endswith(":"):
+        return True
+    return not any(line.endswith(c) for c in ".;,?\u0964\u0965") and "\u20b9" not in line
+
+def parse_report(fname, skip):
+    secs, cur = [], None
+    def flush():
+        nonlocal cur
+        if cur and (cur.get("paragraphs")):
+            secs.append(cur)
+        cur = None
+    for line in read(fname)[skip:]:
+        if not line.strip():
+            continue
+        m = INLINE_HEADING.match(line)
+        if m:
+            flush()
+            cur = {"heading": m.group(1).strip(), "paragraphs": [m.group(2).strip()]}
+        elif heading_like(line):
+            flush()
+            cur = {"heading": line.rstrip(":").strip(), "paragraphs": []}
+        else:
+            if cur is None:
+                cur = {"paragraphs": []}
+            cur.setdefault("paragraphs", []).append(line.strip())
+    flush()
+    return secs
+
+REPORT_FILES = [
+    ("ar2020-21", "2020\u201321", "Annual Report FY 2020\u201321", "annual report 2020-2021.txt", 6),
+    ("ar2021-22", "2021\u201322", "Annual Report FY 2021\u201322", "L3.txt", 6),
+    ("ar2022-23", "2022\u201323", "Annual Report FY 2022\u201323", "22-23.txt", 2),
+    ("ar2023-24", "2023\u201324", "Annual Report FY 2023\u201324", "23-24.txt", 0),
+    ("ar2024-25", "2024\u201325", "Annual Report FY 2024\u201325", "24-25.txt", 0),
+    ("ar2025-26", "2025\u201326", "Annual Report FY 2025\u201326", "25-26.txt", 0),
+]
+
+def sect_lit(s):
+    head = ("heading: " + ts_str(s["heading"]) + ",\n") if s.get("heading") else ""
+    paras = ",\n".join("      " + ts_str(p) for p in s["paragraphs"])
+    return "    {\n" + head + "    paragraphs: [\n" + paras + ",\n    ],\n    }"
+
+entries = []
+for rid, yr, label, fname, skip in REPORT_FILES:
+    secs = parse_report(fname, skip)
+    inner = ",\n".join(sect_lit(s) for s in secs)
+    entries.append(
+        "  '%s': {\n    id: %s,\n    year: %s,\n    label: %s,\n    sections: [\n%s,\n    ],\n  },"
+        % (rid, ts_str(rid), ts_str(yr), ts_str(label), inner))
+
+header_ab = (
+    "/**\n"
+    " * VERBATIM full-text Annual Reports - auto-generated from Work/*.docx\n"
+    " * via .zcode/docs_txt (annual report 2020-2021=L2, L3=AR 2021-22,\n"
+    " * 22-23, 23-24, 24-25, 25-26). Regenerate:  python .zcode/gen_verbatim.py\n"
+    " */\n"
+    "export interface FullReportSection {\n  heading?: string;\n  paragraphs: string[];\n}\n\n"
+    "export interface FullAnnualReport {\n  id: string;\n  year: string;\n  label: string;\n  sections: FullReportSection[];\n}\n\n"
+    "export const ANNUAL_REPORTS_FULL: Record<string, FullAnnualReport> = {")
+emit(os.path.join(OUT, "annualReportFull.ts"), header_ab, entries + ["};"])
 print("done")
