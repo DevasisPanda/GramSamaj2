@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Dependencies & Build
 node_modules
 dist
 dist-ssr
@@ -25,3 +26,9 @@ dist-ssr
 # Env
 .env
 .env.*.local
+
+# Docs & Working files
+Work/
+.zcode/
+CONTENT_MAP.md
+instruction.md
