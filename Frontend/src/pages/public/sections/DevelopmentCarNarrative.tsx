@@ -50,7 +50,7 @@ export function DevelopmentCarNarrative() {
       </div>
 
       {/* Slide body */}
-      <div className="relative min-h-[16rem] p-6 sm:p-8">
+      <div className="relative min-h-[14rem] p-4 sm:p-8">
         <AnimatePresence mode="wait" custom={dir}>
           <motion.div
             key={index}
@@ -60,11 +60,11 @@ export function DevelopmentCarNarrative() {
             exit={{ opacity: 0, x: -40 * dir }}
             transition={{ duration: 0.28, ease: 'easeOut' }}
           >
-            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-saffron-600">
+            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-600 break-words">
               {slide.title}
             </p>
             {slide.paras.map((p, i) => (
-              <p key={i} className="mb-4 leading-relaxed text-ink/80">
+              <p key={i} className="mb-3 leading-relaxed text-ink/80 text-xs sm:text-sm break-words">
                 {p}
               </p>
             ))}

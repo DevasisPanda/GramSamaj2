@@ -13,21 +13,23 @@ export function PageHero({ title, subtitle, children, gradient = 'saffron' }: Pa
   return (
     <section
       className={cn(
-        'relative overflow-hidden py-20 md:py-28',
-        gradient === 'saffron' ? 'gradient-hero' : 'bg-gradient-to-br from-forest-50 to-forest-100',
+        'relative overflow-hidden py-6 sm:py-10 md:py-14 border-b',
+        gradient === 'saffron' 
+          ? 'gradient-hero' 
+          : 'bg-gradient-to-r from-forest-50/95 via-emerald-50/90 to-teal-50/95 border-forest-200 backdrop-blur-sm',
       )}
     >
       <div className="container-px relative z-10">
         <h1 className={cn(
-          'text-3xl md:text-5xl font-extrabold leading-tight',
-          gradient === 'saffron' ? 'text-gradient-saffron' : 'text-gradient-forest',
+          'text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight break-words',
+          gradient === 'saffron' ? 'text-saffron-950' : 'text-forest-950',
         )}>
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-4 max-w-2xl text-lg text-ink/60 leading-relaxed">{subtitle}</p>
+          <p className="mt-2 sm:mt-3 max-w-2xl text-xs sm:text-sm md:text-base text-ink/80 leading-relaxed break-words">{subtitle}</p>
         )}
-        {children && <div className="mt-8">{children}</div>}
+        {children && <div className="mt-3 sm:mt-4">{children}</div>}
       </div>
       {/* Decorative circles */}
       <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-saffron-200/30 blur-3xl pointer-events-none" />

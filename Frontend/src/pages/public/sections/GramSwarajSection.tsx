@@ -8,7 +8,7 @@ export function GramSwarajSection() {
   const pg = PEOPLES_GOVERNANCE;
 
   return (
-    <div className="bg-white border border-forest-900 mb-2 p-2 sm:p-3">
+    <div className="bg-white border border-forest-900 p-1.5 sm:p-2.5 w-full min-w-0 box-border">
       {/* Header bar */}
       <div className="govt-header-bar mb-2">
         <span>Gram Swaraj &bull; People's Governance</span>
@@ -41,16 +41,18 @@ export function GramSwarajSection() {
             </AccordionTrigger>
             <AccordionContent className="p-2">
               <p className="mb-1 text-[11px] text-gray-800">{pg.resourceManagement.intro}</p>
-              <table className="w-full text-left border-collapse border border-gray-300 mb-1 text-[11px]">
-                <tbody>
-                  {pg.resourceManagement.items.map((item, i) => (
-                    <tr key={item} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
-                      <td className="p-1 border border-gray-300 font-semibold text-forest-900 w-6 text-center">{i + 1}.</td>
-                      <td className="p-1 border border-gray-300 text-gray-800">{item}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="overflow-x-auto max-w-full">
+                <table className="w-full text-left border-collapse border border-gray-300 mb-1 text-[11px] min-w-[200px]">
+                  <tbody>
+                    {pg.resourceManagement.items.map((item, i) => (
+                      <tr key={item} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
+                        <td className="p-1 border border-gray-300 font-semibold text-forest-900 w-6 text-center">{i + 1}.</td>
+                        <td className="p-1 border border-gray-300 text-gray-800">{item}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -82,16 +84,18 @@ export function GramSwarajSection() {
             </AccordionTrigger>
             <AccordionContent className="p-2">
               <p className="mb-1 text-[11px] text-gray-800">{pg.gramSabha.intro}</p>
-              <table className="w-full text-left border-collapse border border-gray-300 text-[11px]">
-                <tbody>
-                  {pg.gramSabha.items.map((item, i) => (
-                    <tr key={item} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
-                      <td className="p-1 border border-gray-300 font-semibold text-forest-900 w-6 text-center">{i + 1}.</td>
-                      <td className="p-1 border border-gray-300 text-gray-800">{item}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="overflow-x-auto max-w-full">
+                <table className="w-full text-left border-collapse border border-gray-300 text-[11px] min-w-[200px]">
+                  <tbody>
+                    {pg.gramSabha.items.map((item, i) => (
+                      <tr key={item} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
+                        <td className="p-1 border border-gray-300 font-semibold text-forest-900 w-6 text-center">{i + 1}.</td>
+                        <td className="p-1 border border-gray-300 text-gray-800">{item}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>

@@ -6,10 +6,10 @@ export default function VisionMission() {
   const sections: ContentSection[] = [{ heading: 'Our Vision', paragraphs: VISION_FULL }];
   return (
     <ContentPage
-      title="Vision &amp; Mission"
+      title="Our Vision"
       subtitle="AIRD envisions rural development where every villager is an active participant, not a passive beneficiary."
       gradient="saffron"
-      crumbs={[{ label: 'About Us', to: '/about' }, { label: 'Vision & Mission' }]}
+      crumbs={[{ label: 'About Us', to: '/about' }, { label: 'Vision' }]}
       sections={sections}
     />
   );

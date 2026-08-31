@@ -24,6 +24,7 @@ import type { MembershipCategory, MembershipRecord } from '@/lib/types';
 
 // ---- Zod schema (client-side validation, prompt §5) ----
 const joinSchema = z.object({
+  salutation: z.string().optional(),
   name: z.string().min(3, 'Please enter your full name (min 3 characters)'),
   aadharNumber: z
     .string()
@@ -53,6 +54,7 @@ export default function Join() {
   const [result, setResult] = useState<MembershipRecord | null>(null);
 
   const [form, setForm] = useState<JoinForm>({
+    salutation: 'Shri',
     name: '',
     aadharNumber: '',
     education: '',
@@ -112,15 +114,16 @@ export default function Join() {
       return;
     }
     try {
+      const formattedName = `${form.salutation ? form.salutation + ' ' : ''}${form.name.trim()}`.trim();
       const member = await createMember.mutateAsync({
-        name: form.name,
+        name: formattedName,
         aadharNumber: form.aadharNumber,
         mobile: form.mobile,
         email: form.email,
         category: form.isLife ? 'LIFE' as MembershipCategory : form.category as MembershipCategory,
         isLife: form.isLife,
       });
-      setResult(member);
+      setResult(member as unknown as MembershipRecord);
       toast.success('Welcome to the AIRD family!');
     } catch {
       toast.error('Something went wrong. Please try again.');
@@ -195,116 +198,118 @@ export default function Join() {
       {/* ---- Documented membership information (source: Work/ documents) ---- */}
       <section className="section-py">
         <div className="container-px max-w-5xl">
-          {/* Intro */}
-          <p className="mb-4 text-sm leading-relaxed text-ink/80">{MEMBERSHIP_INTRO}</p>
+          <div className="card-surface bg-white p-6 sm:p-8 rounded-2xl shadow-md border border-forest-100 mb-8">
+            {/* Intro */}
+            <p className="mb-4 text-sm leading-relaxed text-ink/80">{MEMBERSHIP_INTRO}</p>
 
-          {/* Categories & fees table */}
-          <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
-            Membership Categories &amp; Subscription
-          </h2>
-          <div className="mb-2 overflow-x-auto">
-            <table className="w-full min-w-[560px] border-collapse text-left text-sm">
-              <thead className="bg-forest-800 text-white">
-                <tr className="text-xs font-bold uppercase tracking-wide">
-                  <th className="border border-forest-700 p-2">Category</th>
-                  <th className="border border-forest-700 p-2">Eligibility</th>
-                  <th className="border border-forest-700 p-2">Annual (Rs.)</th>
-                  <th className="border border-forest-700 p-2">Life (Rs.)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {MEMBERSHIP_TIERS.map((tier, i) => (
-                  <tr key={tier.id} className={i % 2 === 0 ? 'bg-white' : 'bg-saffron-50/60'}>
-                    <td className="border border-gray-300 p-2 font-semibold text-ink">{tier.name}</td>
-                    <td className="border border-gray-300 p-2 text-ink/70 leading-snug">{tier.eligibility}</td>
-                    <td className="border border-gray-300 p-2 font-bold text-saffron-700">
-                      {tier.annual != null ? formatINR(tier.annual) : '—'}
-                    </td>
-                    <td className="border border-gray-300 p-2 font-bold text-forest-700">
-                      {tier.life != null ? formatINR(tier.life) : 'Not Applicable'}
-                    </td>
+            {/* Categories & fees table */}
+            <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl break-words">
+              Membership Categories &amp; Subscription
+            </h2>
+            <div className="mb-2 overflow-x-auto max-w-full">
+              <table className="w-full min-w-[540px] border-collapse text-left text-sm">
+                <thead className="bg-forest-800 text-white">
+                  <tr className="text-xs font-bold uppercase tracking-wide">
+                    <th className="border border-forest-700 p-2">Category</th>
+                    <th className="border border-forest-700 p-2">Eligibility</th>
+                    <th className="border border-forest-700 p-2">Annual (Rs.)</th>
+                    <th className="border border-forest-700 p-2">Life (Rs.)</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mb-2 text-xs leading-relaxed text-ink/55">
-            {MEMBERSHIP_MIN_DONATION_NOTE}
-          </p>
-          <p className="mb-6 text-center text-sm font-semibold italic text-saffron-800">
-            &ldquo;{MEMBERSHIP_MOTTO}&rdquo;
-          </p>
+                </thead>
+                <tbody>
+                  {MEMBERSHIP_TIERS.map((tier, i) => (
+                    <tr key={tier.id} className={i % 2 === 0 ? 'bg-white' : 'bg-saffron-50/60'}>
+                      <td className="border border-gray-300 p-2 font-semibold text-ink">{tier.name}</td>
+                      <td className="border border-gray-300 p-2 text-ink/70 leading-snug">{tier.eligibility}</td>
+                      <td className="border border-gray-300 p-2 font-bold text-saffron-700">
+                        {tier.annual != null ? formatINR(tier.annual) : '—'}
+                      </td>
+                      <td className="border border-gray-300 p-2 font-bold text-forest-700">
+                        {tier.life != null ? formatINR(tier.life) : 'Not Applicable'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mb-2 text-xs leading-relaxed text-ink/70 break-words">
+              {MEMBERSHIP_MIN_DONATION_NOTE}
+            </p>
+            <p className="mb-6 text-center text-sm font-semibold italic text-saffron-800 break-words">
+              &ldquo;{MEMBERSHIP_MOTTO}&rdquo;
+            </p>
 
-          {/* Benefits by category */}
-          <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
-            Benefits by Membership Category
-          </h2>
-          <div className="mb-6 grid gap-4 md:grid-cols-3">
-            {MEMBERSHIP_CATEGORY_BENEFITS.map((cb) => (
-              <Card key={cb.id} className="border-l-4 border-l-forest-600">
-                <CardContent>
-                  <h3 className="font-bold text-ink">{cb.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{cb.body}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+            {/* Benefits by category */}
+            <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl break-words">
+              Benefits by Membership Category
+            </h2>
+            <div className="mb-6 grid gap-4 md:grid-cols-3">
+              {MEMBERSHIP_CATEGORY_BENEFITS.map((cb) => (
+                <Card key={cb.id} className="border-l-4 border-l-forest-600 max-w-full">
+                  <CardContent>
+                    <h3 className="font-bold text-ink break-words">{cb.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink/70 break-words">{cb.body}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
 
-          {/* Opportunities for all members */}
-          <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
-            Opportunities for All Members
-          </h2>
-          <p className="mb-4 text-sm text-ink/70">
-            Regardless of membership category, every member has the opportunity to become an active
-            partner in AIRD&rsquo;s mission:
-          </p>
-          <div className="mb-6 grid gap-3 sm:grid-cols-2">
-            {MEMBERSHIP_BENEFITS.map((b) => (
-              <div key={b.title} className="card-surface p-4">
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-forest-600" />
-                  <div>
-                    <h3 className="text-sm font-bold text-ink">{b.title}</h3>
-                    <p className="mt-1 text-xs leading-relaxed text-ink/60">{b.body}</p>
+            {/* Opportunities for all members */}
+            <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl break-words">
+              Opportunities for All Members
+            </h2>
+            <p className="mb-4 text-sm text-ink/70 break-words">
+              Regardless of membership category, every member has the opportunity to become an active
+              partner in AIRD&rsquo;s mission:
+            </p>
+            <div className="mb-6 grid gap-3 sm:grid-cols-2">
+              {MEMBERSHIP_BENEFITS.map((b) => (
+                <div key={b.title} className="card-surface p-4 max-w-full">
+                  <div className="flex items-start gap-2 min-w-0">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-forest-600" />
+                    <div className="min-w-0">
+                      <h3 className="text-sm font-bold text-ink break-words">{b.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-ink/60 break-words">{b.body}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Official membership form declarations */}
-          <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
-            The Official Membership Form
-          </h2>
-          <p className="mb-4 text-sm leading-relaxed text-ink/70">
-            The official AIRD membership form records the applicant&rsquo;s details (name, Aadhar
-            number, educational qualification, mobile / WhatsApp number, e-mail, expertise, and
-            joining role) together with the following declarations:
-          </p>
-          <div className="mb-6 grid gap-3 sm:grid-cols-2">
-            {[
-              MEMBERSHIP_DECLARATIONS.agree,
-              MEMBERSHIP_DECLARATIONS.wish,
-              MEMBERSHIP_DECLARATIONS.may,
-              MEMBERSHIP_DECLARATIONS.lookingForward,
-            ].map((group) => (
-              <div key={group.heading} className="rounded-xl bg-saffron-50/60 p-4">
-                <h3 className="text-sm font-bold text-saffron-800">{group.heading}:</h3>
-                <ul className="mt-2 space-y-1">
-                  {group.items.map((item) => (
-                    <li key={item} className="flex gap-2 text-xs leading-relaxed text-ink/70">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron-500" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+            {/* Official membership form declarations */}
+            <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">
+              The Official Membership Form
+            </h2>
+            <p className="mb-4 text-sm leading-relaxed text-ink/70">
+              The official AIRD membership form records the applicant&rsquo;s details (name, Aadhar
+              number, educational qualification, mobile / WhatsApp number, e-mail, expertise, and
+              joining role) together with the following declarations:
+            </p>
+            <div className="mb-6 grid gap-3 sm:grid-cols-2">
+              {[
+                MEMBERSHIP_DECLARATIONS.agree,
+                MEMBERSHIP_DECLARATIONS.wish,
+                MEMBERSHIP_DECLARATIONS.may,
+                MEMBERSHIP_DECLARATIONS.lookingForward,
+              ].map((group) => (
+                <div key={group.heading} className="rounded-xl bg-saffron-50/60 p-4">
+                  <h3 className="text-sm font-bold text-saffron-800">{group.heading}:</h3>
+                  <ul className="mt-2 space-y-1">
+                    {group.items.map((item) => (
+                      <li key={item} className="flex gap-2 text-xs leading-relaxed text-ink/70">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron-500" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
 
-          <p className="mb-2 rounded-xl bg-forest-50 p-4 text-sm leading-relaxed text-ink/80">
-            {MEMBERSHIP_CLOSING}
-          </p>
+            <p className="mb-2 rounded-xl bg-forest-50 p-4 text-sm leading-relaxed text-ink/80">
+              {MEMBERSHIP_CLOSING}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -338,7 +343,29 @@ export default function Join() {
               {step === 0 && (
                 <div className="space-y-4">
                   <FormField icon={UserCircle} label="Full Name" error={errors.name}>
-                    <Input value={form.name} onChange={(e) => update('name', e.target.value)} placeholder="Mr./Ms./Dr. ..." />
+                    <div className="flex gap-2">
+                      <select
+                        value={form.salutation}
+                        onChange={(e) => update('salutation', e.target.value)}
+                        className="h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0 font-medium text-ink cursor-pointer hover:border-saffron-400 transition-colors"
+                        aria-label="Salutation"
+                      >
+                        <option value="Shri">Shri</option>
+                        <option value="Smt.">Smt.</option>
+                        <option value="Sushri">Sushri</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Prof.">Prof.</option>
+                      </select>
+                      <Input
+                        value={form.name}
+                        onChange={(e) => update('name', e.target.value)}
+                        placeholder="Enter your full name"
+                        className="flex-1"
+                      />
+                    </div>
                   </FormField>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <FormField icon={IdCard} label="Aadhar Number" error={errors.aadharNumber}>
@@ -453,7 +480,7 @@ export default function Join() {
                   <h3 className="font-semibold text-ink mb-4">Review &amp; Confirm</h3>
                   <dl className="grid gap-3 sm:grid-cols-2 text-sm">
                     {[
-                      ['Name', form.name],
+                      ['Name', `${form.salutation ? form.salutation + ' ' : ''}${form.name}`],
                       ['Aadhar', `XXXX-XXXX-${form.aadharNumber.slice(-4)}`],
                       ['Education', form.education],
                       ['Mobile', form.mobile],

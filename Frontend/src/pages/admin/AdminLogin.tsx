@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdmin } from '@/contexts/AdminContext';
 import { AIRD } from '@/lib/constants';
@@ -15,35 +15,43 @@ export default function AdminLogin() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Already logged in — redirect safely in useEffect
+  useEffect(() => {
+    if (user) {
+      navigate('/admin', { replace: true });
+    }
+  }, [user, navigate]);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!email || !password) {
+      toast.error('Please enter your email and password');
+      return;
+    }
+
     setLoading(true);
     try {
       await login(email, password);
       toast.success('Welcome back!');
       navigate('/admin');
-    } catch {
-      toast.error('Please enter email and password');
+    } catch (err: any) {
+      toast.error(err?.message || 'Invalid email or password');
     } finally {
       setLoading(false);
     }
-  }
-
-  // Already logged in — redirect
-  if (user) {
-    navigate('/admin');
-    return null;
   }
 
   return (
     <div className="min-h-screen gradient-hero flex items-center justify-center px-4">
       <div className="w-full max-w-md card-surface p-8 space-y-6">
         <div className="text-center space-y-2">
-          <div className="h-14 w-14 rounded-2xl gradient-saffron grid place-items-center text-white font-bold text-xl mx-auto">
-            A
-          </div>
+          <img
+            src="/aird-logo.png"
+            alt="AIRD Emblem"
+            className="h-16 w-16 mx-auto object-contain drop-shadow-sm mb-2"
+          />
           <h1 className="text-2xl font-bold text-saffron-800">{AIRD.shortName} Admin</h1>
-          <p className="text-sm text-ink/50">Sign in to manage the platform (demo mode)</p>
+          <p className="text-sm text-ink/50">Sign in to manage the AIRD Trust portal</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -69,7 +77,7 @@ export default function AdminLogin() {
               <Input
                 id="password"
                 type="password"
-                placeholder="Any password works in demo"
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="pl-9"
@@ -77,13 +85,13 @@ export default function AdminLogin() {
               />
             </div>
           </div>
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full bg-saffron hover:bg-saffron-600" disabled={loading}>
             {loading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
 
-        <p className="text-center text-xs text-ink/30">
-          Demo mode — any email/password combination is accepted.
+        <p className="text-center text-xs text-ink/40">
+          Authorized personnel only • Secure Admin Dashboard
         </p>
       </div>
     </div>

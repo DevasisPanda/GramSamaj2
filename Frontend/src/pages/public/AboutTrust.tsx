@@ -37,15 +37,15 @@ export default function AboutTrust() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <dl className="grid gap-4 sm:grid-cols-2">
+                <dl className="grid gap-3 sm:grid-cols-2">
                   {CREDENTIALS.map((c) => {
                     const Icon = c.icon;
                     return (
-                      <div key={c.label} className="rounded-xl bg-saffron-50/50 p-4">
+                      <div key={c.label} className="rounded-xl bg-saffron-50/50 p-3 sm:p-4">
                         <dt className="flex items-center gap-1.5 text-xs font-semibold text-ink/50">
-                          <Icon className="h-3.5 w-3.5 text-saffron-500" /> {c.label}
+                          <Icon className="h-3.5 w-3.5 text-saffron-500 shrink-0" /> {c.label}
                         </dt>
-                        <dd className="mt-1 text-sm font-semibold text-ink">{c.value}</dd>
+                        <dd className="mt-1 text-sm font-semibold text-ink break-words">{c.value}</dd>
                       </div>
                     );
                   })}
@@ -54,41 +54,34 @@ export default function AboutTrust() {
                 <div className="mt-6 space-y-2 text-sm">
                   <div className="flex items-start gap-2">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-saffron-500" />
-                    <span className="text-ink/70">
+                    <span className="text-ink/70 break-words">
                       <strong className="font-semibold text-ink">Registered office:</strong>{' '}
                       {AIRD.registeredOffice}
                     </span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-saffron-500" />
-                    <span className="text-ink/70">
-                      <strong className="font-semibold text-ink">Field office:</strong>{' '}
-                      {AIRD.fieldOffice}
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2">
                     <ScrollText className="mt-0.5 h-4 w-4 shrink-0 text-saffron-500" />
-                    <span className="text-ink/70">{AIRD.taxStatus}</span>
+                    <span className="text-ink/70 break-words">{AIRD.taxStatus}</span>
                   </div>
                   {TRUST_DEED_AVAILABLE && (
                     <div className="flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-saffron-500" />
+                      <FileText className="h-4 w-4 shrink-0 text-saffron-500" />
                       <a
                         href="/trust-deed.pdf"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-saffron-700 hover:underline"
+                        className="text-saffron-700 hover:underline break-words"
                       >
                         Download Trust Deed (PDF)
                       </a>
                     </div>
                   )}
                   <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-saffron-500" />
-                    <a href={`mailto:${AIRD.email}`} className="text-saffron-700 hover:underline">{AIRD.email}</a>
+                    <Mail className="h-4 w-4 shrink-0 text-saffron-500" />
+                    <a href={`mailto:${AIRD.email}`} className="text-saffron-700 hover:underline break-all">{AIRD.email}</a>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-saffron-500" />
+                    <Phone className="h-4 w-4 shrink-0 text-saffron-500" />
                     <a href={`tel:+91${AIRD.contactMobile}`} className="text-saffron-700 hover:underline">+91 {AIRD.contactMobile}</a>
                   </div>
                 </div>
@@ -99,7 +92,7 @@ export default function AboutTrust() {
             <Card className="border-0 bg-gradient-to-br from-forest-700 to-forest-900 text-white">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-white">
-                  <Building className="h-5 w-5" /> Bank Details
+                  <Building className="h-5 w-5 shrink-0" /> Bank Details
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -109,17 +102,17 @@ export default function AboutTrust() {
                   { label: 'Account Number', value: AIRD.bank.accountNumberMasked },
                   { label: 'IFSC Code', value: AIRD.bank.ifsc, copyable: true },
                 ].map((row) => (
-                  <div key={row.label} className="flex items-center justify-between gap-2 border-b border-white/10 pb-2">
+                  <div key={row.label} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 border-b border-white/10 pb-2">
                     <span className="text-xs text-white/60">{row.label}</span>
                     <button
                       onClick={() => row.copyable && copy(row.value, row.label)}
-                      className="text-sm font-mono font-semibold hover:text-saffron-300 transition-colors"
+                      className="text-left sm:text-right text-sm font-mono font-semibold hover:text-saffron-300 transition-colors break-all"
                     >
-                      {row.value} {row.copyable && <span className="text-[10px] text-white/40">[copy]</span>}
+                      {row.value} {row.copyable && <span className="text-[10px] text-white/40 ml-1">[copy]</span>}
                     </button>
                   </div>
                 ))}
-                <p className="pt-1 text-[11px] text-white/50">
+                <p className="pt-1 text-[11px] text-white/50 leading-relaxed">
                   Trustee: {AIRD.trustee.name}.{' '}
                   Contact AIRD for verified full account &amp; trustee KYC details.
                 </p>

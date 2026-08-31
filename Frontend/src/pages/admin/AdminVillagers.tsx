@@ -25,7 +25,7 @@ export default function AdminVillagers() {
     if (!villagers) return [];
     const q = search.toLowerCase();
     return villagers.filter(
-      (v) =>
+      (v: any) =>
         v.headOfHousehold.toLowerCase().includes(q) ||
         v.houseNumber.toLowerCase().includes(q) ||
         v.contactNumber?.includes(q),
@@ -36,7 +36,7 @@ export default function AdminVillagers() {
   const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   function startEdit(id: string) {
-    const v = villagers?.find((x) => x.id === id);
+    const v = villagers?.find((x: any) => x.id === id);
     if (!v) return;
     setEditing(id);
     setEditDraft({
@@ -77,7 +77,7 @@ export default function AdminVillagers() {
     const header = 'House No,Head of Household,Family Count,Contact,POP,MGNREGA\n';
     const rows = villagers
       .map(
-        (v) =>
+        (v: any) =>
           `${v.houseNumber},"${v.headOfHousehold}",${v.familyCount},${v.contactNumber ?? ''},${v.isPop ? 'Yes' : 'No'},${v.mgnregaJobCard ? 'Yes' : 'No'}`,
       )
       .join('\n');
@@ -121,8 +121,8 @@ export default function AdminVillagers() {
 
       {/* Table */}
       <Card>
-        <CardContent className="p-0 overflow-x-auto">
-          <table className="w-full text-sm">
+        <CardContent className="p-0 overflow-x-auto max-w-full">
+          <table className="w-full text-sm min-w-[540px]">
             <thead>
               <tr className="border-b border-saffron-100 text-left text-ink/50">
                 <th className="p-3 font-medium">House No</th>
@@ -140,7 +140,7 @@ export default function AdminVillagers() {
                       <td colSpan={6} className="p-3 h-12 bg-saffron-50/50" />
                     </tr>
                   ))
-                : paged.map((v) => (
+                : paged.map((v: any) => (
                     <tr key={v.id} className="border-b border-saffron-50 hover:bg-saffron-50/30 transition-colors">
                       <td className="p-3 font-mono text-xs">{v.houseNumber}</td>
                       <td className="p-3 font-medium">

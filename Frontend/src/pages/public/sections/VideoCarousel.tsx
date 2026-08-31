@@ -8,11 +8,75 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
  * Video Carousel — custom responsive grid player with a modal player.
  * Sourced from backend (Cloudinary/S3); mock data in dev.
  */
-export function VideoCarousel() {
+export function VideoCarousel({ variant = 'page' }: { variant?: 'page' | 'compact' }) {
   const { data: videos = [], isLoading } = useVideos();
   const [active, setActive] = useState<string | null>(null);
 
   const current = videos.find((v) => v.id === active) ?? null;
+
+  if (variant === 'compact') {
+    return (
+      <div className="p-1">
+        {isLoading ? (
+          <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="aspect-video rounded bg-gray-100 animate-pulse" />
+            ))}
+          </div>
+        ) : (
+          <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
+            {videos.slice(0, 2).map((video) => (
+              <button
+                key={video.id}
+                onClick={() => setActive(video.id)}
+                className="group relative aspect-video overflow-hidden rounded border border-gray-200 bg-black text-left shadow-sm hover:shadow transition-all"
+              >
+                <img
+                  src={video.poster}
+                  alt={video.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white/90 text-saffron-600 shadow group-hover:scale-110 group-hover:bg-saffron-500 group-hover:text-white transition-all">
+                    <Play className="h-3.5 w-3.5 ml-0.5" />
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-1.5 text-white">
+                  <h3 className="text-[11px] font-bold leading-tight line-clamp-1">{video.title}</h3>
+                  <p className="text-[9px] text-white/70 flex items-center gap-0.5 mt-0.5">
+                    <Calendar className="h-2.5 w-2.5" /> {formatDate(video.date)}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Modal player */}
+        <Dialog open={!!current} onOpenChange={(o) => !o && setActive(null)}>
+          <DialogContent className="max-w-3xl p-0 overflow-hidden bg-black border-0">
+            {current && (
+              <>
+                <video
+                  src={current.src}
+                  poster={current.poster}
+                  controls
+                  autoPlay
+                  className="w-full aspect-video bg-black"
+                />
+                <div className="p-4 bg-white text-left">
+                  <h3 className="text-sm font-bold text-gray-900">{current.title}</h3>
+                  <p className="text-xs text-gray-600 mt-1">{current.description}</p>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
+      </div>
+    );
+  }
 
   return (
     <section className="section-py bg-gradient-to-b from-saffron-50/40 to-white">

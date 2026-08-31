@@ -71,8 +71,8 @@ export default function Kranti() {
           </div>
 
           {/* Gantt-style phase selector */}
-          <div className="mb-8 overflow-x-auto pb-2">
-            <div className="flex gap-2 min-w-max justify-center">
+          <div className="mb-8 overflow-x-auto pb-2 max-w-full">
+            <div className="flex gap-2 min-w-max justify-start sm:justify-center px-1">
               {KRANTI_PHASES.map((p) => (
                 <button
                   key={p.id}

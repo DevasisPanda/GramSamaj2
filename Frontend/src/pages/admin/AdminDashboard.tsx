@@ -2,7 +2,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   LineChart, Line, PieChart, Pie, Cell,
 } from 'recharts';
-import { useDashboardMetrics, useVillagers, useDonors, useEvents } from '@/hooks/useApi';
+import { useDashboardMetrics, useVillagers, useDonors, useEvents, useVillageDemographics } from '@/hooks/useApi';
 import { formatINR, plural } from '@/lib/utils';
 import { Users, DollarSign, CalendarDays, TrendingUp } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,12 +13,12 @@ function StatCard({ icon: Icon, label, value, sub }: { icon: React.ComponentType
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
-        <CardTitle className="text-sm font-medium text-ink/60">{label}</CardTitle>
-        <Icon className="h-4 w-4 text-saffron-500" />
+        <CardTitle className="text-sm font-medium text-ink/60 break-words">{label}</CardTitle>
+        <Icon className="h-4 w-4 text-saffron-500 shrink-0" />
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold text-saffron-800">{value}</div>
-        {sub && <p className="text-xs text-ink/40 mt-1">{sub}</p>}
+        <div className="text-xl sm:text-2xl font-bold text-saffron-800 break-words">{value}</div>
+        {sub && <p className="text-xs text-ink/40 mt-1 break-words">{sub}</p>}
       </CardContent>
     </Card>
   );
@@ -29,8 +29,15 @@ export default function AdminDashboard() {
   const { data: villagers, isLoading: vLoading } = useVillagers();
   const { data: donors, isLoading: dLoading } = useDonors();
   const { data: events, isLoading: eLoading } = useEvents();
+  const { data: demographics } = useVillageDemographics();
 
   const loading = mLoading || vLoading || dLoading || eLoading;
+
+  const demoData = (demographics && Array.isArray(demographics) ? demographics : []).map((d: { name: string; value: number }, i: number) => ({
+    name: d.name,
+    value: d.value,
+    color: PIE_COLORS[i % PIE_COLORS.length],
+  }));
 
   return (
     <div className="space-y-6">
@@ -45,7 +52,7 @@ export default function AdminDashboard() {
           icon={Users}
           label="Villagers"
           value={vLoading ? '...' : String(villagers?.length ?? 0)}
-          sub={plural(villagers?.filter((v) => v.isPop).length ?? 0, 'PoP household')}
+          sub={plural(villagers?.filter((v: any) => v.isPop).length ?? 0, 'PoP household')}
         />
         <StatCard
           icon={DollarSign}
@@ -57,7 +64,7 @@ export default function AdminDashboard() {
           icon={CalendarDays}
           label="Events"
           value={eLoading ? '...' : String(events?.length ?? 0)}
-          sub={plural(events?.filter((e) => e.isCompleted).length ?? 0, 'completed')}
+          sub={plural(events?.filter((e: any) => e.isCompleted).length ?? 0, 'completed')}
         />
         <StatCard
           icon={TrendingUp}
@@ -131,12 +138,7 @@ export default function AdminDashboard() {
             <ResponsiveContainer width={300} height={260}>
               <PieChart>
                 <Pie
-                  data={[
-                    { name: 'General', value: 120, color: '#f59e0b' },
-                    { name: 'OBC', value: 85, color: '#15803d' },
-                    { name: 'SC', value: 45, color: '#065f46' },
-                    { name: 'ST', value: 15, color: '#d97706' },
-                  ]}
+                  data={demoData}
                   cx="50%"
                   cy="50%"
                   innerRadius={60}
@@ -144,23 +146,18 @@ export default function AdminDashboard() {
                   dataKey="value"
                   label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
                 >
-                  {PIE_COLORS.map((color, i) => (
-                    <Cell key={i} fill={color} />
+                  {demoData.map((entry: { color: string }, i: number) => (
+                    <Cell key={i} fill={entry.color} />
                   ))}
                 </Pie>
                 <Tooltip />
               </PieChart>
             </ResponsiveContainer>
             <div className="space-y-2 text-sm">
-              {[
-                { label: 'General', value: 120, color: '#f59e0b' },
-                { label: 'OBC', value: 85, color: '#15803d' },
-                { label: 'SC', value: 45, color: '#065f46' },
-                { label: 'ST', value: 15, color: '#d97706' },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-2">
+              {demoData.map((item: { name: string; value: number; color: string }) => (
+                <div key={item.name} className="flex items-center gap-2">
                   <span className="h-3 w-3 rounded-full" style={{ backgroundColor: item.color }} />
-                  <span className="text-ink/70">{item.label}</span>
+                  <span className="text-ink/70">{item.name}</span>
                   <span className="font-semibold text-ink/80">{item.value}</span>
                 </div>
               ))}

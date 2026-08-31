@@ -44,29 +44,33 @@ export function ContentPage({
       <article className="container-px section-py">
         <div className="mx-auto max-w-3xl">
           {sections?.map((s, i) => (
-            <section key={i} className="prose-aird mb-8">
+            <section key={i} className="card-surface bg-white p-5 sm:p-7 rounded-xl shadow-md border border-forest-100 mb-6">
               {s.heading && (
-                <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">{s.heading}</h2>
+                <h2 className="mb-3 text-xl font-bold text-saffron-900 md:text-2xl border-b border-saffron-100 pb-2 break-words">{s.heading}</h2>
               )}
               {s.paragraphs?.map((p, j) => (
-                <p key={j} className="mb-4 leading-relaxed text-ink/80">
+                <p key={j} className="mb-3 leading-relaxed text-ink/85 text-sm sm:text-base break-words">
                   {p}
                 </p>
               ))}
               {s.bullets && (
-                <ul className="mb-4 space-y-2">
+                <ul className="mt-3 space-y-2">
                   {s.bullets.map((b, k) => (
-                    <li key={k} className="flex gap-2.5 leading-relaxed text-ink/80">
+                    <li key={k} className="flex items-start gap-2.5 leading-relaxed text-ink/85 text-sm sm:text-base">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron-500" />
-                      <span>{b}</span>
+                      <span className="break-words min-w-0">{b}</span>
                     </li>
                   ))}
                 </ul>
               )}
             </section>
           ))}
-          {aside}
-          {children}
+          {aside && <div className="mb-6">{aside}</div>}
+          {children && (
+            <section className="card-surface bg-white p-5 sm:p-7 rounded-xl shadow-md border border-forest-100 mb-6">
+              {children}
+            </section>
+          )}
         </div>
       </article>
     </>

@@ -36,15 +36,17 @@ export default function Donate() {
   });
 
   function handleRazorpay() {
-    // Razorpay checkout hook — wired when VITE_RAZORPAY_KEY_ID is set.
-    // For now we simulate a successful payment and log the donor.
     if (!form.name || !form.email || !form.phone) {
-      toast.error('Please fill in your name, email, and phone');
+      toast.error('Please fill in your name, email, and phone number');
+      return;
+    }
+    if (!form.amount || form.amount <= 0) {
+      toast.error('Please enter a valid donation amount');
       return;
     }
     const key = import.meta.env.VITE_RAZORPAY_KEY_ID;
     if (!key) {
-      // Demo flow without a key — record the donor and thank the user.
+      // Direct registration when Razorpay key is not configured
       createDonor.mutate({
         date: new Date().toISOString(),
         name: form.name,
@@ -52,10 +54,20 @@ export default function Donate() {
         paymentMode: 'RAZORPAY',
         purpose: form.purpose,
       });
-      toast.success(`Thank you, ${form.name}! In production this opens Razorpay checkout for ₹${form.amount}.`);
+      toast.success(`Thank you, ${form.name}! Your donation pledge of ₹${form.amount} has been registered.`);
       return;
     }
-    // Real Razorpay integration (loaded via script)
+
+    if (typeof (window as any).Razorpay === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => handleRazorpay();
+      script.onerror = () => toast.error('Unable to load payment gateway. Please use Direct Bank Transfer.');
+      document.body.appendChild(script);
+      return;
+    }
+
+    // Real Razorpay integration
     const rzp = new (window as any).Razorpay({
       key,
       amount: form.amount * 100,
@@ -71,7 +83,7 @@ export default function Donate() {
           paymentMode: 'RAZORPAY',
           purpose: form.purpose,
         });
-        toast.success(`Payment successful! ID: ${response.razorpay_payment_id}`);
+        toast.success(`Payment successful! Receipt will be issued. Payment ID: ${response.razorpay_payment_id}`);
       },
     });
     rzp.open();

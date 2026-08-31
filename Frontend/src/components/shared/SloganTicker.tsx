@@ -8,8 +8,9 @@ export function SloganTicker() {
   return (
     <div className="bg-forest-900 border-b-2 border-saffron-500 flex items-center overflow-hidden text-xs">
       {/* Fixed announcement tag badge */}
-      <div className="shrink-0 z-10 bg-forest-950 px-3 py-1.5 font-bold uppercase tracking-wider text-saffron-400 flex items-center gap-1 border-r border-saffron-500">
-        <span>ANNOUNCEMENTS &amp; SLOGANS:</span>
+      <div className="shrink-0 z-10 bg-forest-950 px-2 sm:px-3 py-1.5 font-bold uppercase tracking-wider text-saffron-400 flex items-center gap-1 border-r border-saffron-500 text-[10px] sm:text-xs">
+        <span className="hidden sm:inline">ANNOUNCEMENTS &amp; SLOGANS:</span>
+        <span className="sm:hidden">UPDATES:</span>
       </div>
 
       {/* Marquee viewport */}

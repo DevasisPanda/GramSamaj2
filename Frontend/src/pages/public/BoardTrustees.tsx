@@ -31,17 +31,17 @@ export default function BoardTrustees() {
       <section className="container-px section-py">
         <div className="mx-auto max-w-4xl">
           {/* Managing Trustee highlight */}
-          <div className="mb-8 rounded-2xl border-2 border-saffron-200 bg-saffron-50 p-6">
+          <div className="mb-8 rounded-2xl border-2 border-saffron-300 bg-white shadow-md p-6">
             <h2 className="text-lg font-bold text-saffron-800">Managing Trustee</h2>
             <p className="mt-1 text-2xl font-bold font-display text-ink">{MANAGING_TRUSTEE.name}</p>
-            <span className="mt-2 inline-block rounded-full bg-saffron-200 px-3 py-1 text-xs font-semibold text-saffron-800">
+            <span className="mt-2 inline-block rounded-full bg-saffron-100 px-3 py-1 text-xs font-semibold text-saffron-800 border border-saffron-300">
               {MANAGING_TRUSTEE.role}
             </span>
           </div>
 
           {/* Table */}
-          <div className="overflow-x-auto rounded-xl border border-saffron-100">
-            <table className="w-full text-sm">
+          <div className="overflow-x-auto rounded-xl border border-forest-800 bg-white shadow-md max-w-full">
+            <table className="w-full text-sm min-w-[480px]">
               <thead>
                 <tr className="bg-forest-700 text-left text-xs font-semibold uppercase tracking-wide text-cream">
                   <th className="px-4 py-3">S. No.</th>
@@ -50,12 +50,12 @@ export default function BoardTrustees() {
                   <th className="px-4 py-3">Position</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-saffron-100">
-                {TRUSTEES_2026_2027.map((t) => (
-                  <tr key={t.id} className="hover:bg-saffron-50/50 transition-colors">
-                    <td className="px-4 py-3 text-ink/50">{t.serial}</td>
-                    <td className="px-4 py-3 font-medium text-ink">{t.name}</td>
-                    <td className="px-4 py-3 text-ink/65 text-xs">{t.particulars}</td>
+              <tbody className="divide-y divide-saffron-100 bg-white">
+                {TRUSTEES_2026_2027.map((t, i) => (
+                  <tr key={t.id} className={i % 2 === 0 ? "bg-white hover:bg-saffron-50/70 transition-colors" : "bg-forest-50/30 hover:bg-saffron-50/70 transition-colors"}>
+                    <td className="px-4 py-3 font-semibold text-ink/70">{t.serial}</td>
+                    <td className="px-4 py-3 font-bold text-ink break-words">{t.name}</td>
+                    <td className="px-4 py-3 text-ink/80 text-xs break-words">{t.particulars}</td>
                     <td className="px-4 py-3">
                       <span className={`inline-block rounded-full px-2.5 py-1 text-xs font-semibold ${posColor(t.position)}`}>
                         {t.position}

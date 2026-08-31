@@ -35,7 +35,7 @@ const NOTICES = [
 
 export function NoticeBoard() {
   return (
-    <div className="bg-white border border-forest-900 mb-2">
+    <div className="bg-white border border-forest-900 w-full min-w-0 box-border">
       {/* Header bar */}
       <div className="govt-header-bar">
         <span>What's New / Notices</span>
@@ -48,11 +48,11 @@ export function NoticeBoard() {
           <tbody>
             {NOTICES.map((n, i) => (
               <tr key={i} className="border-b border-gray-200 hover:bg-forest-50/50">
-                <td className="py-1 px-1 align-top w-20 text-[10px] font-bold text-forest-900 shrink-0">
+                <td className="py-1 px-1 align-top w-16 sm:w-20 text-[9px] sm:text-[10px] font-bold text-forest-900 shrink-0">
                   {n.date}
                 </td>
-                <td className="py-1 px-1 align-top">
-                  <Link to={n.to} className="text-gray-900 font-semibold hover:text-forest-800 hover:underline leading-snug block">
+                <td className="py-1 px-1 align-top min-w-0">
+                  <Link to={n.to} className="text-gray-900 font-semibold hover:text-forest-800 hover:underline leading-snug block break-words">
                     {n.title}
                   </Link>
                   {n.isNew && (

@@ -7,11 +7,38 @@ import { formatDate, formatINR } from '@/lib/utils';
  * Donors Roll of Honor — vertical auto-scrolling marquee of
  * Date | Donor Initials | Amount (INR). Pauses on hover.
  */
-export function DonorsRoll() {
+export function DonorsRoll({ variant = 'page' }: { variant?: 'page' | 'compact' }) {
   const { data: donors = [], isLoading } = useDonors();
 
   // Duplicate the list so the `marquee-y` loop is seamless.
   const loop = [...donors, ...donors];
+
+  if (variant === 'compact') {
+    return (
+      <div className="relative h-[280px] overflow-hidden marquee-mask border border-gray-200 bg-white p-0">
+        {isLoading ? (
+          <div className="flex h-full items-center justify-center">
+            <span className="text-xs text-ink/40 animate-pulse">Loading donors...</span>
+          </div>
+        ) : (
+          <div className="flex flex-col animate-marquee-y hover:[animation-play-state:paused]">
+            {loop.map((donor, i) => (
+              <div
+                key={`${donor.id}-${i}`}
+                className="flex items-center justify-between gap-2 border-b border-gray-100 px-3 py-2 text-xs"
+              >
+                <span className="text-[10px] text-ink/40 w-16 shrink-0">{formatDate(donor.date)}</span>
+                <span className="flex-1 text-[11px] font-medium text-gray-900 truncate">
+                  {maskDonorName(donor.name)}
+                </span>
+                <span className="text-[11px] font-bold text-forest-700 shrink-0">{formatINR(donor.amount)}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <section className="section-py">

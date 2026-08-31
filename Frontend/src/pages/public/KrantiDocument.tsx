@@ -66,23 +66,23 @@ export default function KrantiDocument() {
             const shown = isOpen ? s.paragraphs : s.paragraphs.slice(0, COLLAPSE_AFTER);
             return (
               <section key={i} id={ids[i]} className="prose-aird scroll-mt-36">
-                <div className="card-surface p-6">
-                  <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-saffron-800 md:text-2xl">
-                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-saffron-100 text-xs font-bold text-saffron-700">
+                <div className="card-surface p-4 sm:p-6">
+                  <h2 className="mb-4 flex items-start gap-2 text-lg sm:text-xl font-bold text-saffron-800 md:text-2xl">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-saffron-100 text-xs font-bold text-saffron-700 mt-0.5">
                       {i + 1}
                     </span>
-                    {shortLabel(s.heading)}
+                    <span className="break-words min-w-0">{shortLabel(s.heading)}</span>
                   </h2>
                   {shown.map((p, j) => {
                     // Numbered/bulleted lines inside a section render as list rows
                     const isListItem = /^(\d+\.|[a-z]\)|\u2022|-)/.test(p) || /^[A-Z][^.!?]{0,80}:$/.test(p);
                     return isListItem ? (
-                      <p key={j} className="mb-2 flex gap-2 leading-relaxed text-ink/75">
+                      <p key={j} className="mb-2 flex items-start gap-2 leading-relaxed text-ink/75">
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron-500" />
-                        <span>{p}</span>
+                        <span className="break-words min-w-0">{p}</span>
                       </p>
                     ) : (
-                      <p key={j} className="mb-4 leading-relaxed text-ink/80">{p}</p>
+                      <p key={j} className="mb-4 leading-relaxed text-ink/80 break-words">{p}</p>
                     );
                   })}
                   {s.paragraphs.length > COLLAPSE_AFTER && (

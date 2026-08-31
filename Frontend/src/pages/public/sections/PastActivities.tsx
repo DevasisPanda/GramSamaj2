@@ -13,7 +13,7 @@ export function PastActivities() {
   const pa = PAST_ACTIVITIES;
 
   return (
-    <div className="bg-white border border-forest-900 p-1.5 sm:p-2 mb-1">
+    <div className="bg-white border border-forest-900 p-1.5 sm:p-2.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Past Activities</span>
         <span className="text-[9px] text-saffron-300 font-normal">2019 &ndash; 2026</span>
@@ -24,22 +24,24 @@ export function PastActivities() {
       </p>
 
       {/* Milestone timeline */}
-      <table className="w-full text-left text-[9px] border border-gray-300 border-collapse mb-1.5">
-        <thead className="bg-forest-800 text-white font-bold uppercase text-[9px]">
-          <tr>
-            <th className="p-1 border border-forest-700 w-28 sm:w-36">Period</th>
-            <th className="p-1 border border-forest-700">Completed Activity</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-gray-200">
-          {pa.milestones.map((m, i) => (
-            <tr key={m.period} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
-              <td className="p-1 font-bold text-forest-900 border-r border-gray-300 align-top leading-tight">{m.period}</td>
-              <td className="p-1 text-gray-800 leading-tight">{m.text}</td>
+      <div className="overflow-x-auto max-w-full">
+        <table className="w-full text-left text-[9px] border border-gray-300 border-collapse mb-1.5 min-w-[200px]">
+          <thead className="bg-forest-800 text-white font-bold uppercase text-[9px]">
+            <tr>
+              <th className="p-1 border border-forest-700 w-28 sm:w-36">Period</th>
+              <th className="p-1 border border-forest-700">Completed Activity</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {pa.milestones.map((m, i) => (
+              <tr key={m.period} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
+                <td className="p-1 font-bold text-forest-900 border-r border-gray-300 align-top leading-tight">{m.period}</td>
+                <td className="p-1 text-gray-800 leading-tight">{m.text}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Expandable detail accordions */}
       <div className="space-y-1 text-[10px]">

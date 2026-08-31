@@ -16,8 +16,6 @@ export const AIRD = {
   ngoDarpanId: 'UP/2022/0303967',
   pan: 'AAHTA8244M',
   registeredOffice: '46-A, Nai Basti Babu Ganj, Lucknow, Uttar Pradesh, India – 226020',
-  // Field office as stated in Annual Report 2020-21 / 2021-22 headers.
-  fieldOffice: '1/58 Priyadarshani Colony, Sector D, Sitapur Road, Lucknow, Uttar Pradesh, India – 226020',
   email: 'aird.up.india@gmail.com',
   contactPerson: 'K. C. Tripathi',
   contactMobile: '9169888444',
@@ -100,7 +98,7 @@ export const NAV_TREE: NavItem[] = [
       { label: 'Teachings', to: '/teachings', desc: 'Spiritual teachings: Vivekananda, Buddha & the soul (J)' },
       { label: 'History of Rural Development', to: '/history', desc: 'A century of rural development (K)' },
       { label: 'Annual Report', to: '/annual-report', desc: 'Yearly reports (L)' },
-      { label: 'Vision & Mission', to: '/about/vision-mission', desc: 'Our vision of Gram Swaraj' },
+      { label: 'Vision', to: '/about/vision', desc: 'Our vision of Gram Swaraj' },
       { label: 'Aim', to: '/about/aim-objectives', desc: 'The aim of AIRD (M)' },
       { label: 'Objectives', to: '/about/aim-objectives', desc: 'The objectives of AIRD (N)' },
       { label: 'KRANTI for Gram Swaraj', to: '/kranti', desc: 'Key to Reform & Adopt Noble Treatment Initiatives (O, P)' },

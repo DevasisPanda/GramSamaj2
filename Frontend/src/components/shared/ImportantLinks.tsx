@@ -27,7 +27,7 @@ export function ImportantLinksStrip({ variant = 'dark' }: ImportantLinksStripPro
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-cream/60 hover:text-saffron-400 transition-colors underline-offset-2 hover:underline"
+              className="text-xs text-cream/75 hover:text-saffron-400 transition-colors underline-offset-2 hover:underline break-words"
             >
               {link.label}
             </a>
@@ -46,7 +46,7 @@ export function ImportantLinksSection() {
         <h2 className="text-2xl font-bold text-center mb-2 text-gradient-saffron">
           Important Websites &amp; Resources
         </h2>
-        <p className="text-center text-ink/60 mb-10 max-w-2xl mx-auto">
+        <p className="text-center text-ink/60 mb-10 max-w-2xl mx-auto break-words">
           {'Key government portals, development schemes, and institutional frameworks that guide AIRD’s work towards Gram Swaraj.'}
         </p>
 
@@ -59,17 +59,17 @@ export function ImportantLinksSection() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-surface group p-5 hover:shadow-md hover:border-saffron-200 transition-all"
+                className="card-surface group p-4 sm:p-5 hover:shadow-md hover:border-saffron-200 transition-all max-w-full"
               >
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5 rounded-lg bg-saffron-100 p-2 text-saffron-600 group-hover:bg-saffron-200 transition-colors">
+                <div className="flex items-start gap-3 min-w-0">
+                  <div className="mt-0.5 rounded-lg bg-saffron-100 p-2 text-saffron-600 group-hover:bg-saffron-200 transition-colors shrink-0">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-ink group-hover:text-saffron-700 transition-colors">
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-semibold text-ink group-hover:text-saffron-700 transition-colors break-words">
                       {link.label}
                     </h3>
-                    <p className="mt-1 text-xs text-ink/50 leading-relaxed">{link.description}</p>
+                    <p className="mt-1 text-xs text-ink/60 leading-relaxed break-words">{link.description}</p>
                   </div>
                 </div>
               </a>

@@ -27,15 +27,28 @@ function PageLoader() {
  */
 export function PublicLayout() {
   return (
-    <>
+    <div className="relative min-h-screen max-w-full overflow-x-hidden">
+      {/* Fixed Background — Rich artwork background per client request */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10" aria-hidden="true">
+        <div
+          className="absolute -inset-x-2 -bottom-2 -top-20 bg-cover bg-no-repeat opacity-80"
+          style={{
+            backgroundImage: "url('/site-bg.jpg')",
+            backgroundPosition: 'center -50px',
+          }}
+        />
+        {/* Soft ambient overlay to ensure text contrast across all device displays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-[#F8FAF5]/30 to-[#F8FAF5]/45" />
+      </div>
+
       <ScrollToTop />
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="relative z-0 max-w-full overflow-x-hidden">
         <Suspense fallback={<PageLoader />}>
           <Outlet />
         </Suspense>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

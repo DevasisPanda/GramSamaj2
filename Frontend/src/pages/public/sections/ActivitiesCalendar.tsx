@@ -35,8 +35,8 @@ export function ActivitiesCalendar({ variant = 'page' }: { variant?: 'page' | 'c
   const activeFilter = (params.get('type') as EventCategory | 'all') ?? 'all';
 
   const filtered = useMemo(() => {
-    const list = activeFilter === 'all' ? events : events.filter((e) => e.category === activeFilter);
-    return [...list].sort((a, b) => +new Date(a.date) - +new Date(b.date));
+    const list = activeFilter === 'all' ? events : events.filter((e: any) => e.category === activeFilter);
+    return [...list].sort((a: any, b: any) => +new Date(a.date) - +new Date(b.date));
   }, [events, activeFilter]);
 
   function setFilter(value: EventCategory | 'all') {
@@ -54,8 +54,8 @@ export function ActivitiesCalendar({ variant = 'page' }: { variant?: 'page' | 'c
             <div key={i} className="h-12 animate-pulse rounded-lg bg-saffron-100/60" />
           ))}
         {!isLoading &&
-          filtered.map((event) => {
-            const meta = CATEGORY_META[event.category];
+          filtered.map((event: any) => {
+            const meta = CATEGORY_META[event.category as EventCategory] || CATEGORY_META.planning;
             const Icon = meta.icon;
             return (
               <div
@@ -152,8 +152,8 @@ export function ActivitiesCalendar({ variant = 'page' }: { variant?: 'page' | 'c
           </div>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((event) => {
-              const meta = CATEGORY_META[event.category];
+            {filtered.map((event: any) => {
+              const meta = CATEGORY_META[event.category as EventCategory] || CATEGORY_META.planning;
               const Icon = meta.icon;
               return (
                 <article
@@ -174,11 +174,11 @@ export function ActivitiesCalendar({ variant = 'page' }: { variant?: 'page' | 'c
                       </span>
                     )}
                   </div>
-                  <h3 className="font-semibold text-ink transition-colors group-hover:text-saffron-700">
+                  <h3 className="font-semibold text-ink transition-colors group-hover:text-saffron-700 break-words">
                     {event.title}
                   </h3>
                   <time className="mt-1 text-xs text-ink/40">{formatDate(event.date, { weekday: true })}</time>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink/60">{event.description}</p>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink/60 break-words">{event.description}</p>
                 </article>
               );
             })}

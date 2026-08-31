@@ -28,35 +28,35 @@ import { PLANNED_ACTIVITIES } from '@/data/events';
 /* ------------------------------------------------------------------ */
 function AboutSection() {
   return (
-    <div className="bg-white border border-forest-900 mb-1.5 p-1.5 sm:p-2">
+    <div className="bg-white border border-forest-900 p-1.5 sm:p-2 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>About AIRD Trust</span>
         <span className="text-[9px] text-saffron-300 font-normal">Registered 31 January 2020</span>
       </div>
 
-      <div className="grid gap-2 lg:grid-cols-12">
+      <div className="grid gap-2 lg:grid-cols-12 w-full min-w-0">
         {/* Narrative — left */}
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-8 w-full min-w-0">
           <div className="flex items-center gap-2 mb-1.5 pb-1.5 border-b border-gray-200">
             <img
               src="/aird-logo.png"
               alt="AIRD emblem"
               className="h-11 w-11 object-contain shrink-0"
             />
-            <div>
-              <h2 className="text-xs sm:text-sm font-bold text-forest-900 uppercase leading-tight">
+            <div className="min-w-0 flex-1">
+              <h2 className="text-xs sm:text-sm font-bold text-forest-900 uppercase leading-tight break-words">
                 Appropriate Institute of Rural Development
               </h2>
-              <span className="text-[9px] sm:text-[10px] text-gray-600 font-semibold">
+              <span className="text-[9px] sm:text-[10px] text-gray-600 font-semibold block break-words">
                 Lucknow, Uttar Pradesh &bull; A Public Charitable Trust for Gram Swaraj
               </span>
             </div>
           </div>
 
-          <p className="text-[10px] sm:text-[11px] text-gray-800 leading-snug mb-1">
+          <p className="text-[10px] sm:text-[11px] text-gray-800 leading-snug mb-1 break-words">
             {AIRD_NARRATIVE.short[0]}
           </p>
-          <p className="text-[10px] sm:text-[11px] text-gray-800 leading-snug mb-1">
+          <p className="text-[10px] sm:text-[11px] text-gray-800 leading-snug mb-1 break-words">
             {AIRD_NARRATIVE.short[1]}
           </p>
 
@@ -67,7 +67,7 @@ function AboutSection() {
               </AccordionTrigger>
               <AccordionContent className="pt-1 text-[10px] text-gray-700 leading-tight space-y-1 border-t">
                 {AIRD_NARRATIVE.more.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <p key={i} className="break-words">{para}</p>
                 ))}
               </AccordionContent>
             </AccordionItem>
@@ -75,29 +75,31 @@ function AboutSection() {
         </div>
 
         {/* Credentials — right */}
-        <div className="lg:col-span-4">
-          <table className="w-full text-left text-[10px] border border-forest-800 border-collapse mb-1.5">
-            <thead className="bg-forest-800 text-white font-bold uppercase text-[9px]">
-              <tr>
-                <th className="p-1 border border-forest-700">Specification</th>
-                <th className="p-1 border border-forest-700">Official Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-300">
-              <tr>
-                <td className="p-1 font-bold border border-gray-300 text-forest-900">Registration</td>
-                <td className="p-1 border border-gray-300">Public Charitable Trust (PCTA 1882) &mdash; 9002139 IV-66/2020</td>
-              </tr>
-              <tr className="bg-forest-50/40">
-                <td className="p-1 font-bold border border-gray-300 text-forest-900">NITI Aayog</td>
-                <td className="p-1 border border-gray-300">NGO Darpan: UP/2022/0303967</td>
-              </tr>
-              <tr>
-                <td className="p-1 font-bold border border-gray-300 text-forest-900">Headquarters</td>
-                <td className="p-1 border border-gray-300">Lucknow, Uttar Pradesh, India</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="lg:col-span-4 w-full min-w-0">
+          <div className="overflow-x-auto max-w-full">
+            <table className="w-full text-left text-[10px] border border-forest-800 border-collapse mb-1.5 min-w-[200px]">
+              <thead className="bg-forest-800 text-white font-bold uppercase text-[9px]">
+                <tr>
+                  <th className="p-1 border border-forest-700">Specification</th>
+                  <th className="p-1 border border-forest-700">Official Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-300">
+                <tr>
+                  <td className="p-1 font-bold border border-gray-300 text-forest-900">Registration</td>
+                  <td className="p-1 border border-gray-300 break-words">Public Charitable Trust (PCTA 1882) &mdash; 9002139 IV-66/2020</td>
+                </tr>
+                <tr className="bg-forest-50/40">
+                  <td className="p-1 font-bold border border-gray-300 text-forest-900">NITI Aayog</td>
+                  <td className="p-1 border border-gray-300 break-words">NGO Darpan: UP/2022/0303967</td>
+                </tr>
+                <tr>
+                  <td className="p-1 font-bold border border-gray-300 text-forest-900">Headquarters</td>
+                  <td className="p-1 border border-gray-300 break-words">Lucknow, Uttar Pradesh, India</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div className="flex flex-col gap-0.5 text-[10px] font-bold pt-1 border-t border-forest-800">
             <Link to="/about" className="govt-link">
@@ -106,8 +108,8 @@ function AboutSection() {
             <Link to="/about/trust" className="govt-link">
               &raquo; Trust &amp; Registration Details
             </Link>
-            <Link to="/about/vision-mission" className="govt-link">
-              &raquo; Vision &amp; Mission
+            <Link to="/about/vision" className="govt-link">
+              &raquo; Vision
             </Link>
           </div>
         </div>
@@ -128,7 +130,7 @@ function PhilosophyBlock() {
   ];
 
   return (
-    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Our Philosophy</span>
         <span className="text-[9px] text-saffron-300 font-normal">AIRD</span>
@@ -137,16 +139,16 @@ function PhilosophyBlock() {
       <div className="space-y-1 text-[10px]">
         {pillars.map((p) => (
           <div key={p.title} className="border-b border-gray-200 pb-0.5">
-            <div className="font-bold text-forest-900 flex items-center justify-between">
-              <span>&bull; {p.title}</span>
-              <Link to={p.to} className="text-[9px] text-forest-800 underline">Read &raquo;</Link>
+            <div className="font-bold text-forest-900 flex items-center justify-between gap-1">
+              <span className="break-words min-w-0">&bull; {p.title}</span>
+              <Link to={p.to} className="text-[9px] text-forest-800 underline shrink-0">Read &raquo;</Link>
             </div>
-            <p className="text-gray-700 leading-tight">{p.summary}</p>
+            <p className="text-gray-700 leading-tight break-words">{p.summary}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-1 text-[9px] italic font-semibold text-forest-900 bg-forest-50 p-1 text-center border-t border-forest-800">
+      <div className="mt-1 text-[9px] italic font-semibold text-forest-900 bg-forest-50 p-1 text-center border-t border-forest-800 break-words">
         &ldquo;{PHILOSOPHY_GUIDING_PRINCIPLE}&rdquo;
       </div>
 
@@ -171,7 +173,7 @@ function TeachingsBlock() {
   ];
 
   return (
-    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Spiritual Teachings</span>
         <span className="text-[9px] text-saffron-300 font-normal">Awakening</span>
@@ -180,11 +182,11 @@ function TeachingsBlock() {
       <div className="space-y-1 text-[10px]">
         {teachings.map((t) => (
           <div key={t.title} className="border-b border-gray-200 pb-0.5">
-            <div className="font-bold text-forest-900 flex items-center justify-between">
-              <span>&bull; {t.title}</span>
-              <Link to={t.to} className="text-[9px] text-forest-800 underline">Read &raquo;</Link>
+            <div className="font-bold text-forest-900 flex items-center justify-between gap-1">
+              <span className="break-words min-w-0">&bull; {t.title}</span>
+              <Link to={t.to} className="text-[9px] text-forest-800 underline shrink-0">Read &raquo;</Link>
             </div>
-            <p className="text-gray-700 leading-tight">{t.summary}</p>
+            <p className="text-gray-700 leading-tight break-words">{t.summary}</p>
           </div>
         ))}
       </div>
@@ -207,25 +209,27 @@ function DecentralisedSection() {
   );
 
   return (
-    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Development &amp; Governance Timeline</span>
       </div>
 
-      <p className="text-[10px] text-gray-800 leading-tight mb-1">
+      <p className="text-[10px] text-gray-800 leading-tight mb-1 break-words">
         {DEV_INDIA_HOME.intro}
       </p>
 
-      <table className="w-full text-left text-[9px] border border-gray-300 border-collapse mb-1">
-        <tbody className="divide-y divide-gray-200">
-          {keyMilestones.map((m) => (
-            <tr key={m.year}>
-              <td className="p-0.5 font-bold text-forest-900 bg-forest-50 w-10 border-r border-gray-300 text-center">{m.year}</td>
-              <td className="p-0.5 text-gray-800 leading-tight">{m.text}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto max-w-full">
+        <table className="w-full text-left text-[9px] border border-gray-300 border-collapse mb-1 min-w-[200px]">
+          <tbody className="divide-y divide-gray-200">
+            {keyMilestones.map((m) => (
+              <tr key={m.year}>
+                <td className="p-0.5 font-bold text-forest-900 bg-forest-50 w-10 border-r border-gray-300 text-center">{m.year}</td>
+                <td className="p-0.5 text-gray-800 leading-tight break-words">{m.text}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <div className="text-right border-t pt-0.5">
         <Link to="/development-in-india" className="govt-link text-[10px]">
@@ -241,18 +245,18 @@ function DecentralisedSection() {
 /* ------------------------------------------------------------------ */
 function WhatWeCanDo() {
   return (
-    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Model Village Checklist</span>
       </div>
-      <p className="text-[10px] text-gray-900 mb-1 bg-forest-50 border-l-2 border-forest-800 p-1 font-medium leading-tight">
+      <p className="text-[10px] text-gray-900 mb-1 bg-forest-50 border-l-2 border-forest-800 p-1 font-medium leading-tight break-words">
         {DEMO_VILLAGE.intro}
       </p>
       <ul className="space-y-0.5 text-[9px] mb-1">
         {DEMO_VILLAGE.areas.slice(0, 6).map((area, i) => (
           <li key={area} className="border-b border-gray-200 pb-0.5 font-semibold text-gray-800 flex items-start gap-1">
-            <span className="text-forest-800 font-bold">{i + 1}.</span>
-            {area}
+            <span className="text-forest-800 font-bold shrink-0">{i + 1}.</span>
+            <span className="break-words min-w-0">{area}</span>
           </li>
         ))}
       </ul>
@@ -270,7 +274,7 @@ function WhatWeCanDo() {
 /* ------------------------------------------------------------------ */
 function JoinHandsBanner() {
   return (
-    <div className="bg-white border border-forest-900 mb-1 p-1.5 text-xs">
+    <div className="bg-white border border-forest-900 p-1.5 text-xs w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Public Participation</span>
       </div>
@@ -278,8 +282,8 @@ function JoinHandsBanner() {
       <div className="space-y-0.5 mb-1 text-[10px]">
         {WHO_CAN_JOIN.map((role) => (
           <div key={role.title} className="border-b border-gray-200 pb-0.5">
-            <span className="font-bold text-forest-900 block">{role.title}</span>
-            <span className="text-gray-700 leading-tight block">{role.desc}</span>
+            <span className="font-bold text-forest-900 block break-words">{role.title}</span>
+            <span className="text-gray-700 leading-tight block break-words">{role.desc}</span>
           </div>
         ))}
       </div>
@@ -305,7 +309,7 @@ function JoinHandsBanner() {
 /* ------------------------------------------------------------------ */
 function EventCalendarBlock() {
   return (
-    <div className="bg-white border border-forest-900 p-1.5 mb-1">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Upcoming / Planned Activities</span>
         <span className="text-[9px] text-saffron-300 font-normal">KRANTI 2026&ndash;27</span>
@@ -317,22 +321,24 @@ function EventCalendarBlock() {
             {PLANNED_ACTIVITIES.heading}
           </AccordionTrigger>
           <AccordionContent className="p-1.5">
-            <table className="w-full text-left text-[9px] border border-gray-300 border-collapse">
-              <thead className="bg-forest-800 text-white font-bold uppercase text-[9px]">
-                <tr>
-                  <th className="p-1 border border-forest-700">Proposed Activity</th>
-                  <th className="p-1 border border-forest-700 w-36">Duration</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {PLANNED_ACTIVITIES.items.map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
-                    <td className="p-1 text-gray-800 leading-tight">{row.activity}</td>
-                    <td className="p-1 font-semibold text-forest-900 leading-tight">{row.duration}</td>
+            <div className="overflow-x-auto max-w-full">
+              <table className="w-full text-left text-[9px] border border-gray-300 border-collapse min-w-[200px]">
+                <thead className="bg-forest-800 text-white font-bold uppercase text-[9px]">
+                  <tr>
+                    <th className="p-1 border border-forest-700">Proposed Activity</th>
+                    <th className="p-1 border border-forest-700 w-36">Duration</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {PLANNED_ACTIVITIES.items.map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-forest-50/30'}>
+                      <td className="p-1 text-gray-800 leading-tight break-words">{row.activity}</td>
+                      <td className="p-1 font-semibold text-forest-900 leading-tight break-words">{row.duration}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -350,11 +356,11 @@ function EventCalendarBlock() {
 /* ------------------------------------------------------------------ */
 function VideoGalleryBlock() {
   return (
-    <div className="bg-white border border-forest-900 p-1.5 mb-1">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Videos &amp; Media Gallery</span>
       </div>
-      <VideoCarousel />
+      <VideoCarousel variant="compact" />
       <div className="text-right border-t pt-0.5 mt-1">
         <Link to="/videos" className="govt-link text-[10px]">
           Read More Video Gallery &rarr;
@@ -369,11 +375,11 @@ function VideoGalleryBlock() {
 /* ------------------------------------------------------------------ */
 function DonorsBlock() {
   return (
-    <div className="bg-white border border-forest-900 p-1.5 mb-1">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Supporters &amp; Donors Roll</span>
       </div>
-      <DonorsRoll />
+      <DonorsRoll variant="compact" />
       <div className="text-right border-t pt-0.5 mt-1">
         <Link to="/donors" className="govt-link text-[10px]">
           Read More Donors Roll &rarr;
@@ -389,15 +395,15 @@ function DonorsBlock() {
 /* ------------------------------------------------------------------ */
 function GoalOfSoulBlock() {
   return (
-    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Goal of Soul</span>
         <span className="text-[9px] text-saffron-300 font-normal">Whirlpool</span>
       </div>
-      <p className="text-[10px] text-gray-800 leading-tight mb-1">
+      <p className="text-[10px] text-gray-800 leading-tight mb-1 break-words">
         {GOAL_OF_SOUL.intro}
       </p>
-      <p className="text-[10px] text-gray-700 leading-tight">
+      <p className="text-[10px] text-gray-700 leading-tight break-words">
         {GOAL_OF_SOUL.body[0]}
       </p>
       <div className="text-right border-t pt-0.5 mt-1">
@@ -415,13 +421,13 @@ function GoalOfSoulBlock() {
 /* ------------------------------------------------------------------ */
 function DevCarStrip() {
   return (
-    <div className="bg-white border border-forest-900 mb-1 p-1.5">
+    <div className="bg-white border border-forest-900 p-1.5 w-full min-w-0 box-border">
       <div className="govt-header-bar mb-1.5">
         <span>Development Car</span>
         <span className="text-[9px] text-saffron-300 font-normal">Spiritual</span>
       </div>
       {DEV_CAR_HOME.intro.slice(0, 2).map((p, i) => (
-        <p key={i} className="text-[10px] text-gray-800 leading-tight mb-1">{p}</p>
+        <p key={i} className="text-[10px] text-gray-800 leading-tight mb-1 break-words">{p}</p>
       ))}
       <div className="text-right border-t pt-0.5 mt-1">
         <Link to="/development-car" className="govt-link text-[10px]">
@@ -438,12 +444,12 @@ function DevCarStrip() {
 /* ------------------------------------------------------------------ */
 export default function Home() {
   return (
-    <div className="bg-[#E5EBE0]">
+    <div className="relative w-full max-w-full overflow-x-hidden">
       {/* 1. Top Announcement Marquee Strip */}
       <SloganTicker />
 
       {/* 2. Main Portal Container */}
-      <div className="container-px py-1 space-y-1.5">
+      <div className="container-px py-1 space-y-1.5 w-full max-w-full min-w-0">
         {/* ROW 1: FULL-WIDTH HERO — Dandi March background */}
         <HeroDandi />
 
@@ -451,22 +457,22 @@ export default function Home() {
         <AboutSection />
 
         {/* ROW 3: GRAM SWARAJ / PEOPLE'S GOVERNANCE + HUMAN & HUMANITY */}
-        <div className="grid gap-1.5 lg:grid-cols-12 items-stretch">
-          <div className="lg:col-span-8">
+        <div className="grid gap-1.5 lg:grid-cols-12 items-stretch w-full min-w-0">
+          <div className="lg:col-span-8 w-full min-w-0">
             <GramSwarajSection />
           </div>
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 w-full min-w-0">
             <HumanitySection />
           </div>
         </div>
 
         {/* ROW 4: FULL-WIDTH DEDICATED VILLAGE DIRECTORY */}
-        <div className="bg-white border border-forest-900 p-1.5 sm:p-2">
+        <div className="bg-white border border-forest-900 p-1.5 sm:p-2 w-full min-w-0 overflow-hidden box-border">
           <div className="govt-header-bar mb-1.5">
             <span>Official Village Directory &amp; Supporter Database</span>
             <span className="text-[9px] text-saffron-300 font-normal">Statewise Rural Directory</span>
           </div>
-          <VillageDirectory />
+          <VillageDirectory variant="compact" />
           <div className="text-right border-t pt-0.5 mt-1">
             <Link to="/village-directory" className="govt-link text-[10px]">
               Read More Full Village Directory &rarr;
@@ -475,21 +481,21 @@ export default function Home() {
         </div>
 
         {/* ROW 5: GOVERNANCE & ROADMAP (3-6-3) */}
-        <div className="grid gap-1.5 lg:grid-cols-12 items-stretch">
+        <div className="grid gap-1.5 lg:grid-cols-12 items-stretch w-full min-w-0">
           {/* Left Column */}
-          <div className="lg:col-span-3 space-y-1.5">
+          <div className="lg:col-span-3 space-y-1.5 w-full min-w-0">
             <QuickLinksGrid />
             <NoticeBoard />
           </div>
 
           {/* Center Column */}
-          <div className="lg:col-span-6 space-y-1.5">
+          <div className="lg:col-span-6 space-y-1.5 w-full min-w-0">
             <KrantiPreview />
             <DecentralisedSection />
           </div>
 
           {/* Right Column — Philosophy, Teachings, Goal of Soul, Dev Car, Model Village */}
-          <div className="lg:col-span-3 space-y-1.5">
+          <div className="lg:col-span-3 space-y-1.5 w-full min-w-0">
             <PhilosophyBlock />
             <TeachingsBlock />
             <GoalOfSoulBlock />
@@ -499,25 +505,25 @@ export default function Home() {
         </div>
 
         {/* ROW 6: PAST ACTIVITIES + UPCOMING/PLANNED (50/50) */}
-        <div className="grid gap-1.5 lg:grid-cols-12 items-start">
-          <div className="lg:col-span-6">
+        <div className="grid gap-1.5 lg:grid-cols-12 items-start w-full min-w-0">
+          <div className="lg:col-span-6 w-full min-w-0">
             <PastActivities />
           </div>
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 w-full min-w-0">
             <EventCalendarBlock />
           </div>
         </div>
 
         {/* ROW 7: PUBLIC PARTICIPATION (left) + MEDIA & DONORS (right) */}
-        <div className="grid gap-1.5 lg:grid-cols-12 items-stretch">
+        <div className="grid gap-1.5 lg:grid-cols-12 items-stretch w-full min-w-0">
           {/* Left Half — Public Participation first, then Videos */}
-          <div className="lg:col-span-6 space-y-1.5">
+          <div className="lg:col-span-6 space-y-1.5 w-full min-w-0">
             <JoinHandsBanner />
             <VideoGalleryBlock />
           </div>
 
           {/* Right Half */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 w-full min-w-0">
             <DonorsBlock />
           </div>
         </div>

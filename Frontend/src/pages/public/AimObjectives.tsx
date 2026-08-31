@@ -14,15 +14,15 @@ export default function AimObjectives() {
         </div>
       }
     >
-      <section className="prose-aird mx-auto max-w-3xl">
-        <h2 className="mb-4 text-xl font-bold text-saffron-800 md:text-2xl">Objectives</h2>
+      <section className="card-surface p-5 sm:p-7 rounded-xl shadow-sm mx-auto max-w-3xl">
+        <h2 className="mb-4 text-xl font-bold text-saffron-900 md:text-2xl border-b border-saffron-100 pb-2 break-words">Objectives</h2>
         <ol className="space-y-3">
           {OBJECTIVES_FULL.map((o, i) => (
-            <li key={i} className="flex gap-3 leading-relaxed text-ink/80">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-saffron-100 text-sm font-bold text-saffron-700">
+            <li key={i} className="flex items-start gap-3 leading-relaxed text-ink/85 text-sm sm:text-base">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-saffron-100 text-xs sm:text-sm font-bold text-saffron-700 mt-0.5">
                 {i + 1}
               </span>
-              <span className="pt-0.5">{o}</span>
+              <span className="pt-0.5 break-words min-w-0">{o}</span>
             </li>
           ))}
         </ol>

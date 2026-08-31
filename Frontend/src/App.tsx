@@ -1,12 +1,12 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/sonner';
-import { AdminProvider, useAdmin } from '@/contexts/AdminContext';
+import { AdminProvider } from '@/contexts/AdminContext';
 import { PublicLayout } from '@/components/shared/PublicLayout';
-import { AdminLayout } from '@/components/shared/AdminLayout';
 import { queryClient } from '@/lib/queryClient';
+import { trpc, trpcClient, getBackendUrl } from '@/lib/trpc';
 
 /* ------------------------------------------------------------------ */
 /* Eager — landing pages that must load instantly                      */
@@ -16,7 +16,6 @@ import About from '@/pages/public/About';
 import Philosophy from '@/pages/public/Philosophy';
 import Kranti from '@/pages/public/Kranti';
 import Donate from '@/pages/public/Donate';
-import AdminLogin from '@/pages/admin/AdminLogin';
 
 /* ------------------------------------------------------------------ */
 /* Lazy — public pages (sub-sections of the site)                     */
@@ -44,21 +43,15 @@ const AnnualReport       = lazy(() => import('@/pages/public/AnnualReport'));
 const AnnualReportDetail = lazy(() => import('@/pages/public/AnnualReportDetail'));
 const Membership         = lazy(() => import('@/pages/public/Join'));
 const Contact            = lazy(() => import('@/pages/public/Contact'));
+const SignIn             = lazy(() => import('@/pages/public/SignIn'));
+const SignUp             = lazy(() => import('@/pages/public/SignUp'));
+const KrantiDocument     = lazy(() => import('@/pages/public/KrantiDocument'));
+const PhilosophyFull     = lazy(() => import('@/pages/public/PhilosophyFull'));
+const HumanLife          = lazy(() => import('@/pages/public/HumanLife'));
+const TrusteeProfile     = lazy(() => import('@/pages/public/TrusteeProfile'));
 
 /* ------------------------------------------------------------------ */
-/* Lazy — admin panels                                                 */
-/* ------------------------------------------------------------------ */
-const AdminDashboard = lazy(() => import('@/pages/admin/AdminDashboard'));
-const KrantiDocument   = lazy(() => import('@/pages/public/KrantiDocument'));
-const PhilosophyFull   = lazy(() => import('@/pages/public/PhilosophyFull'));
-const HumanLife        = lazy(() => import('@/pages/public/HumanLife'));
-const TrusteeProfile   = lazy(() => import('@/pages/public/TrusteeProfile'));
-const AdminVillagers = lazy(() => import('@/pages/admin/AdminVillagers'));
-const AdminCalendar  = lazy(() => import('@/pages/admin/AdminCalendar'));
-const AdminMedia     = lazy(() => import('@/pages/admin/AdminMedia'));
-
-/* ------------------------------------------------------------------ */
-/* Helpers                                                             */
+/* Helpers & Portal Bridge                                             */
 /* ------------------------------------------------------------------ */
 function PageSuspense({ children }: { children: ReactNode }) {
   return (
@@ -79,10 +72,30 @@ function PageSuspense({ children }: { children: ReactNode }) {
   );
 }
 
-function AdminGate({ children }: { children: ReactNode }) {
-  const { user } = useAdmin();
-  if (!user) return <Navigate to="/admin/login" replace />;
-  return <AdminLayout>{children}</AdminLayout>;
+/**
+ * Automatically bridges visitors and members to the full NGO Management System.
+ */
+function RedirectToManagementPortal({ path = '/login' }: { path?: string }) {
+  useEffect(() => {
+    const portalUrl = getBackendUrl();
+    window.location.href = `${portalUrl}${path}`;
+  }, [path]);
+
+  return (
+    <div className="flex min-h-[65vh] flex-col items-center justify-center gap-3 p-6 text-center">
+      <img src="/aird-logo.png" alt="AIRD" className="h-16 w-16 animate-pulse object-contain" />
+      <h3 className="text-lg font-bold text-forest-900">Connecting to AIRD Management Portal...</h3>
+      <p className="text-xs text-gray-600 max-w-sm">
+        Transferring to the centralized NGO administration and member management system.
+      </p>
+      <a
+        href={`${getBackendUrl()}${path}`}
+        className="mt-2 text-xs font-semibold text-saffron-700 underline hover:text-saffron-900"
+      >
+        Click here if you are not redirected automatically &rarr;
+      </a>
+    </div>
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -98,20 +111,21 @@ function AppRoutes() {
         {/* About Us */}
         <Route path="/about" element={<About />} />
         <Route path="/about/trust" element={<PageSuspense><AboutTrust /></PageSuspense>} />
-        <Route path="/about/vision-mission" element={<PageSuspense><VisionMission /></PageSuspense>} />
+        <Route path="/about/vision" element={<PageSuspense><VisionMission /></PageSuspense>} />
+        <Route path="/about/vision-mission" element={<Navigate to="/about/vision" replace />} />
         <Route path="/about/aim-objectives" element={<PageSuspense><AimObjectives /></PageSuspense>} />
 
         {/* Trustee */}
         <Route path="/trustee/journey" element={<PageSuspense><JourneyTrustee /></PageSuspense>} />
         <Route path="/trustee/board" element={<PageSuspense><BoardTrustees /></PageSuspense>} />
         <Route path="/trustee/board-2020-2025" element={<PageSuspense><BoardTrustees2020 /></PageSuspense>} />
-        {/* Legacy slug (file was named "2020-2026"; document heading says FY 2020-25) */}
         <Route path="/trustee/board-2020-2026" element={<Navigate to="/trustee/board-2020-2025" replace />} />
         <Route path="/strategy" element={<PageSuspense><Strategy /></PageSuspense>} />
 
         {/* KRANTI */}
         <Route path="/kranti" element={<Kranti />} />
         <Route path="/kranti/document" element={<PageSuspense><KrantiDocument /></PageSuspense>} />
+        <Route path="/kranti/concept" element={<Navigate to="/concept" replace />} />
         <Route path="/kranti/decentralized-governance" element={<PageSuspense><DecentralizedGov /></PageSuspense>} />
         <Route path="/development-in-india" element={<PageSuspense><DevelopmentIndia /></PageSuspense>} />
 
@@ -132,6 +146,7 @@ function AppRoutes() {
         <Route path="/videos" element={<PageSuspense><VideosPage /></PageSuspense>} />
         <Route path="/donors" element={<PageSuspense><DonorsPage /></PageSuspense>} />
         <Route path="/village-directory" element={<PageSuspense><VillageDirPage /></PageSuspense>} />
+        <Route path="/villages" element={<Navigate to="/village-directory" replace />} />
         <Route path="/annual-report" element={<PageSuspense><AnnualReport /></PageSuspense>} />
         <Route path="/annual-report/:reportId" element={<PageSuspense><AnnualReportDetail /></PageSuspense>} />
 
@@ -140,28 +155,23 @@ function AppRoutes() {
         <Route path="/donate" element={<Donate />} />
         <Route path="/contact" element={<PageSuspense><Contact /></PageSuspense>} />
 
+        {/* Auth & Profile -> Frontend Branded Login/Signup with SSO Handoff */}
+        <Route path="/login" element={<PageSuspense><SignIn /></PageSuspense>} />
+        <Route path="/signin" element={<Navigate to="/login" replace />} />
+        <Route path="/signup" element={<PageSuspense><SignUp /></PageSuspense>} />
+        <Route path="/register" element={<Navigate to="/signup" replace />} />
+        <Route path="/profile" element={<RedirectToManagementPortal path="/member-dashboard" />} />
+        <Route path="/member/profile" element={<Navigate to="/profile" replace />} />
+        <Route path="/member-dashboard" element={<RedirectToManagementPortal path="/member-dashboard" />} />
+
         {/* Legacy redirect: /join → /membership */}
         <Route path="/join" element={<Navigate to="/membership" replace />} />
       </Route>
 
-      {/* ── Admin ── */}
-      <Route path="/admin/login" element={<AdminLogin />} />
-      <Route
-        path="/admin"
-        element={<AdminGate><PageSuspense><AdminDashboard /></PageSuspense></AdminGate>}
-      />
-      <Route
-        path="/admin/villagers"
-        element={<AdminGate><PageSuspense><AdminVillagers /></PageSuspense></AdminGate>}
-      />
-      <Route
-        path="/admin/calendar"
-        element={<AdminGate><PageSuspense><AdminCalendar /></PageSuspense></AdminGate>}
-      />
-      <Route
-        path="/admin/media"
-        element={<AdminGate><PageSuspense><AdminMedia /></PageSuspense></AdminGate>}
-      />
+      {/* ── Admin Portal -> Direct bridge to NGO Management System ── */}
+      <Route path="/admin/login" element={<Navigate to="/login" replace />} />
+      <Route path="/admin" element={<RedirectToManagementPortal path="/admin-dashboard" />} />
+      <Route path="/admin/*" element={<RedirectToManagementPortal path="/admin-dashboard" />} />
 
       {/* Catch-all */}
       <Route path="*" element={<Navigate to="/" replace />} />
@@ -174,13 +184,15 @@ function AppRoutes() {
 /* ------------------------------------------------------------------ */
 export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <AdminProvider>
-          <AppRoutes />
-          <Toaster position="bottom-right" richColors closeButton />
-        </AdminProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <AdminProvider>
+            <AppRoutes />
+            <Toaster position="bottom-right" richColors closeButton />
+          </AdminProvider>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </trpc.Provider>
   );
 }

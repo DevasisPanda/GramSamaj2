@@ -25,10 +25,15 @@ dist-ssr
 
 # Env
 .env
-.env.*.local
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
 
 # Docs & Working files
 Work/
 .zcode/
 CONTENT_MAP.md
 instruction.md
+NGO_Work/
+ngo-management-system/

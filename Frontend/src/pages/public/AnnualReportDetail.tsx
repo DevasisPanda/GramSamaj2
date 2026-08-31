@@ -62,12 +62,12 @@ export default function AnnualReportDetail() {
 
           {/* Full verbatim report body */}
           {report.sections.map((s, i) => (
-            <section key={i} className="prose-aird mb-8">
+            <section key={i} className="card-surface p-5 sm:p-7 rounded-xl shadow-sm mb-6">
               {s.heading && (
-                <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">{s.heading}</h2>
+                <h2 className="mb-3 text-xl font-bold text-saffron-900 md:text-2xl border-b border-saffron-100 pb-2 break-words">{s.heading}</h2>
               )}
               {s.paragraphs.map((p, j) => (
-                <p key={j} className="mb-4 leading-relaxed text-ink/80">
+                <p key={j} className="mb-3 leading-relaxed text-ink/85 text-sm sm:text-base break-words">
                   {p}
                 </p>
               ))}

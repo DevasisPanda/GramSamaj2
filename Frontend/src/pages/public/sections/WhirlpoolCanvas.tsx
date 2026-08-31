@@ -67,8 +67,10 @@ export function WhirlpoolCanvas() {
     const dpr = window.devicePixelRatio || 1;
     canvas.width = size * dpr;
     canvas.height = size * dpr;
-    canvas.style.width = `${size}px`;
-    canvas.style.height = `${size}px`;
+    canvas.style.width = '100%';
+    canvas.style.maxWidth = '320px';
+    canvas.style.height = 'auto';
+    canvas.style.aspectRatio = '1 / 1';
     ctx.scale(dpr, dpr);
     const cx = size / 2;
     const cy = size / 2;
@@ -183,31 +185,31 @@ export function WhirlpoolCanvas() {
   const escapedCount = particlesRef.current.filter((p) => p.escaped).length;
 
   return (
-    <div className="card-surface p-6">
+    <div className="card-surface p-4 sm:p-6 max-w-full overflow-hidden">
       <div className="grid gap-6 md:grid-cols-[auto_1fr] items-center">
-        <div className="flex justify-center">
-          <canvas ref={canvasRef} className="rounded-xl" />
+        <div className="flex justify-center w-full min-w-0">
+          <canvas ref={canvasRef} className="rounded-xl w-full max-w-[280px] sm:max-w-[320px] aspect-square" />
         </div>
-        <div>
-          <h3 className="font-bold text-lg text-gradient-saffron flex items-center gap-2">
-            <Sparkles className="h-5 w-5" /> The Whirlpool of Worldly Existence
+        <div className="min-w-0">
+          <h3 className="font-bold text-base sm:text-lg text-saffron-900 flex items-center gap-2 break-words">
+            <Sparkles className="h-5 w-5 shrink-0 text-saffron-600" /> <span className="break-words min-w-0">The Whirlpool of Worldly Existence</span>
           </h3>
-          <p className="mt-2 text-sm text-ink/60 leading-relaxed">{WHIRLPOOL.intro}</p>
+          <p className="mt-2 text-xs sm:text-sm text-ink/75 leading-relaxed break-words">{WHIRLPOOL.intro}</p>
 
-          <div className="mt-4 grid grid-cols-2 gap-2">
-            <div className="rounded-lg bg-saffron-50 p-2">
-              <p className="text-[11px] font-semibold text-saffron-700">Attachments (trapped)</p>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="rounded-lg bg-saffron-50/90 border border-saffron-200/60 p-2.5">
+              <p className="text-[11px] font-bold text-saffron-800">Attachments (trapped)</p>
               <ul className="mt-1 space-y-0.5">
                 {WHIRLPOOL.attachments.map((a) => (
-                  <li key={a.id} className="text-[10px] text-ink/50">{a.label}</li>
+                  <li key={a.id} className="text-[10px] text-ink/70 break-words">{a.label}</li>
                 ))}
               </ul>
             </div>
-            <div className="rounded-lg bg-forest-50 p-2">
-              <p className="text-[11px] font-semibold text-forest-700">Paths to Liberation</p>
+            <div className="rounded-lg bg-forest-50/90 border border-forest-200/60 p-2.5">
+              <p className="text-[11px] font-bold text-forest-800">Paths to Liberation</p>
               <ul className="mt-1 space-y-0.5">
                 {WHIRLPOOL.purifiers.map((p) => (
-                  <li key={p.id} className="text-[10px] text-ink/50">{p.label}</li>
+                  <li key={p.id} className="text-[10px] text-ink/70 break-words">{p.label}</li>
                 ))}
               </ul>
             </div>
@@ -216,23 +218,23 @@ export function WhirlpoolCanvas() {
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <button
               onClick={purify}
-              className="rounded-lg bg-forest-700 px-4 py-2 text-xs font-semibold text-white hover:bg-forest-800 transition-colors"
+              className="rounded-lg bg-forest-700 px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-semibold text-white hover:bg-forest-800 transition-colors shadow-xs"
             >
               Practice a Yoga &rarr; Liberate a soul
             </button>
             <button
               onClick={reset}
-              className="rounded-lg border border-saffron-300 px-4 py-2 text-xs font-semibold text-saffron-700 hover:bg-saffron-50 transition-colors"
+              className="rounded-lg border border-saffron-300 bg-white/80 px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-semibold text-saffron-700 hover:bg-saffron-50 transition-colors shadow-xs"
             >
               Reset
             </button>
-            <span className={cn('text-xs font-medium', escapedCount >= WHIRLPOOL.attachments.length ? 'text-forest-700' : 'text-ink/40')}>
+            <span className={cn('text-xs font-medium', escapedCount >= WHIRLPOOL.attachments.length ? 'text-forest-700 font-bold' : 'text-ink/60')}>
               {escapedCount}/{WHIRLPOOL.attachments.length} liberated
             </span>
           </div>
         </div>
       </div>
-      <p className="mt-4 text-xs italic text-ink/50 border-t border-saffron-100 pt-3">{WHIRLPOOL.salvation}</p>
+      <p className="mt-4 text-xs italic text-ink/60 border-t border-saffron-100 pt-3 break-words">{WHIRLPOOL.salvation}</p>
     </div>
   );
 }

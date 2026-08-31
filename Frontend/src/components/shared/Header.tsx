@@ -1,12 +1,14 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Mail, Type } from 'lucide-react';
+import { Menu, X, ChevronDown, Type } from 'lucide-react';
 
 import { AIRD, NAV_TREE } from '@/lib/constants';
 import type { NavItem } from '@/lib/constants';
 import { TranslateWidget } from './TranslateWidget';
 import { Logo } from './Logo';
 import { cn } from '@/lib/utils';
+import { useAuth, performSSOHandoff } from '@/contexts/AdminContext';
+import { getBackendUrl } from '@/lib/trpc';
 
 /* ------------------------------------------------------------------ */
 /* Accessibility: font-size toggle (A- A A+)                           */
@@ -81,8 +83,8 @@ function DesktopNavItem({
     );
   }
 
-  const triggerClasses = cn(
-    'inline-flex items-center gap-1 px-3 lg:px-4 py-2.5 text-sm font-semibold transition-colors border-b-[3px] -mb-px cursor-pointer select-none',
+  const navItemClasses = cn(
+    'inline-flex items-center text-sm font-semibold transition-colors border-b-[3px] -mb-px select-none',
     active
       ? 'text-white border-cream bg-forest-700'
       : 'text-white/90 border-transparent hover:bg-forest-600 hover:text-white',
@@ -91,12 +93,12 @@ function DesktopNavItem({
   return (
     <div className="relative" onMouseEnter={onOpen}>
       {item.to ? (
-        <div className="inline-flex items-center">
+        <div className={navItemClasses}>
           <Link
             to={item.to}
             onClick={onClose}
             onFocus={onOpen}
-            className={triggerClasses}
+            className="inline-flex items-center pl-3 lg:pl-4 pr-1 py-2.5 cursor-pointer text-inherit"
             aria-haspopup="true"
             aria-expanded={isOpen}
           >
@@ -109,7 +111,7 @@ function DesktopNavItem({
               e.stopPropagation();
               onToggle();
             }}
-            className={cn(triggerClasses, 'px-1 lg:px-1.5 border-l-0 -ml-1')}
+            className="inline-flex items-center pr-3 lg:pr-4 pl-1 py-2.5 cursor-pointer text-inherit"
             aria-label={`Toggle ${item.label} menu`}
           >
             <ChevronDown
@@ -125,7 +127,7 @@ function DesktopNavItem({
           type="button"
           onClick={onToggle}
           onFocus={onOpen}
-          className={triggerClasses}
+          className={cn(navItemClasses, 'gap-1 px-3 lg:px-4 py-2.5 cursor-pointer')}
           aria-haspopup="true"
           aria-expanded={isOpen}
         >
@@ -285,6 +287,7 @@ export function Header() {
   const navRef = useRef<HTMLElement>(null);
   const { pathname } = useLocation();
   const { idx, apply } = useFontScale();
+  const { user, isAdmin, logout } = useAuth();
 
   // Close mobile menu & desktop dropdowns on route change
   useEffect(() => {
@@ -314,7 +317,7 @@ export function Header() {
 
       {/* Accessibility + utility bar */}
       <div className="bg-forest-700 text-cream">
-        <div className="container-px flex h-9 items-center justify-between text-[11px] sm:text-xs">
+        <div className="container-px flex min-h-[2.25rem] py-1 items-center justify-between text-[11px] sm:text-xs gap-2 flex-wrap sm:flex-nowrap">
           <div className="flex items-center gap-3">
             <a
               href="#main-content"
@@ -356,12 +359,52 @@ export function Header() {
           </div>
           <div className="flex items-center gap-3">
             <TranslateWidget />
-            <a
-              href="/admin"
-              className="hidden sm:inline text-cream/80 hover:text-white hover:underline"
-            >
-              Admin
-            </a>
+            {user ? (
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => performSSOHandoff(undefined, 'user', '/member-dashboard')}
+                  className="inline-flex items-center gap-1 font-semibold text-cream hover:text-white hover:underline cursor-pointer"
+                  title="Open Member Portal"
+                >
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                  {user.name.split(' ')[0]}
+                </button>
+                {isAdmin && (
+                  <button
+                    type="button"
+                    onClick={() => performSSOHandoff(undefined, 'admin', '/admin-dashboard')}
+                    className="hidden sm:inline bg-forest-800/80 px-2 py-0.5 rounded text-[10px] font-bold text-saffron-200 border border-saffron-300/30 hover:bg-forest-800 cursor-pointer"
+                    title="Open Admin Dashboard"
+                  >
+                    Admin Portal
+                  </button>
+                )}
+                <button
+                  onClick={logout}
+                  className="text-[11px] text-cream/70 hover:text-red-300 ml-1"
+                  title="Logout"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/login"
+                  className="text-cream/90 hover:text-white font-medium hover:underline"
+                >
+                  Sign In
+                </Link>
+                <span className="text-cream/40">|</span>
+                <Link
+                  to="/signup"
+                  className="text-saffron-200 hover:text-saffron-100 font-semibold hover:underline"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -374,29 +417,14 @@ export function Header() {
             <Logo size="lg" />
             <div className="min-w-0">
               <div className="font-display text-sm leading-tight font-bold text-ink sm:text-lg md:text-xl">
-                Appropriate Institute of Rural Development
+                Appropriate Institute of Rural Development ({AIRD.shortName})
               </div>
               {/* Tagline hidden on smallest screens to avoid inflating header height */}
               <div className="mt-0.5 hidden text-[10px] leading-tight text-saffron-700 sm:block sm:text-xs">
-                <span className="font-semibold">{AIRD.shortName}</span> &bull; {AIRD.tagline}
-              </div>
-              <div className="mt-0.5 hidden text-[10px] text-ink/45 lg:block">
-                Reg. under {AIRD.registeredUnder} &nbsp;|&nbsp; NGO Darpan {AIRD.ngoDarpanId}
+                {AIRD.tagline}
               </div>
             </div>
           </Link>
-
-          {/* Contact (tablet+) — always reachable without scrolling to footer */}
-          <div className="hidden flex-col items-end text-right text-xs md:flex">
-            <a href={`tel:+91${AIRD.contactMobile}`} className="flex items-center justify-end gap-1.5 font-semibold text-forest-700 hover:text-forest-800">
-              <Phone className="h-3.5 w-3.5" /> +91 {AIRD.contactMobile}
-            </a>
-            <a href={`mailto:${AIRD.email}`} className="flex items-center justify-end gap-1.5 text-ink/60 hover:text-saffron-700">
-              <Mail className="h-3 w-3" /> {AIRD.email}
-            </a>
-          </div>
-
-
 
           {/* Mobile hamburger */}
           <button
@@ -448,10 +476,11 @@ export function Header() {
               />
             ))}
             <a
-              href="/admin"
-              className="mt-3 block rounded-lg bg-saffron-50 px-3 py-3 text-sm font-semibold text-saffron-700 text-center"
+              href={`${getBackendUrl()}/login`}
+              onClick={() => setOpen(false)}
+              className="mt-3 block rounded-lg bg-forest-800 text-white px-3 py-3 text-sm font-semibold text-center shadow-sm"
             >
-              Admin Login
+              NGO Management Portal &rarr;
             </a>
           </nav>
         </div>
@@ -459,4 +488,3 @@ export function Header() {
     </header>
   );
 }
-
