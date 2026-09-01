@@ -426,15 +426,32 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Mobile hamburger */}
-          <button
-            className="rounded-lg p-2 text-ink/70 hover:bg-saffron-50 md:hidden"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-            aria-expanded={open}
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Right-side logos & Mobile hamburger */}
+          <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
+            {/* Logos for Sampoorna Swaraj Kranti & Bharat Nirman */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <img
+                src="/image1.jpg"
+                alt="Sampoorna Swaraj Kranti"
+                className="h-9 sm:h-11 md:h-13 w-auto object-contain drop-shadow-xs"
+              />
+              <img
+                src="/image2.jpg"
+                alt="Bharat Nirman"
+                className="h-8 sm:h-10 md:h-12 w-auto object-contain drop-shadow-xs"
+              />
+            </div>
+
+            {/* Mobile hamburger */}
+            <button
+              className="rounded-lg p-2 text-ink/70 hover:bg-saffron-50 md:hidden"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+              aria-expanded={open}
+            >
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
