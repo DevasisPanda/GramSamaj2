@@ -53,8 +53,15 @@ export const TRUST_DEED_AVAILABLE = false;
 export const NAV_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
+  { label: 'Trustee & Journey', to: '/trustee/journey' },
+  { label: 'Board (2020–25)', to: '/trustee/board-2020-2025' },
+  { label: 'Board (2026–27)', to: '/trustee/board' },
+  { label: 'Strategy', to: '/strategy' },
+  { label: 'Concept', to: '/concept' },
+  { label: 'Development Car', to: '/development-car' },
   { label: 'Philosophy', to: '/philosophy' },
-  { label: 'KRANTI', to: '/kranti' },
+  { label: 'Initiation', to: '/initiation' },
+  { label: 'Activities', to: '/activities' },
   { label: 'Join Us', to: '/membership' },
   { label: 'Support', to: '/donate' },
 ] as const;
@@ -77,38 +84,17 @@ export interface NavItem {
 
 export const NAV_TREE: NavItem[] = [
   { label: 'Home', to: '/' },
-  {
-    // Information architecture per Website.docx — About Us contains ALL
-    // documented sections, in the EXACT order the document lists them.
-    // Items map to source docs A–Q as noted. Do not reorder or remove
-    // without consulting Website.docx.
-    label: 'About Us',
-    to: '/about',
-    children: [
-      { label: 'Trust / In Brief', to: '/about/trust', desc: 'Registration, credentials & legal status' },
-      { label: 'Trustee', to: '/trustee/journey', desc: 'Managing Trustee — K. C. Tripathi (A)' },
-      { label: 'Journey of the Trustee', to: '/trustee/journey', desc: 'The life & work of the founder (B)' },
-      { label: 'Board of Trustees (FY 2020–25)', to: '/trustee/board-2020-2025', desc: 'Previous board roster (C)' },
-      { label: 'Board of Trustees (FY 2026–27)', to: '/trustee/board', desc: 'Current governing board (D)' },
-      { label: 'Strategy', to: '/strategy', desc: 'Participatory strategy for Gram Swaraj (E)' },
-      { label: 'Concept', to: '/concept', desc: 'The case for a demonstration village (F)' },
-      { label: 'Development Car', to: '/development-car', desc: 'The journey of the soul (G)' },
-      { label: 'Philosophy', to: '/philosophy', desc: 'AIRD’s philosophy: humanity, service & participation (H)' },
-      { label: 'Initiation', to: '/initiation', desc: 'How AIRD began (I)' },
-      { label: 'Teachings', to: '/teachings', desc: 'Spiritual teachings: Vivekananda, Buddha & the soul (J)' },
-      { label: 'History of Rural Development', to: '/history', desc: 'A century of rural development (K)' },
-      { label: 'Annual Report', to: '/annual-report', desc: 'Yearly reports (L)' },
-      { label: 'Vision', to: '/about/vision', desc: 'Our vision of Gram Swaraj' },
-      { label: 'Aim', to: '/about/aim-objectives', desc: 'The aim of AIRD (M)' },
-      { label: 'Objectives', to: '/about/aim-objectives', desc: 'The objectives of AIRD (N)' },
-      { label: 'KRANTI for Gram Swaraj', to: '/kranti', desc: 'Key to Reform & Adopt Noble Treatment Initiatives (O, P)' },
-      { label: 'Development Car — Slideshow', to: '/development-car', desc: 'Slide show on spiritual teachings (Q)' },
-    ],
-  },
+  { label: 'About Us', to: '/about' },
+  { label: 'Trustee & Journey', to: '/trustee/journey' },
+  { label: 'Board (2020–25)', to: '/trustee/board-2020-2025' },
+  { label: 'Board (2026–27)', to: '/trustee/board' },
+  { label: 'Strategy', to: '/strategy' },
+  { label: 'Concept', to: '/concept' },
+  { label: 'Development Car', to: '/development-car' },
+  { label: 'Philosophy', to: '/philosophy' },
+  { label: 'Initiation', to: '/initiation' },
   {
     // Activities group — content also surfaced as homepage sections.
-    // (Website.docx documents only About Us; Activities grouping follows
-    //  Home page.txt "Home Screen" requirements.)
     label: 'Activities',
     children: [
       { label: 'Activities Calendar', to: '/activities', desc: 'Past & planned events' },
@@ -119,7 +105,7 @@ export const NAV_TREE: NavItem[] = [
     ],
   },
   {
-    // Get Involved — Membership / Donate / Contact (Home page.txt).
+    // Get Involved — Membership / Support / Contact
     label: 'Get Involved',
     children: [
       { label: 'Membership', to: '/membership', desc: 'Join as a member or volunteer' },

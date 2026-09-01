@@ -72,9 +72,9 @@ function DesktopNavItem({
         to={item.to!}
         onClick={onClose}
         className={cn(
-          'inline-flex items-center px-3 lg:px-4 py-2.5 text-sm font-semibold transition-colors border-b-[3px] -mb-px',
+          'inline-flex items-center px-2 lg:px-2.5 xl:px-3 py-2.5 text-[11px] xl:text-xs font-semibold transition-colors border-b-[3px] -mb-px whitespace-nowrap',
           active
-            ? 'text-white border-cream bg-forest-700'
+            ? 'text-white border-cream bg-forest-800'
             : 'text-white/90 border-transparent hover:bg-forest-600 hover:text-white',
         )}
       >
@@ -84,9 +84,9 @@ function DesktopNavItem({
   }
 
   const navItemClasses = cn(
-    'inline-flex items-center text-sm font-semibold transition-colors border-b-[3px] -mb-px select-none',
+    'inline-flex items-center text-[11px] xl:text-xs font-semibold transition-colors border-b-[3px] -mb-px select-none whitespace-nowrap',
     active
-      ? 'text-white border-cream bg-forest-700'
+      ? 'text-white border-cream bg-forest-800'
       : 'text-white/90 border-transparent hover:bg-forest-600 hover:text-white',
   );
 
@@ -98,7 +98,7 @@ function DesktopNavItem({
             to={item.to}
             onClick={onClose}
             onFocus={onOpen}
-            className="inline-flex items-center pl-3 lg:pl-4 pr-1 py-2.5 cursor-pointer text-inherit"
+            className="inline-flex items-center pl-2 lg:pl-2.5 xl:pl-3 pr-1 py-2.5 cursor-pointer text-inherit"
             aria-haspopup="true"
             aria-expanded={isOpen}
           >
@@ -111,7 +111,7 @@ function DesktopNavItem({
               e.stopPropagation();
               onToggle();
             }}
-            className="inline-flex items-center pr-3 lg:pr-4 pl-1 py-2.5 cursor-pointer text-inherit"
+            className="inline-flex items-center pr-2 lg:pr-2.5 xl:pr-3 pl-0.5 py-2.5 cursor-pointer text-inherit"
             aria-label={`Toggle ${item.label} menu`}
           >
             <ChevronDown
@@ -127,7 +127,7 @@ function DesktopNavItem({
           type="button"
           onClick={onToggle}
           onFocus={onOpen}
-          className={cn(navItemClasses, 'gap-1 px-3 lg:px-4 py-2.5 cursor-pointer')}
+          className={cn(navItemClasses, 'gap-1 px-2 lg:px-2.5 xl:px-3 py-2.5 cursor-pointer')}
           aria-haspopup="true"
           aria-expanded={isOpen}
         >
@@ -442,24 +442,34 @@ export function Header() {
       <nav
         ref={navRef}
         onMouseLeave={() => setActiveMenu(null)}
-        className="hidden bg-forest-700 md:block"
+        className="hidden bg-forest-700 md:block border-b border-forest-800 shadow-xs"
         aria-label="Primary"
       >
-        <div className="container-px flex items-center gap-0.5 overflow-visible">
-          {NAV_TREE.map((item, index) => (
-            <DesktopNavItem
-              key={item.label}
-              item={item}
-              pathname={pathname}
-              isLast={index === NAV_TREE.length - 1}
-              isOpen={activeMenu === item.label}
-              onOpen={() => setActiveMenu(item.label)}
-              onClose={() => setActiveMenu(null)}
-              onToggle={() =>
-                setActiveMenu((prev) => (prev === item.label ? null : item.label))
-              }
-            />
-          ))}
+        <div className="container-px flex items-center justify-between gap-1 overflow-x-auto no-scrollbar py-0">
+          <div className="flex items-center gap-0.5 min-w-0">
+            {NAV_TREE.map((item, index) => (
+              <DesktopNavItem
+                key={item.label}
+                item={item}
+                pathname={pathname}
+                isLast={index >= NAV_TREE.length - 2}
+                isOpen={activeMenu === item.label}
+                onOpen={() => setActiveMenu(item.label)}
+                onClose={() => setActiveMenu(null)}
+                onToggle={() =>
+                  setActiveMenu((prev) => (prev === item.label ? null : item.label))
+                }
+              />
+            ))}
+          </div>
+
+          {/* Saffron Highlighted Action Button (Join hands & take action) */}
+          <Link
+            to="/membership"
+            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] xl:text-xs font-extrabold uppercase tracking-wide bg-saffron-500 hover:bg-saffron-600 text-white border-2 border-saffron-300 shadow-sm transition-all hover:scale-105 my-1 ml-2 whitespace-nowrap"
+          >
+            <span>Join hands &amp; take action</span>
+          </Link>
         </div>
       </nav>
 
@@ -467,6 +477,15 @@ export function Header() {
       {open && (
         <div className="border-t border-saffron-100 bg-white md:hidden">
           <nav className="container-px max-h-[75vh] overflow-y-auto py-4" aria-label="Mobile">
+            {/* Mobile Call-to-action button */}
+            <Link
+              to="/membership"
+              onClick={() => setOpen(false)}
+              className="mb-3 block rounded-lg bg-saffron-500 hover:bg-saffron-600 text-white border-2 border-saffron-400 px-3 py-2.5 text-xs font-bold text-center uppercase tracking-wide shadow-sm"
+            >
+              Join hands &amp; take action &rarr;
+            </Link>
+
             {NAV_TREE.map((item) => (
               <MobileNavItem
                 key={item.label}
