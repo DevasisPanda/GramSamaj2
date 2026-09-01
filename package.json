@@ -1,0 +1,10 @@
+{
+  "name": "aird-platform",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "cd Frontend && npm install && npm run build",
+    "dev": "cd Frontend && npm run dev",
+    "preview": "cd Frontend && npm run preview"
+  }
+}
