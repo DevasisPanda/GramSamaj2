@@ -61,6 +61,8 @@ export const NAV_LINKS = [
   { label: 'Development Car', to: '/development-car' },
   { label: 'Philosophy', to: '/philosophy' },
   { label: 'Initiation', to: '/initiation' },
+  { label: 'KRANTI', to: '/kranti' },
+  { label: 'Teachings', to: '/teachings' },
   { label: 'Activities', to: '/activities' },
   { label: 'Join Us', to: '/membership' },
   { label: 'Support', to: '/donate' },
@@ -84,7 +86,17 @@ export interface NavItem {
 
 export const NAV_TREE: NavItem[] = [
   { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about' },
+  {
+    label: 'About Us',
+    to: '/about',
+    children: [
+      { label: 'About AIRD (Overview)', to: '/about', desc: 'Introduction & background' },
+      { label: 'Trust / In Brief', to: '/about/trust', desc: 'Registration, credentials & legal status' },
+      { label: 'Vision', to: '/about/vision', desc: 'Our vision of Gram Swaraj' },
+      { label: 'Aim & Objectives', to: '/about/aim-objectives', desc: 'The Aim (M) & Objectives (N) of AIRD' },
+      { label: 'History of Rural Development', to: '/history', desc: 'A century of rural development (K)' },
+    ],
+  },
   { label: 'Trustee & Journey', to: '/trustee/journey' },
   { label: 'Board (2020–25)', to: '/trustee/board-2020-2025' },
   { label: 'Board (2026–27)', to: '/trustee/board' },
@@ -100,16 +112,21 @@ export const NAV_TREE: NavItem[] = [
       { label: 'Activities Calendar', to: '/activities', desc: 'Past & planned events' },
       { label: 'Photo Gallery', to: '/gallery', desc: 'Moments from the field' },
       { label: 'Videos', to: '/videos', desc: 'Documentary & media' },
+      { label: 'Spiritual Teachings', to: '/teachings', desc: 'Vivekananda, Buddha & the soul (J)' },
+      { label: 'Annual Reports', to: '/annual-report', desc: 'Yearly reports & audited financials (L)' },
       { label: 'Donors Directory', to: '/donors', desc: 'Our supporters' },
       { label: 'Village Directory', to: '/village-directory', desc: 'Model village data' },
     ],
   },
   {
-    // Get Involved — Support / Contact
+    // Get Involved group
     label: 'Get Involved',
     children: [
-      { label: 'Support', to: '/donate', desc: 'Support Gram Swaraj' },
-      { label: 'Contact Us', to: '/contact', desc: 'Reach AIRD' },
+      { label: 'KRANTI for Gram Swaraj', to: '/kranti', desc: 'Key to Reform & Adopt Noble Treatment Initiatives (O, P)' },
+      { label: 'Decentralized Governance', to: '/kranti/decentralized-governance', desc: 'Panchayati Raj & Gram Sabha Guidelines' },
+      { label: 'Development in India', to: '/development-in-india', desc: 'Historical rural development analysis' },
+      { label: 'Support AIRD', to: '/donate', desc: 'Support Gram Swaraj initiatives' },
+      { label: 'Contact Us', to: '/contact', desc: 'Reach AIRD Lucknow headquarters' },
     ],
   },
 ];
