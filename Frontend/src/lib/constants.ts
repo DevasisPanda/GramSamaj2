@@ -105,10 +105,9 @@ export const NAV_TREE: NavItem[] = [
     ],
   },
   {
-    // Get Involved — Membership / Support / Contact
+    // Get Involved — Support / Contact
     label: 'Get Involved',
     children: [
-      { label: 'Membership', to: '/membership', desc: 'Join as a member or volunteer' },
       { label: 'Support', to: '/donate', desc: 'Support Gram Swaraj' },
       { label: 'Contact Us', to: '/contact', desc: 'Reach AIRD' },
     ],
