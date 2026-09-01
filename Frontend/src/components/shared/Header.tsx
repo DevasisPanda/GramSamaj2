@@ -428,16 +428,21 @@ export function Header() {
 
           {/* Right-side logos & Mobile hamburger */}
           <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
-            {/* Logos for Sampoorna Swaraj Kranti & Bharat Nirman */}
+            {/* Logos: Sampoorna Swaraj Kranti, Bharat Nirman, VB-GRAM G Act */}
             <div className="flex items-center gap-2 sm:gap-3">
               <img
                 src="/image1.jpg"
                 alt="Sampoorna Swaraj Kranti"
-                className="h-9 sm:h-11 md:h-13 w-auto object-contain drop-shadow-xs"
+                className="h-8 sm:h-10 md:h-12 w-auto object-contain drop-shadow-xs"
               />
               <img
                 src="/image2.jpg"
                 alt="Bharat Nirman"
+                className="h-7 sm:h-9 md:h-11 w-auto object-contain drop-shadow-xs"
+              />
+              <img
+                src="/vb-gram-g-act.png"
+                alt="VB-GRAM G Act Viksit Bharat 2047"
                 className="h-8 sm:h-10 md:h-12 w-auto object-contain drop-shadow-xs"
               />
             </div>
