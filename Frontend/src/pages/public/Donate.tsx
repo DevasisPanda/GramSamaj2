@@ -41,7 +41,7 @@ export default function Donate() {
       return;
     }
     if (!form.amount || form.amount <= 0) {
-      toast.error('Please enter a valid donation amount');
+      toast.error('Please enter a valid support amount');
       return;
     }
     const key = import.meta.env.VITE_RAZORPAY_KEY_ID;
@@ -54,7 +54,7 @@ export default function Donate() {
         paymentMode: 'RAZORPAY',
         purpose: form.purpose,
       });
-      toast.success(`Thank you, ${form.name}! Your donation pledge of ₹${form.amount} has been registered.`);
+      toast.success(`Thank you, ${form.name}! Your support contribution of ₹${form.amount} has been registered.`);
       return;
     }
 
@@ -92,14 +92,14 @@ export default function Donate() {
   return (
     <>
       <PageHero
-        title="Donate Now"
+        title="Support AIRD"
         subtitle="Your contribution is a blessing that strengthens the journey towards Gram Swaraj. Every rupee is accounted for with full transparency."
       >
         <p className="text-sm font-medium text-saffron-700 italic bg-white/60 inline-block rounded-lg px-3 py-1.5">
           &ldquo;Service to Humanity is the Highest Worship.&rdquo;
         </p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'Get Involved' }, { label: 'Donate' }]} />
+      <Breadcrumb items={[{ label: 'Get Involved' }, { label: 'Support' }]} />
 
       <section className="section-py">
         <div className="container-px grid gap-8 lg:grid-cols-2">
@@ -224,7 +224,7 @@ export default function Donate() {
                 {createDonor.isPending ? (
                   <><Loader2 className="h-4 w-4 animate-spin" /> Processing...</>
                 ) : (
-                  <>Donate ₹{form.amount.toLocaleString('en-IN')} <Heart className="h-4 w-4" /></>
+                  <>Support ₹{form.amount.toLocaleString('en-IN')} <Heart className="h-4 w-4" /></>
                 )}
               </Button>
               <p className="text-center text-[11px] text-ink/40">

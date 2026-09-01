@@ -8,7 +8,7 @@ const QUICK_LINKS = [
   { title: 'Core Philosophy', desc: 'Humanity, Service & Six Pillars', to: '/philosophy' },
   { title: 'Spiritual Teachings', desc: 'Vivekananda & Buddha Guidance', to: '/teachings' },
   { title: 'Volunteer / Membership', desc: 'Gram Swaraj Youth Forum', to: '/membership' },
-  { title: 'Donate / Support AIRD', desc: 'Support Rural Governance', to: '/donate' },
+  { title: 'Support AIRD', desc: 'Support Rural Governance', to: '/donate' },
   { title: 'Contact Headquarters', desc: 'Lucknow Office & Enquiries', to: '/contact' },
 ];
 

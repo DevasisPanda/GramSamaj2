@@ -56,7 +56,7 @@ export const NAV_LINKS = [
   { label: 'Philosophy', to: '/philosophy' },
   { label: 'KRANTI', to: '/kranti' },
   { label: 'Join Us', to: '/membership' },
-  { label: 'Donate', to: '/donate' },
+  { label: 'Support', to: '/donate' },
 ] as const;
 
 /**
@@ -123,7 +123,7 @@ export const NAV_TREE: NavItem[] = [
     label: 'Get Involved',
     children: [
       { label: 'Membership', to: '/membership', desc: 'Join as a member or volunteer' },
-      { label: 'Donate', to: '/donate', desc: 'Support Gram Swaraj' },
+      { label: 'Support', to: '/donate', desc: 'Support Gram Swaraj' },
       { label: 'Contact Us', to: '/contact', desc: 'Reach AIRD' },
     ],
   },

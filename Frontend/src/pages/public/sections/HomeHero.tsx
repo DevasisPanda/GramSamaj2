@@ -58,7 +58,7 @@ export function HomeHero() {
               </Link>
               <Link to="/donate">
                 <Button size="lg" variant="outline" className="gap-2">
-                  <HandHeart className="h-4 w-4" /> Donate Now
+                  <HandHeart className="h-4 w-4" /> Support
                 </Button>
               </Link>
             </div>

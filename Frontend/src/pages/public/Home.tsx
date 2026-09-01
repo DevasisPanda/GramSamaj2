@@ -293,7 +293,7 @@ function JoinHandsBanner() {
           &raquo; Join / Volunteer Membership
         </Link>
         <Link to="/donate" className="govt-link">
-          &raquo; Donate to Support AIRD
+          &raquo; Support AIRD
         </Link>
         <Link to="/contact" className="govt-link">
           &raquo; Contact Lucknow Office

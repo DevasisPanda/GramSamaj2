@@ -54,9 +54,9 @@ export function HeroDandi() {
           </Link>
           <Link
             to="/donate"
-            className="bg-forest-800 text-white px-3.5 py-1.5 sm:px-4 sm:py-2 border border-forest-900 hover:bg-forest-900 transition-colors shadow-sm"
+            className="bg-forest-800 text-white px-4 py-2 border border-forest-900 hover:bg-forest-900 transition-colors shadow-sm"
           >
-            &raquo; Support / Donate
+            &raquo; Support AIRD
           </Link>
           <Link
             to="/about"

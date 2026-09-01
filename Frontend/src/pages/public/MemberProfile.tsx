@@ -233,7 +233,7 @@ export default function MemberProfile() {
                 <CardContent className="grid grid-cols-2 gap-3">
                   <Link to="/donate">
                     <Button className="w-full bg-saffron-600 hover:bg-saffron-700 text-white justify-start" size="sm">
-                      <Heart className="mr-2 h-4 w-4" /> Donate Now
+                      <Heart className="mr-2 h-4 w-4" /> Support
                     </Button>
                   </Link>
                   <Link to="/activities">
