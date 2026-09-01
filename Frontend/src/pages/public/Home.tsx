@@ -15,6 +15,7 @@ import { HumanitySection } from './sections/HumanitySection';
 import { KrantiPreview } from './sections/KrantiPreview';
 import { QuickLinksGrid } from './sections/QuickLinksGrid';
 import { NoticeBoard } from './sections/NoticeBoard';
+import { FeatureBannerSlider } from './sections/FeatureBannerSlider';
 import {
   AIRD_NARRATIVE, DEMO_VILLAGE, DEV_INDIA_HOME, WHO_CAN_JOIN,
   GOAL_OF_SOUL, DEV_CAR_HOME,
@@ -465,6 +466,9 @@ export default function Home() {
             <HumanitySection />
           </div>
         </div>
+
+        {/* FEATURE BANNER SLIDER */}
+        <FeatureBannerSlider />
 
         {/* ROW 4: FULL-WIDTH DEDICATED VILLAGE DIRECTORY */}
         <div className="bg-white border border-forest-900 p-1.5 sm:p-2 w-full min-w-0 overflow-hidden box-border">
