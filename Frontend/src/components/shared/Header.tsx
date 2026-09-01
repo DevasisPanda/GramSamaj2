@@ -145,14 +145,14 @@ function DesktopNavItem({
       {isOpen && (
         <div
           className={cn(
-            'absolute top-full z-50 pt-2 transition-all duration-150',
+            'absolute top-full z-[100] pt-1 transition-all duration-150',
             isLast ? 'right-0 left-auto' : 'left-0',
             (item.children ?? []).length > 7
               ? 'w-[560px] max-w-[calc(100vw-2rem)]'
               : 'w-[280px] max-w-[calc(100vw-2rem)]',
           )}
         >
-          <div className="overflow-hidden rounded-b-xl border border-saffron-100 bg-white shadow-xl ring-1 ring-black/5">
+          <div className="overflow-hidden rounded-b-xl border border-saffron-200 bg-white shadow-2xl ring-1 ring-black/10">
             {item.to && (
               <Link
                 to={item.to}
@@ -442,11 +442,11 @@ export function Header() {
       <nav
         ref={navRef}
         onMouseLeave={() => setActiveMenu(null)}
-        className="hidden bg-forest-700 md:block border-b border-forest-800 shadow-xs"
+        className="hidden bg-forest-700 md:block border-b border-forest-800 shadow-xs relative z-50 overflow-visible"
         aria-label="Primary"
       >
-        <div className="container-px flex items-center justify-between gap-1 overflow-x-auto no-scrollbar py-0">
-          <div className="flex items-center gap-0.5 min-w-0">
+        <div className="container-px flex items-center justify-between gap-1 overflow-visible py-0">
+          <div className="flex items-center gap-0.5 flex-wrap xl:flex-nowrap overflow-visible">
             {NAV_TREE.map((item, index) => (
               <DesktopNavItem
                 key={item.label}
@@ -466,7 +466,7 @@ export function Header() {
           {/* Saffron Highlighted Action Button (Join hands & take action) */}
           <Link
             to="/membership"
-            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] xl:text-xs font-extrabold uppercase tracking-wide bg-saffron-500 hover:bg-saffron-600 text-white border-2 border-saffron-300 shadow-sm transition-all hover:scale-105 my-1 ml-2 whitespace-nowrap"
+            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] xl:text-xs font-extrabold uppercase tracking-wide bg-saffron-500 hover:bg-saffron-600 text-white border-2 border-saffron-300 shadow-sm transition-all hover:scale-105 my-1 ml-1 whitespace-nowrap"
           >
             <span>Join hands &amp; take action</span>
           </Link>
