@@ -1,6 +1,7 @@
 import { ContentPage } from '@/components/shared/ContentPage';
 import type { ContentSection } from '@/data/content';
 import { DECENTRALISED_GOVERNANCE } from '@/data/homepage';
+import { PROJECT_SUB_NAV } from '@/lib/subNavTree';
 
 export default function DecentralizedGovernance() {
   const sections: ContentSection[] = [
@@ -13,7 +14,8 @@ export default function DecentralizedGovernance() {
       title="Decentralized Process of Governance"
       subtitle="The 73rd Constitutional Amendment, Panchayati Raj, and the unfinished promise of Gram Swaraj."
       gradient="forest"
-      crumbs={[{ label: 'KRANTI', to: '/kranti' }, { label: 'Decentralized Governance' }]}
+      crumbs={[{ label: 'Project', to: '/kranti' }, { label: 'Decentralized Governance' }]}
+      subNavItems={PROJECT_SUB_NAV}
       sections={sections}
     />
   );

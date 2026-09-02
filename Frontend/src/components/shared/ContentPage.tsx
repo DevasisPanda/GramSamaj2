@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import { PageHero } from './PageHero';
 import { Breadcrumb } from './Breadcrumb';
 import type { Crumb } from './Breadcrumb';
+import { SubNavPills } from './SubNavPills';
+import type { SubNavPillItem } from './SubNavPills';
 import type { ContentSection } from '@/data/content';
 
 interface ContentPageProps {
@@ -9,6 +11,8 @@ interface ContentPageProps {
   subtitle?: string;
   gradient?: 'saffron' | 'forest';
   crumbs: Crumb[];
+  /** In-page sub-navigation pills rendered above content */
+  subNavItems?: SubNavPillItem[];
   /** Optional node rendered at the top of the body (e.g. a callout). */
   intro?: ReactNode;
   /** Structured content sections rendered as readable prose. */
@@ -21,14 +25,14 @@ interface ContentPageProps {
 
 /**
  * Standard content-page layout for AIRD's documented pages:
- * hero banner + breadcrumb + accessible prose body. Keeps every page
- * visually consistent and reduces per-page boilerplate.
+ * hero banner + breadcrumb + in-page subnav + accessible prose body.
  */
 export function ContentPage({
   title,
   subtitle,
   gradient = 'saffron',
   crumbs,
+  subNavItems,
   intro,
   sections,
   children,
@@ -42,7 +46,8 @@ export function ContentPage({
       <Breadcrumb items={crumbs} />
 
       <article className="container-px section-py">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-4xl">
+          {subNavItems && <SubNavPills items={subNavItems} />}
           {sections?.map((s, i) => (
             <section key={i} className="card-surface bg-white p-5 sm:p-7 rounded-xl shadow-md border border-forest-100 mb-6">
               {s.heading && (

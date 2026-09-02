@@ -1,6 +1,8 @@
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import { TRUSTEES_2026_2027, MANAGING_TRUSTEE } from '@/data/trustees';
+import { TRUST_SUB_NAV } from '@/lib/subNavTree';
 
 const POSITION_COLORS: Record<string, string> = {
   Convener: 'bg-saffron-100 text-saffron-800',
@@ -22,14 +24,17 @@ export default function BoardTrustees() {
   return (
     <>
       <PageHero
-        title="Board of Trustees (2026–27)"
+        title="Board of Trustees (2026–2027)"
         subtitle={`Financial Year 2026–2027 • Managing Trustee: ${MANAGING_TRUSTEE.name}`}
         gradient="saffron"
       />
-      <Breadcrumb items={[{ label: 'Trustee' }, { label: 'Board of Trustees (2026–27)' }]} />
+      <Breadcrumb items={[{ label: 'Trust', to: '/about/trust' }, { label: 'Board of Trustee (2026–2027)' }]} />
 
       <section className="container-px section-py">
         <div className="mx-auto max-w-4xl">
+          {/* Sub-menu bar for Trust section */}
+          <SubNavPills items={TRUST_SUB_NAV} />
+
           {/* Managing Trustee highlight */}
           <div className="mb-8 rounded-2xl border-2 border-saffron-300 bg-white shadow-md p-6">
             <h2 className="text-lg font-bold text-saffron-800">Managing Trustee</h2>

@@ -1,6 +1,7 @@
 import { ContentPage } from '@/components/shared/ContentPage';
 import type { ContentSection } from '@/data/content';
 import { DEV_INDIA_HOME } from '@/data/homepage';
+import { KRANTI_SUB_NAV } from '@/lib/subNavTree';
 
 /**
  * History of Rural Development — full documented timeline from
@@ -34,7 +35,8 @@ export default function History() {
       title="History of Rural Development"
       subtitle="A century of rural development in India — from the 1870s to today."
       gradient="saffron"
-      crumbs={[{ label: 'Philosophy', to: '/philosophy' }, { label: 'History of Rural Development' }]}
+      crumbs={[{ label: 'KRANTI', to: '/concept' }, { label: 'History of rural development' }]}
+      subNavItems={KRANTI_SUB_NAV}
       sections={sections}
     />
   );

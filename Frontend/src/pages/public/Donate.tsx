@@ -99,7 +99,7 @@ export default function Donate() {
           &ldquo;Service to Humanity is the Highest Worship.&rdquo;
         </p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'Get Involved' }, { label: 'Support' }]} />
+      <Breadcrumb items={[{ label: 'Join Hands & Take Action', to: '/membership' }, { label: 'Support' }]} />
 
       <section className="section-py">
         <div className="container-px grid gap-8 lg:grid-cols-2">

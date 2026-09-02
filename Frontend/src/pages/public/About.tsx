@@ -4,9 +4,11 @@ import {
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { Link } from 'react-router-dom';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import { AIRD, SERVICE_PRINCIPLE } from '@/lib/constants';
 import { AIRD_AIM, AIRD_OBJECTIVES, FOUNDER, BIOGRAPHY_TIMELINE } from '@/data/about';
 import { Badge } from '@/components/ui/badge';
+import { ABOUT_SUB_NAV } from '@/lib/subNavTree';
 
 export default function About() {
   return (
@@ -18,24 +20,11 @@ export default function About() {
       >
         <p className="text-sm font-medium text-saffron-700 italic">&ldquo;{SERVICE_PRINCIPLE}&rdquo;</p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'About Us' }]} />
+      <Breadcrumb items={[{ label: 'About us' }]} />
 
       {/* Quick links to sub-pages */}
-      <section className="container-px pt-3 pb-4">
-        <div className="card-surface bg-white p-3 rounded-xl shadow-sm flex flex-wrap gap-1.5 sm:gap-2">
-          <Link to="/about/trust" className="rounded-full bg-saffron-100 border border-saffron-300 px-3 py-1 text-xs font-semibold text-saffron-800 hover:bg-saffron-200 transition-colors">
-            Trust / In Brief
-          </Link>
-          <Link to="/about/vision" className="rounded-full bg-saffron-100 border border-saffron-300 px-3 py-1 text-xs font-semibold text-saffron-800 hover:bg-saffron-200 transition-colors">
-            Vision
-          </Link>
-          <Link to="/about/aim-objectives" className="rounded-full bg-saffron-100 border border-saffron-300 px-3 py-1 text-xs font-semibold text-saffron-800 hover:bg-saffron-200 transition-colors">
-            Aim &amp; Objectives
-          </Link>
-          <Link to="/trustee/board" className="rounded-full bg-forest-100 border border-forest-300 px-3 py-1 text-xs font-semibold text-forest-800 hover:bg-forest-200 transition-colors">
-            Board of Trustees
-          </Link>
-        </div>
+      <section className="container-px pt-6 pb-0">
+        <SubNavPills items={ABOUT_SUB_NAV} />
       </section>
 
       {/* AIRD intro */}

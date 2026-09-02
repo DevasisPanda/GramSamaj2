@@ -26,7 +26,7 @@ export default function AnnualReportDetail() {
     <>
       <PageHero
         title={report.label}
-        subtitle={`Appropriate Institute of Rural Development \u2022 ${report.year}`}
+        subtitle={`Appropriate Institute of Rural Development — ${report.year}`}
         gradient="saffron"
       >
         <p className="max-w-2xl text-sm font-medium text-saffron-700 italic">

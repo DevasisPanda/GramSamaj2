@@ -46,7 +46,7 @@ export default function Contact() {
         subtitle="Reach AIRD — we welcome individuals and institutions to join hands for Gram Swaraj."
         gradient="saffron"
       />
-      <Breadcrumb items={[{ label: 'Get Involved' }, { label: 'Contact Us' }]} />
+      <Breadcrumb items={[{ label: 'Join Hands & Take Action', to: '/membership' }, { label: 'Contact Us' }]} />
 
       <section className="container-px section-py">
         <div className="mx-auto grid gap-10 lg:grid-cols-[1fr_1.2fr]">

@@ -6,9 +6,11 @@ import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import {
   PHILOSOPHY_INTRO, PHILOSOPHY_GUIDING_PRINCIPLE, PHILOSOPHY_PILLARS, THREE_WORLDS,
 } from '@/data/philosophy';
+import { TEACHINGS_SUB_NAV } from '@/lib/subNavTree';
 
 const PILLAR_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   Heart, Sparkles, HandHeart: Heart, Brain, Users, Leaf,
@@ -29,11 +31,13 @@ export default function Philosophy() {
           &ldquo;{PHILOSOPHY_GUIDING_PRINCIPLE}&rdquo;
         </p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'About Us', to: '/about' }, { label: 'Philosophy' }]} />
+      <Breadcrumb items={[{ label: 'Teachings', to: '/teachings' }, { label: 'Philosophy' }]} />
 
       {/* Six pillars */}
       <section className="section-py">
         <div className="container-px">
+          <SubNavPills items={TEACHINGS_SUB_NAV} />
+
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-gradient-saffron">
             Six Pillars of Our Philosophy
           </h2>

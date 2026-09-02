@@ -8,7 +8,6 @@ import { ActivitiesCalendar } from './sections/ActivitiesCalendar';
 import { DonorsRoll } from './sections/DonorsRoll';
 import { VillageDirectory } from './sections/VillageDirectory';
 import { VideoCarousel } from './sections/VideoCarousel';
-import { HeroDandi } from './sections/HeroDandi';
 import { PastActivities } from './sections/PastActivities';
 import { GramSwarajSection } from './sections/GramSwarajSection';
 import { HumanitySection } from './sections/HumanitySection';
@@ -451,8 +450,8 @@ export default function Home() {
 
       {/* 2. Main Portal Container */}
       <div className="container-px py-1 space-y-1.5 w-full max-w-full min-w-0">
-        {/* ROW 1: FULL-WIDTH HERO — Dandi March background */}
-        <HeroDandi />
+        {/* ROW 1: TOP HERO BANNER SLIDER — Key Initiatives & Feature Highlights */}
+        <FeatureBannerSlider />
 
         {/* ROW 2: ABOUT AIRD — first major informational section */}
         <AboutSection />
@@ -466,9 +465,6 @@ export default function Home() {
             <HumanitySection />
           </div>
         </div>
-
-        {/* FEATURE BANNER SLIDER */}
-        <FeatureBannerSlider />
 
         {/* ROW 4: FULL-WIDTH DEDICATED VILLAGE DIRECTORY */}
         <div className="bg-white border border-forest-900 p-1.5 sm:p-2 w-full min-w-0 overflow-hidden box-border">

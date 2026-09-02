@@ -7,6 +7,8 @@ function isHeading(p: string): boolean {
   return p.length < 60 && !p.endsWith('.') && !p.endsWith(',') && !p.endsWith(';');
 }
 
+import { KRANTI_SUB_NAV } from '@/lib/subNavTree';
+
 export default function Concept() {
   const sections: ContentSection[] = [];
   for (const p of CONCEPT_PARAS) {
@@ -30,7 +32,8 @@ export default function Concept() {
       title="Concept"
       subtitle="The case for a live demonstration village of Gram Swaraj."
       gradient="forest"
-      crumbs={[{ label: 'Philosophy', to: '/philosophy' }, { label: 'Concept' }]}
+      crumbs={[{ label: 'KRANTI', to: '/concept' }, { label: 'Concept' }]}
+      subNavItems={KRANTI_SUB_NAV}
       sections={merged}
     />
   );

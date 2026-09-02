@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import { PHILOSOPHY_FULL } from '@/data/docFull';
+import { TEACHINGS_SUB_NAV } from '@/lib/subNavTree';
 
 /**
  * Complete text of "Philosophy.docx" — the /philosophy page shows the
@@ -12,27 +14,32 @@ export default function PhilosophyFull() {
   return (
     <>
       <PageHero
-        title="Philosophy \u2014 Complete Text"
+        title="Philosophy — Complete Text"
         subtitle="The full documented philosophy of AIRD, word for word."
         gradient="forest"
       />
       <Breadcrumb
         items={[
-          { label: 'About Us', to: '/about' },
+          { label: 'Teachings', to: '/teachings' },
           { label: 'Philosophy', to: '/philosophy' },
           { label: 'Complete Text' },
         ]}
       />
 
       <article className="container-px section-py">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-4xl space-y-6">
+          <SubNavPills items={TEACHINGS_SUB_NAV} />
           {PHILOSOPHY_FULL.map((s, i) => (
-            <section key={i} className="prose-aird mb-8">
+            <section key={i} className="card-surface bg-white p-5 sm:p-7 rounded-xl shadow-md border border-forest-100">
               {s.heading && (
-                <h2 className="mb-3 text-xl font-bold text-saffron-800 md:text-2xl">{s.heading}</h2>
+                <h2 className="mb-3 text-xl font-bold text-saffron-900 md:text-2xl border-b border-saffron-100 pb-2 break-words">
+                  {s.heading}
+                </h2>
               )}
               {s.paragraphs.map((p, j) => (
-                <p key={j} className="mb-4 leading-relaxed text-ink/80">{p}</p>
+                <p key={j} className="mb-3 leading-relaxed text-ink/85 text-sm sm:text-base break-words">
+                  {p}
+                </p>
               ))}
             </section>
           ))}

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { FileText, ChevronDown, ArrowLeft } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import { KRANTI_DOCUMENT, type DocSection } from '@/data/docFull';
 import { cn } from '@/lib/utils';
+import { PROJECT_SUB_NAV } from '@/lib/subNavTree';
 
 /** Pretty chip labels for the numbered document sections. */
 function shortLabel(h?: string): string {
@@ -29,15 +31,19 @@ export default function KrantiDocument() {
   return (
     <>
       <PageHero
-        title="Project KRANTI \u2014 Full Document"
-        subtitle="Key to Reform & Adopt Noble Treatment Initiatives \u2014 complete project document."
+        title="Project KRANTI — Full Document"
+        subtitle="Key to Reform & Adopt Noble Treatment Initiatives — complete project document."
         gradient="forest"
       >
         <p className="inline-flex items-center gap-1.5 rounded-lg bg-white/70 px-3 py-1.5 text-sm font-medium text-forest-800">
           <FileText className="h-4 w-4" /> Complete verbatim text &bull; {KRANTI_DOCUMENT.length} sections
         </p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'KRANTI', to: '/kranti' }, { label: 'Full Document' }]} />
+      <Breadcrumb items={[{ label: 'Project', to: '/kranti' }, { label: 'Project Blueprint & Document' }]} />
+
+      <div className="container-px pt-4 max-w-4xl mx-auto">
+        <SubNavPills items={PROJECT_SUB_NAV} />
+      </div>
 
       {/* Sticky section chip-nav */}
       <div className="sticky top-16 z-30 border-b border-saffron-100 bg-[#FDF8F0]/95 backdrop-blur">

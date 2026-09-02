@@ -8,10 +8,13 @@ import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import { useMoonCountdown } from '@/hooks/useMoonCountdown';
 import { KRANTI, KRANTI_PHASES, KRANTI_CONTINUOUS } from '@/data/kranti';
 import { formatDate } from '@/lib/utils';
 import { cn } from '@/lib/utils';
+
+import { PROJECT_SUB_NAV } from '@/lib/subNavTree';
 
 export default function Kranti() {
   const [activePhase, setActivePhase] = useState(1);
@@ -34,11 +37,13 @@ export default function Kranti() {
           </span>
         </div>
       </PageHero>
-      <Breadcrumb items={[{ label: 'KRANTI' }]} />
+      <Breadcrumb items={[{ label: 'Project', to: '/kranti' }, { label: 'Project KRANTI' }]} />
 
       {/* Aim */}
       <section className="section-py">
-        <div className="container-px">
+        <div className="container-px max-w-5xl mx-auto space-y-8">
+          <SubNavPills items={PROJECT_SUB_NAV} />
+
           <Card className="mx-auto max-w-4xl border-l-4 border-l-forest-600">
             <CardHeader>
               <CardTitle className="text-forest-800">Aim of {KRANTI.shortName}</CardTitle>

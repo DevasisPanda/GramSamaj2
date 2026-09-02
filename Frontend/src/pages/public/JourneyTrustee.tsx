@@ -2,122 +2,118 @@ import {
   Accordion, AccordionItem, AccordionTrigger, AccordionContent,
 } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
-import { IdCard, Briefcase, UserCheck, BookOpen } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { UserCheck, BookOpen, Compass } from 'lucide-react';
 import { ContentPage } from '@/components/shared/ContentPage';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import { JOURNEY_ROLE_PARAS, JOURNEY_AUTOBIOGRAPHY } from '@/data/journeyFull';
-import { TRUSTEE_BIO, TRUSTEE_CAREER } from '@/data/docFull';
+import { TRUST_SUB_NAV } from '@/lib/subNavTree';
 
 /**
- * Combined Trustee Profile & Journey — verbatim from "Trustee.docx" (Doc A)
- * and "Journey of trustee1.docx" (Doc B):
- * 1. Founder & Managing Trustee Biodata + Career Background (Doc A)
- * 2. Role of the Trustee (Doc B)
- * 3. In His Own Words — Complete Autobiography (Doc B)
+ * Journey of Trustee — Dedicated biographical narrative from
+ * "Journey of trustee1.docx" & "Journey of trustee.docx" (Doc B):
+ * 1. Role & Philosophy of the Trustee
+ * 2. In His Own Words — Complete Autobiography (1958 to Present)
  */
 export default function JourneyTrustee() {
   return (
     <ContentPage
-      title="The Trustee — Profile & Journey"
-      subtitle="Kamlesh Chandra Tripathi — Founder & Managing Trustee, Appropriate Institute of Rural Development (AIRD)."
+      title="Journey of the Trustee"
+      subtitle="The inspiring life, spiritual awakening, and lifelong dedication of Kamlesh Chandra Tripathi to Gram Swaraj."
       gradient="saffron"
-      crumbs={[{ label: 'About Us', to: '/about' }, { label: 'Trustee & Journey' }]}
+      crumbs={[
+        { label: 'Trust', to: '/about/trust' },
+        { label: 'Journey of Trustee' },
+      ]}
     >
-      <section className="prose-aird mx-auto max-w-3xl space-y-8">
-        {/* SECTION 1: BIODATA & CAREER (DOC A) */}
-        <div>
-          <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-saffron-900 md:text-2xl border-b border-saffron-200 pb-2">
-            <IdCard className="h-5 w-5 text-saffron-600" /> Trustee Biodata (Document A)
-          </h2>
-          <Card className="border-l-4 border-l-saffron-500 bg-white">
-            <CardContent className="pt-6">
-              <dl className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
-                {TRUSTEE_BIO.map((row) => (
-                  <div key={row.k} className="rounded-lg bg-saffron-50/50 px-3 py-2">
-                    <dt className="text-[11px] font-semibold uppercase tracking-wide text-ink/45">
-                      {row.k}
-                    </dt>
-                    <dd className="mt-0.5 break-words text-sm font-medium text-ink">{row.v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </CardContent>
-          </Card>
-        </div>
+      <section className="prose-aird mx-auto max-w-4xl space-y-8">
+        {/* In-Page Sub-Menu Bar */}
+        <SubNavPills items={TRUST_SUB_NAV} />
 
-        {/* SECTION 2: PROFESSIONAL CAREER (DOC A) */}
-        <div>
-          <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-forest-900 md:text-2xl border-b border-forest-200 pb-2">
-            <Briefcase className="h-5 w-5 text-forest-600" /> Background &amp; Professional Journey
-          </h2>
-          <ol className="space-y-3">
-            {TRUSTEE_CAREER.map((c, i) => (
-              <li key={i} className="flex gap-3 rounded-xl border border-saffron-100 bg-white p-4">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-forest-100 text-xs font-bold text-forest-700">
-                  {i + 1}
-                </span>
-                <span className="pt-1 leading-relaxed text-ink/80">{c}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        {/* SECTION 3: ROLE OF THE TRUSTEE (DOC B) */}
-        <div>
-          <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-saffron-900 md:text-2xl border-b border-saffron-200 pb-2">
-            <UserCheck className="h-5 w-5 text-saffron-600" /> Role &amp; Philosophy of the Trustee (Document B)
-          </h2>
-          <p className="mb-5 text-lg font-semibold leading-relaxed text-forest-900 border-l-4 border-l-saffron-500 bg-saffron-50/70 p-4 rounded-r-lg">
-            {JOURNEY_ROLE_PARAS[0]}
-          </p>
-          {JOURNEY_ROLE_PARAS.slice(1, 3).map((p, i) => (
-            <p key={i} className="mb-5 leading-relaxed text-ink/85 font-normal">{p}</p>
-          ))}
-
-          <Accordion type="single" collapsible className="mb-8 rounded-xl border border-saffron-200 bg-saffron-50/40 px-4">
-            <AccordionItem value="role-full" className="border-0">
-              <AccordionTrigger className="text-sm font-semibold text-saffron-800 hover:no-underline">
-                Read the full description of a trustee&rsquo;s role &raquo;
-              </AccordionTrigger>
-              <AccordionContent className="space-y-4 pt-2">
-                {JOURNEY_ROLE_PARAS.slice(3).map((p, i) => (
-                  <p key={i} className="leading-relaxed text-ink/80">{p}</p>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-
-        {/* SECTION 4: AUTOBIOGRAPHY (DOC B) */}
-        <div>
-          <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-saffron-900 md:text-2xl border-b border-saffron-200 pb-2">
-            <BookOpen className="h-5 w-5 text-saffron-600" /> In His Own Words — The Journey (1958 to Present)
-          </h2>
-          {JOURNEY_AUTOBIOGRAPHY.slice(0, 3).map((p, i) => (
-            <p key={i} className="mb-5 leading-relaxed text-ink/85">{p}</p>
-          ))}
-
-          <Accordion type="single" collapsible className="rounded-xl border border-saffron-200 bg-saffron-50/40 px-4">
-            <AccordionItem value="autobiography-full" className="border-0">
-              <AccordionTrigger className="text-sm font-semibold text-saffron-800 hover:no-underline">
-                Read the complete journey &mdash; 1958 to the founding of AIRD &raquo;
-              </AccordionTrigger>
-              <AccordionContent className="space-y-4 pt-2">
-                {JOURNEY_AUTOBIOGRAPHY.slice(3).map((p, i) => (
-                  <p key={i} className="leading-relaxed text-ink/80">{p}</p>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-
-        {/* Next / Previous Navigation */}
-        <div className="flex flex-wrap justify-between gap-3 border-t border-saffron-100 pt-6 text-sm">
-          <Link to="/about" className="govt-link">
-            &larr; About AIRD
+        {/* Hero Narrative Banner */}
+        <div className="card-surface bg-gradient-to-r from-forest-900 to-forest-950 text-white p-6 sm:p-8 rounded-xl shadow-md border border-saffron-300/30 flex flex-col md:flex-row items-center gap-6">
+          <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-saffron-500/20 border-2 border-saffron-400 flex items-center justify-center shrink-0">
+            <Compass className="h-8 w-8 sm:h-10 sm:w-10 text-saffron-300" />
+          </div>
+          <div className="space-y-1.5 text-center md:text-left flex-1">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
+              A Lifelong Commitment to Village Empowerment
+            </h2>
+            <p className="text-xs sm:text-sm text-white/80 leading-relaxed max-w-2xl">
+              From early spiritual guidance under disciples of Maharishi Mahesh Yogi and associates of Dr. E.F. Schumacher, to grassroots participatory action research in the villages of Uttar Pradesh.
+            </p>
+          </div>
+          <Link
+            to="/trustee/profile"
+            className="shrink-0 inline-flex items-center gap-1.5 bg-saffron-600 hover:bg-saffron-700 text-white text-xs font-bold px-4 py-2 rounded-lg border border-saffron-400 transition-colors shadow-sm"
+          >
+            <span>View Factual Profile &rarr;</span>
           </Link>
-          <Link to="/trustee/board" className="govt-link">
-            Board of Trustees (FY 2026–27) &rarr;
+        </div>
+
+        {/* SECTION 1: ROLE OF THE TRUSTEE (DOC B) */}
+        <div className="card-surface bg-white p-6 sm:p-8 rounded-xl shadow-md border border-saffron-100">
+          <h2 className="mb-4 flex items-center gap-2 text-xl sm:text-2xl font-bold text-forest-950 border-b border-saffron-200 pb-3">
+            <UserCheck className="h-6 w-6 text-saffron-600 shrink-0" />
+            <span>Role &amp; Philosophy of the Trustee</span>
+          </h2>
+          <div className="mb-5 border-l-4 border-l-saffron-500 bg-saffron-50/80 p-4 rounded-r-lg">
+            <p className="text-sm sm:text-base font-semibold leading-relaxed text-forest-950 break-words">
+              {JOURNEY_ROLE_PARAS[0]}
+            </p>
+          </div>
+          <div className="space-y-4 text-xs sm:text-sm text-ink/85 leading-relaxed">
+            {JOURNEY_ROLE_PARAS.slice(1, 3).map((p, i) => (
+              <p key={i} className="break-words">{p}</p>
+            ))}
+          </div>
+
+          <Accordion type="single" collapsible className="mt-6 rounded-xl border border-saffron-200 bg-saffron-50/40 px-4">
+            <AccordionItem value="role-full" className="border-0">
+              <AccordionTrigger className="text-xs sm:text-sm font-bold text-saffron-800 hover:no-underline">
+                Read the complete principles &amp; role of a trustee &raquo;
+              </AccordionTrigger>
+              <AccordionContent className="space-y-4 pt-3 text-xs sm:text-sm text-ink/80 leading-relaxed border-t border-saffron-200/60">
+                {JOURNEY_ROLE_PARAS.slice(3).map((p, i) => (
+                  <p key={i} className="break-words">{p}</p>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+
+        {/* SECTION 2: AUTOBIOGRAPHY (DOC B) */}
+        <div className="card-surface bg-white p-6 sm:p-8 rounded-xl shadow-md border border-forest-100">
+          <h2 className="mb-4 flex items-center gap-2 text-xl sm:text-2xl font-bold text-forest-950 border-b border-forest-200 pb-3">
+            <BookOpen className="h-6 w-6 text-forest-600 shrink-0" />
+            <span>In His Own Words — The Journey (1958 to Present)</span>
+          </h2>
+          <div className="space-y-4 text-xs sm:text-sm text-ink/85 leading-relaxed">
+            {JOURNEY_AUTOBIOGRAPHY.slice(0, 3).map((p, i) => (
+              <p key={i} className="break-words">{p}</p>
+            ))}
+          </div>
+
+          <Accordion type="single" collapsible className="mt-6 rounded-xl border border-forest-200 bg-forest-50/30 px-4">
+            <AccordionItem value="autobiography-full" className="border-0">
+              <AccordionTrigger className="text-xs sm:text-sm font-bold text-forest-900 hover:no-underline">
+                Read the complete autobiography &mdash; 1958 to the founding of AIRD &raquo;
+              </AccordionTrigger>
+              <AccordionContent className="space-y-4 pt-3 text-xs sm:text-sm text-ink/80 leading-relaxed border-t border-forest-200/60">
+                {JOURNEY_AUTOBIOGRAPHY.slice(3).map((p, i) => (
+                  <p key={i} className="break-words">{p}</p>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+
+        {/* Navigation Bar */}
+        <div className="flex flex-wrap justify-between items-center gap-3 border-t border-saffron-100 pt-6 text-sm">
+          <Link to="/trustee/profile" className="govt-link font-bold">
+            &larr; Trustee Profile (Factual Biodata)
+          </Link>
+          <Link to="/trustee/board" className="govt-link font-bold">
+            Board of Trustees (2026&ndash;2027) &rarr;
           </Link>
         </div>
       </section>

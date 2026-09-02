@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import { FileText, CalendarDays, ArrowRight, IndianRupee } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import { ANNUAL_REPORTS } from '@/data/annualReports';
+import { ABOUT_SUB_NAV } from '@/lib/subNavTree';
 
 /**
  * Annual Reports index — one card per documented yearly report
@@ -17,10 +19,11 @@ export default function AnnualReport() {
         subtitle="Yearly reports documenting AIRD's activities, progress, and financial statements."
         gradient="saffron"
       />
-      <Breadcrumb items={[{ label: 'Activities' }, { label: 'Annual Report' }]} />
+      <Breadcrumb items={[{ label: 'About us', to: '/about' }, { label: 'Annual report' }]} />
 
       <section className="container-px section-py">
-        <div className="mx-auto max-w-3xl space-y-4">
+        <div className="mx-auto max-w-4xl space-y-4">
+          <SubNavPills items={ABOUT_SUB_NAV} />
           {ANNUAL_REPORTS.map((r) => (
             <div
               key={r.id}

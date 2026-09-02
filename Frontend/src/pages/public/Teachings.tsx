@@ -3,6 +3,8 @@ import { WhirlpoolCanvas } from './sections/WhirlpoolCanvas';
 import { ARISE_AWAKE, GOAL_OF_SOUL, EHIPASSIKO_HOME } from '@/data/homepage';
 import { FACTS_OF_LIFE, HUMANITY_AND_RELIGION } from '@/data/contentVerbatim';
 
+import { TEACHINGS_SUB_NAV } from '@/lib/subNavTree';
+
 /**
  * Teachings — a section distinct from Philosophy. Sources (all verbatim):
  * "Arise! Awake and Stop not.docx", "Dont believe on God.docx" (Ehipassiko),
@@ -15,7 +17,8 @@ export default function Teachings() {
       title="Teachings"
       subtitle="Spiritual awakening — the thoughts of Swami Vivekananda and Gautama Buddha that inspire AIRD's work."
       gradient="forest"
-      crumbs={[{ label: 'About Us', to: '/about' }, { label: 'Teachings' }]}
+      crumbs={[{ label: 'Teachings', to: '/teachings' }, { label: 'Spiritual Teachings' }]}
+      subNavItems={TEACHINGS_SUB_NAV}
       sections={[
         {
           heading: 'Arise, Awake, and Stop not till the Goal is reached',

@@ -1,110 +1,23 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
-export interface BannerSlide {
+export interface BannerItem {
   id: string;
-  badge: string;
-  title: string;
-  subtitle: string;
-  imageUrl?: string;
-  bgGradient: string;
+  imageUrl: string;
+  alt: string;
   linkTo: string;
-  linkText: string;
+  linkLabel?: string;
 }
 
-export const BANNER_SLIDES: BannerSlide[] = [
-  {
-    id: 'gram-swaraj',
-    badge: 'Gram Swaraj • 73rd Amendment',
-    title: "Gram Swaraj & People's Governance",
-    subtitle: 'Strengthening decentralized governance, Gram Sabha institutions, and community-led local decision making not on paper, but at the village level.',
-    imageUrl: '/dandi-march-bg.jpeg',
-    bgGradient: 'from-forest-950/90 via-forest-900/80 to-forest-950/90',
-    linkTo: '/kranti/decentralized-governance',
-    linkText: 'Explore Governance Guidelines',
-  },
-  {
-    id: 'village-directory',
-    badge: 'Rural Database • Census & Household Data',
-    title: 'Official Village Directory & Supporter Database',
-    subtitle: 'Comprehensive house-wise census data, MGNREGA job card tracking, and participatory community profiles for demonstration villages.',
-    imageUrl: '/site-bg.jpg',
-    bgGradient: 'from-forest-900/90 via-saffron-950/80 to-forest-950/90',
-    linkTo: '/village-directory',
-    linkText: 'View Village Directory',
-  },
-  {
-    id: 'kranti-roadmap',
-    badge: 'Project KRANTI • 7-Phase Action Matrix',
-    title: 'Key to Reform & Adopt Noble Treatment Initiatives',
-    subtitle: 'A comprehensive 7-phase action roadmap demonstrating participatory development, local resource management, and model village creation.',
-    imageUrl: '/dandi-march-bg.jpeg',
-    bgGradient: 'from-forest-950/85 via-forest-900/85 to-saffron-950/80',
-    linkTo: '/kranti',
-    linkText: 'Explore KRANTI Blueprint',
-  },
-  {
-    id: 'rural-philosophy',
-    badge: 'Core Philosophy • Service & Humanity',
-    title: 'Humanity Before Division • Path of Selfless Service',
-    subtitle: 'Every person is born first as a human being. AIRD unites communities through ethical leadership, participatory action, and spiritual wisdom.',
-    imageUrl: '/site-bg.jpg',
-    bgGradient: 'from-saffron-950/90 via-forest-950/85 to-forest-900/90',
-    linkTo: '/philosophy',
-    linkText: 'Read Full Philosophy',
-  },
-];
+export const BANNER_ITEM: BannerItem = {
+  id: 'kranti-banner',
+  imageUrl: '/kranti-banner.jpg',
+  alt: 'KRANTI for Gram Swaraj - 15th August 2026, village Manpur Lala, Bakshi ka Talab, Lucknow',
+  linkTo: '/kranti',
+  linkLabel: 'Explore KRANTI Blueprint',
+};
 
 export function FeatureBannerSlider() {
-  const [current, setCurrent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
-
-  const total = BANNER_SLIDES.length;
-
-  const nextSlide = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % total);
-  }, [total]);
-
-  const prevSlide = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + total) % total);
-  }, [total]);
-
-  // Auto-play timer (5 seconds)
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isPaused, nextSlide]);
-
-  // Touch swipe support
-  function handleTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
-  }
-
-  function handleTouchMove(e: React.TouchEvent) {
-    touchEndX.current = e.touches[0].clientX;
-  }
-
-  function handleTouchEnd() {
-    if (!touchStartX.current || !touchEndX.current) return;
-    const distance = touchStartX.current - touchEndX.current;
-    if (distance > 50) {
-      nextSlide();
-    } else if (distance < -50) {
-      prevSlide();
-    }
-    touchStartX.current = null;
-    touchEndX.current = null;
-  }
-
-  const slide = BANNER_SLIDES[current];
-
   return (
     <div className="bg-white border border-forest-900 p-1.5 sm:p-2 w-full min-w-0 overflow-hidden box-border">
       {/* Official Government Header Bar */}
@@ -114,93 +27,50 @@ export function FeatureBannerSlider() {
           <span>Key Initiatives &amp; Feature Highlights</span>
         </span>
         <span className="text-[9px] text-saffron-300 font-normal">
-          AIRD Portal &bull; Slide {current + 1} of {total}
+          AIRD Portal &bull; Official Feature Banner
         </span>
       </div>
 
-      {/* Banner Slider Container */}
-      <div
-        className="relative overflow-hidden border border-forest-800 rounded-sm min-h-[170px] sm:min-h-[190px] md:min-h-[210px] flex items-center justify-between text-white select-none"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        {/* Background Image Layer */}
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-700 transform scale-105"
-          style={{ backgroundImage: `url(${slide.imageUrl || '/dandi-march-bg.jpeg'})` }}
-          aria-hidden="true"
-        />
-
-        {/* Gradient Overlay */}
-        <div className={cn('absolute inset-0 bg-gradient-to-r transition-all duration-700', slide.bgGradient)} />
-
-        {/* Content Box */}
-        <div className="relative z-10 px-4 sm:px-8 py-4 sm:py-6 max-w-3xl flex-1">
-          {/* Badge */}
-          <div className="inline-block bg-saffron-500/90 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-sm mb-1.5 shadow-sm border border-saffron-300/40">
-            {slide.badge}
-          </div>
-
-          {/* Title */}
-          <h3 className="text-base sm:text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight drop-shadow-md text-white">
-            {slide.title}
-          </h3>
-
-          {/* Subtitle */}
-          <p className="mt-1.5 text-xs sm:text-sm text-white/90 leading-relaxed max-w-2xl drop-shadow line-clamp-2 sm:line-clamp-3 font-normal">
-            {slide.subtitle}
-          </p>
-
-          {/* Action Link Button */}
-          <div className="mt-3 sm:mt-4">
-            <Link
-              to={slide.linkTo}
-              className="inline-flex items-center gap-1.5 bg-saffron-600 hover:bg-saffron-700 text-white text-xs sm:text-sm font-bold px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-sm border border-saffron-400 shadow-md transition-all group"
-            >
-              <span>{slide.linkText}</span>
-              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-          </div>
-        </div>
-
-        {/* Navigation Arrows */}
-        <button
-          type="button"
-          onClick={prevSlide}
-          className="absolute left-1.5 sm:left-3 top-1/2 -translate-y-1/2 z-20 h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors border border-white/20 shadow"
-          aria-label="Previous Slide"
+      {/* Full-width Responsive Single Poster Banner */}
+      <div className="relative group overflow-hidden border border-forest-800 rounded-xs bg-stone-100 flex flex-col items-center select-none">
+        <Link
+          to={BANNER_ITEM.linkTo}
+          className="block w-full text-center relative focus:outline-hidden focus:ring-2 focus:ring-saffron-500 cursor-pointer"
+          aria-label={BANNER_ITEM.alt}
         >
-          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-        </button>
+          <img
+            src={BANNER_ITEM.imageUrl}
+            alt={BANNER_ITEM.alt}
+            className="w-full h-auto max-h-[580px] object-contain mx-auto block transition-transform duration-300 group-hover:scale-[1.006]"
+          />
 
-        <button
-          type="button"
-          onClick={nextSlide}
-          className="absolute right-1.5 sm:right-3 top-1/2 -translate-y-1/2 z-20 h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors border border-white/20 shadow"
-          aria-label="Next Slide"
-        >
-          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-        </button>
+          {/* Subtle hover indicator if linkLabel exists */}
+          {BANNER_ITEM.linkLabel && (
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-end justify-end p-2 sm:p-3 pointer-events-none">
+              <span className="bg-forest-900/90 text-white text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-xs shadow-md border border-saffron-400 flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
+                <span>{BANNER_ITEM.linkLabel}</span>
+                <ArrowRight className="h-3.5 w-3.5 text-saffron-400" />
+              </span>
+            </div>
+          )}
+        </Link>
+      </div>
 
-        {/* Bottom Pagination Dots */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-black/30 px-2.5 py-1 rounded-full backdrop-blur-xs border border-white/10">
-          {BANNER_SLIDES.map((s, idx) => (
-            <button
-              key={s.id}
-              type="button"
-              onClick={() => setCurrent(idx)}
-              className={cn(
-                'h-1.5 rounded-full transition-all cursor-pointer',
-                idx === current
-                  ? 'w-5 bg-saffron-400 shadow'
-                  : 'w-1.5 bg-white/50 hover:bg-white/80'
-              )}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+      {/* Quick Access Bar */}
+      <div className="flex items-center justify-between mt-1.5 pt-1 border-t border-gray-200 text-[10px] sm:text-xs">
+        <span className="text-gray-600 font-medium hidden sm:inline">
+          Appropriate Institute of Rural Development &bull; Lucknow
+        </span>
+        <div className="flex items-center gap-3 ml-auto">
+          <Link to="/kranti" className="govt-link font-bold">
+            &raquo; KRANTI Blueprint
+          </Link>
+          <Link to="/activities" className="govt-link font-bold text-forest-800">
+            &raquo; Activities Calendar
+          </Link>
+          <Link to="/kranti/document" className="govt-link font-bold text-saffron-800">
+            &raquo; Verbatim Document
+          </Link>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ export function Footer() {
       {/* Main footer */}
       <div className="container-px py-12">
         <div className="grid gap-10 lg:grid-cols-4">
-          {/* Col 1 — About / brand */}
+          {/* Col 1 — About / brand & Key Movement Logos */}
           <div className="lg:col-span-1">
             <div className="mb-4 flex items-center gap-3">
               <Logo size="md" variant="light" />
@@ -33,6 +33,53 @@ export function Footer() {
             </div>
             <p className="text-sm leading-relaxed text-cream/60">{AIRD_CONST.tagline}</p>
             <p className="mt-3 text-xs font-medium text-saffron-400">{AIRD_CONST.motto}</p>
+
+            {/* Key Movements & Insignia */}
+            <div className="mt-6 pt-5 border-t border-cream/10 space-y-3">
+              <h5 className="text-[11px] font-bold uppercase tracking-wider text-saffron-400">
+                Key Movements &amp; Insignia
+              </h5>
+              <div className="space-y-2.5">
+                {/* Logo 1: Sampoorna Swaraj Kranti */}
+                <div className="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-2 rounded-lg border border-white/10 transition-colors">
+                  <img
+                    src="/image1.jpg"
+                    alt="सम्पूर्ण स्वराज क्रांति"
+                    className="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-md bg-white p-1 shrink-0 shadow-xs"
+                  />
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-cream leading-snug">सम्पूर्ण स्वराज क्रांति</div>
+                    <div className="text-[10px] text-saffron-300 font-medium">Sampoorna Swaraj Kranti</div>
+                  </div>
+                </div>
+
+                {/* Logo 2: Bharat Nirman */}
+                <div className="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-2 rounded-lg border border-white/10 transition-colors">
+                  <img
+                    src="/image2.jpg"
+                    alt="भारत निर्माण"
+                    className="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-md bg-white p-1 shrink-0 shadow-xs"
+                  />
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-cream leading-snug">भारत निर्माण</div>
+                    <div className="text-[10px] text-cream/70 font-medium">चलें नयी आज़ादी की ओर</div>
+                  </div>
+                </div>
+
+                {/* Logo 3: VB-GRAM G Act */}
+                <div className="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-2 rounded-lg border border-white/10 transition-colors">
+                  <img
+                    src="/vb-gram-g-act.png"
+                    alt="VB-GRAM G Act"
+                    className="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-md bg-white p-1 shrink-0 shadow-xs"
+                  />
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-cream leading-snug">VB-GRAM G Act</div>
+                    <div className="text-[10px] text-saffron-300 font-medium">Viksit Bharat 2047</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Cols 2-3 — nav map mirroring the site tree */}

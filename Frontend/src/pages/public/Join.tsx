@@ -193,7 +193,7 @@ export default function Join() {
       <PageHero title="Join Us" subtitle="Become part of a movement for Gram Swaraj — as a Volunteer, Learner, Researcher, or Partner." gradient="forest">
         <p className="text-sm font-medium text-forest-800 italic">{MEMBERSHIP_MOTTO}</p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'Get Involved' }, { label: 'Membership' }]} />
+      <Breadcrumb items={[{ label: 'Join Hands & Take Action', to: '/membership' }, { label: 'Membership' }]} />
 
       {/* ---- Documented membership information (source: Work/ documents) ---- */}
       <section className="section-py">

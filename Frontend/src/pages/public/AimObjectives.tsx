@@ -1,5 +1,6 @@
 import { ContentPage } from '@/components/shared/ContentPage';
 import { AIM_VERBATIM, OBJECTIVES_FULL } from '@/data/contentVerbatim';
+import { ABOUT_SUB_NAV } from '@/lib/subNavTree';
 
 export default function AimObjectives() {
   return (
@@ -7,7 +8,8 @@ export default function AimObjectives() {
       title="Aim &amp; Objectives"
       subtitle={`The ${OBJECTIVES_FULL.length} objectives that guide every activity of AIRD.`}
       gradient="saffron"
-      crumbs={[{ label: 'About Us', to: '/about' }, { label: 'Aim & Objectives' }]}
+      crumbs={[{ label: 'About us', to: '/about' }, { label: 'Aim & Objectives' }]}
+      subNavItems={ABOUT_SUB_NAV}
       intro={
         <div className="rounded-xl border border-saffron-200 bg-white/70 p-4 text-base font-medium text-ink/80 backdrop-blur">
           <span className="font-bold text-saffron-700">Our Aim:</span> {AIM_VERBATIM.join(' ')}

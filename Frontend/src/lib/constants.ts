@@ -52,26 +52,19 @@ export const TRUST_DEED_AVAILABLE = false;
 
 export const NAV_LINKS = [
   { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
-  { label: 'Trustee & Journey', to: '/trustee/journey' },
-  { label: 'Board (2020–25)', to: '/trustee/board-2020-2025' },
-  { label: 'Board (2026–27)', to: '/trustee/board' },
-  { label: 'Strategy', to: '/strategy' },
-  { label: 'Concept', to: '/concept' },
-  { label: 'Development Car', to: '/development-car' },
-  { label: 'Philosophy', to: '/philosophy' },
-  { label: 'Initiation', to: '/initiation' },
-  { label: 'KRANTI', to: '/kranti' },
+  { label: 'About us', to: '/about' },
   { label: 'Teachings', to: '/teachings' },
+  { label: 'Trust', to: '/about/trust' },
+  { label: 'KRANTI', to: '/concept' },
+  { label: 'Project', to: '/kranti' },
   { label: 'Activities', to: '/activities' },
-  { label: 'Join Us', to: '/membership' },
+  { label: 'Membership', to: '/membership' },
   { label: 'Support', to: '/donate' },
 ] as const;
 
 /**
- * Nested navigation tree. Structure mirrors the Website.docx site
- * architecture and powers the government-style mega-menu (desktop) and the
- * collapsible mobile drawer.
+ * Nested navigation tree. Structured in exact accordance with
+ * Buttons foe cover page.docx and client specifications.
  */
 export interface NavChild {
   label: string;
@@ -80,52 +73,81 @@ export interface NavChild {
 }
 export interface NavItem {
   label: string;
-  to?: string; // present when the top-level item is itself a page
+  to?: string;
   children?: NavChild[];
 }
 
 export const NAV_TREE: NavItem[] = [
   { label: 'Home', to: '/' },
   {
-    label: 'About Us',
+    label: 'About us',
     to: '/about',
     children: [
-      { label: 'About AIRD (Overview)', to: '/about', desc: 'Introduction & background' },
-      { label: 'Trust / In Brief', to: '/about/trust', desc: 'Registration, credentials & legal status' },
       { label: 'Vision', to: '/about/vision', desc: 'Our vision of Gram Swaraj' },
-      { label: 'Aim & Objectives', to: '/about/aim-objectives', desc: 'The Aim (M) & Objectives (N) of AIRD' },
-      { label: 'History of Rural Development', to: '/history', desc: 'A century of rural development (K)' },
+      { label: 'Aim', to: '/about/aim-objectives', desc: 'The foundational aim of AIRD' },
+      { label: 'Objectives', to: '/about/aim-objectives', desc: '15 Key Objectives of AIRD' },
+      { label: 'Annual report', to: '/annual-report', desc: 'Audited yearly reports (2020–2026)' },
+      { label: 'Account', to: '/about/accounts', desc: 'Financial disclosures, registrations & bank details' },
     ],
   },
-  { label: 'Trustee & Journey', to: '/trustee/journey' },
-  { label: 'Board (2020–25)', to: '/trustee/board-2020-2025' },
-  { label: 'Board (2026–27)', to: '/trustee/board' },
-  { label: 'Strategy', to: '/strategy' },
-  { label: 'Concept', to: '/concept' },
-  { label: 'Development Car', to: '/development-car' },
-  { label: 'Philosophy', to: '/philosophy' },
-  { label: 'Initiation', to: '/initiation' },
   {
-    // Activities group — content also surfaced as homepage sections.
+    label: 'Teachings',
+    to: '/teachings',
+    children: [
+      { label: 'Teachings', to: '/teachings', desc: 'Swami Vivekananda, Buddha & spiritual awakening' },
+      { label: 'Philosophy', to: '/philosophy', desc: 'Humanity before division & universal power' },
+      { label: 'Human Life', to: '/human-and-humanity', desc: 'Facts of life, three worlds & soul journey' },
+      { label: 'Development Car', to: '/development-car', desc: 'Spiritual vehicle & blessings vs. curses' },
+      { label: 'Slide show', to: '/development-car', desc: '15-slide presentation on the journey of the soul' },
+    ],
+  },
+  {
+    label: 'Trust',
+    to: '/about/trust',
+    children: [
+      { label: 'In brief', to: '/about/trust', desc: 'Trust registration & legal credentials' },
+      { label: 'Trustee Profile', to: '/trustee/profile', desc: 'Kamlesh Chandra Tripathi biodata & career' },
+      { label: 'Journey of trustee', to: '/trustee/journey', desc: 'Role of trustee & complete autobiography' },
+      { label: 'Board of Trustee (2020–2026)', to: '/trustee/board-2020-2025', desc: 'Founding board members' },
+      { label: 'Board of Trustee (2026–2027)', to: '/trustee/board', desc: 'Current governing board' },
+    ],
+  },
+  {
+    label: 'KRANTI',
+    to: '/concept',
+    children: [
+      { label: 'History of rural development', to: '/development-in-india', desc: 'A century of rural governance & Panchayati Raj' },
+      { label: 'Concept', to: '/concept', desc: 'Demonstration model village concept' },
+      { label: 'Strategy', to: '/strategy', desc: 'Operational strategy & youth mobilization' },
+      { label: 'Initiation', to: '/initiation', desc: 'Community initiation process' },
+    ],
+  },
+  {
+    label: 'Project',
+    to: '/kranti',
+    children: [
+      { label: 'Project KRANTI (Launched 15th August)', to: '/kranti', desc: 'Flagship Gram Swaraj live demonstration project' },
+      { label: 'Project Document & Blueprint', to: '/kranti/document', desc: 'Full project blueprint & operational guidelines' },
+      { label: 'Decentralized Governance', to: '/kranti/decentralized-governance', desc: '73rd Amendment & Gram Sabha empowerment' },
+    ],
+  },
+  {
     label: 'Activities',
+    to: '/activities',
     children: [
       { label: 'Activities Calendar', to: '/activities', desc: 'Past & planned events' },
       { label: 'Photo Gallery', to: '/gallery', desc: 'Moments from the field' },
       { label: 'Videos', to: '/videos', desc: 'Documentary & media' },
-      { label: 'Spiritual Teachings', to: '/teachings', desc: 'Vivekananda, Buddha & the soul (J)' },
-      { label: 'Annual Reports', to: '/annual-report', desc: 'Yearly reports & audited financials (L)' },
-      { label: 'Donors Directory', to: '/donors', desc: 'Our supporters' },
-      { label: 'Village Directory', to: '/village-directory', desc: 'Model village data' },
+      { label: 'Village Directory', to: '/village-directory', desc: 'Census & household database' },
+      { label: 'Donors Directory', to: '/donors', desc: 'Supporters & donors roll' },
     ],
   },
   {
-    // Get Involved group
-    label: 'Get Involved',
+    label: 'Join Hands & Take Action',
+    to: '/membership',
     children: [
-      { label: 'KRANTI for Gram Swaraj', to: '/kranti', desc: 'Key to Reform & Adopt Noble Treatment Initiatives (O, P)' },
-      { label: 'Decentralized Governance', to: '/kranti/decentralized-governance', desc: 'Panchayati Raj & Gram Sabha Guidelines' },
-      { label: 'Development in India', to: '/development-in-india', desc: 'Historical rural development analysis' },
-      { label: 'Support AIRD', to: '/donate', desc: 'Support Gram Swaraj initiatives' },
+      { label: 'Membership', to: '/membership', desc: 'Volunteer & member registration' },
+      { label: 'Support', to: '/donate', desc: 'Support Gram Swaraj initiatives' },
       { label: 'Contact Us', to: '/contact', desc: 'Reach AIRD Lucknow headquarters' },
     ],
   },

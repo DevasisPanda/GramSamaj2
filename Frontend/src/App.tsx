@@ -49,6 +49,7 @@ const KrantiDocument     = lazy(() => import('@/pages/public/KrantiDocument'));
 const PhilosophyFull     = lazy(() => import('@/pages/public/PhilosophyFull'));
 const HumanLife          = lazy(() => import('@/pages/public/HumanLife'));
 const TrusteeProfile     = lazy(() => import('@/pages/public/TrusteeProfile'));
+const Accounts           = lazy(() => import('@/pages/public/Accounts'));
 
 /* ------------------------------------------------------------------ */
 /* Helpers & Portal Bridge                                             */
@@ -108,39 +109,54 @@ function AppRoutes() {
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
 
-        {/* About Us */}
+        {/* 1. About Us */}
         <Route path="/about" element={<About />} />
-        <Route path="/about/trust" element={<PageSuspense><AboutTrust /></PageSuspense>} />
         <Route path="/about/vision" element={<PageSuspense><VisionMission /></PageSuspense>} />
         <Route path="/about/vision-mission" element={<Navigate to="/about/vision" replace />} />
+        <Route path="/about/aim" element={<Navigate to="/about/aim-objectives" replace />} />
+        <Route path="/about/objectives" element={<Navigate to="/about/aim-objectives" replace />} />
         <Route path="/about/aim-objectives" element={<PageSuspense><AimObjectives /></PageSuspense>} />
+        <Route path="/about/accounts" element={<PageSuspense><Accounts /></PageSuspense>} />
+        <Route path="/accounts" element={<Navigate to="/about/accounts" replace />} />
 
-        {/* Trustee */}
-        <Route path="/trustee/journey" element={<PageSuspense><JourneyTrustee /></PageSuspense>} />
-        <Route path="/trustee/board" element={<PageSuspense><BoardTrustees /></PageSuspense>} />
-        <Route path="/trustee/board-2020-2025" element={<PageSuspense><BoardTrustees2020 /></PageSuspense>} />
-        <Route path="/trustee/board-2020-2026" element={<Navigate to="/trustee/board-2020-2025" replace />} />
-        <Route path="/strategy" element={<PageSuspense><Strategy /></PageSuspense>} />
-
-        {/* KRANTI */}
-        <Route path="/kranti" element={<Kranti />} />
-        <Route path="/kranti/document" element={<PageSuspense><KrantiDocument /></PageSuspense>} />
-        <Route path="/kranti/concept" element={<Navigate to="/concept" replace />} />
-        <Route path="/kranti/decentralized-governance" element={<PageSuspense><DecentralizedGov /></PageSuspense>} />
-        <Route path="/development-in-india" element={<PageSuspense><DevelopmentIndia /></PageSuspense>} />
-
-        {/* Philosophy */}
+        {/* 2. Teachings */}
+        <Route path="/teachings" element={<PageSuspense><Teachings /></PageSuspense>} />
         <Route path="/philosophy" element={<Philosophy />} />
         <Route path="/philosophy/full" element={<PageSuspense><PhilosophyFull /></PageSuspense>} />
         <Route path="/human-and-humanity" element={<PageSuspense><HumanLife /></PageSuspense>} />
-        <Route path="/trustee/profile" element={<PageSuspense><TrusteeProfile /></PageSuspense>} />
-        <Route path="/concept" element={<PageSuspense><Concept /></PageSuspense>} />
-        <Route path="/initiation" element={<PageSuspense><Initiation /></PageSuspense>} />
-        <Route path="/teachings" element={<PageSuspense><Teachings /></PageSuspense>} />
         <Route path="/development-car" element={<PageSuspense><DevelopmentCar /></PageSuspense>} />
-        <Route path="/history" element={<PageSuspense><History /></PageSuspense>} />
 
-        {/* Activities */}
+        {/* 3. Trust */}
+        <Route path="/about/trust" element={<PageSuspense><AboutTrust /></PageSuspense>} />
+        <Route path="/trust" element={<Navigate to="/about/trust" replace />} />
+        <Route path="/trust/brief" element={<Navigate to="/about/trust" replace />} />
+        <Route path="/trustee" element={<Navigate to="/trustee/profile" replace />} />
+        <Route path="/trustee/profile" element={<PageSuspense><TrusteeProfile /></PageSuspense>} />
+        <Route path="/trustee/journey" element={<PageSuspense><JourneyTrustee /></PageSuspense>} />
+        <Route path="/trustee/board-2020-2025" element={<PageSuspense><BoardTrustees2020 /></PageSuspense>} />
+        <Route path="/trustee/board-2020-2026" element={<Navigate to="/trustee/board-2020-2025" replace />} />
+        <Route path="/trustee/board" element={<PageSuspense><BoardTrustees /></PageSuspense>} />
+
+        {/* 4. KRANTI */}
+        <Route path="/development-in-india" element={<PageSuspense><DevelopmentIndia /></PageSuspense>} />
+        <Route path="/history" element={<PageSuspense><History /></PageSuspense>} />
+        <Route path="/kranti/history" element={<Navigate to="/development-in-india" replace />} />
+        <Route path="/concept" element={<PageSuspense><Concept /></PageSuspense>} />
+        <Route path="/kranti/concept" element={<Navigate to="/concept" replace />} />
+        <Route path="/strategy" element={<PageSuspense><Strategy /></PageSuspense>} />
+        <Route path="/kranti/strategy" element={<Navigate to="/strategy" replace />} />
+        <Route path="/initiation" element={<PageSuspense><Initiation /></PageSuspense>} />
+        <Route path="/kranti/initiation" element={<Navigate to="/initiation" replace />} />
+
+        {/* 5. Project */}
+        <Route path="/kranti" element={<Kranti />} />
+        <Route path="/project" element={<Navigate to="/kranti" replace />} />
+        <Route path="/project/kranti" element={<Navigate to="/kranti" replace />} />
+        <Route path="/kranti/document" element={<PageSuspense><KrantiDocument /></PageSuspense>} />
+        <Route path="/project/document" element={<Navigate to="/kranti/document" replace />} />
+        <Route path="/kranti/decentralized-governance" element={<PageSuspense><DecentralizedGov /></PageSuspense>} />
+
+        {/* 6. Activities */}
         <Route path="/activities" element={<PageSuspense><Activities /></PageSuspense>} />
         <Route path="/gallery" element={<PageSuspense><Gallery /></PageSuspense>} />
         <Route path="/videos" element={<PageSuspense><VideosPage /></PageSuspense>} />
@@ -150,9 +166,10 @@ function AppRoutes() {
         <Route path="/annual-report" element={<PageSuspense><AnnualReport /></PageSuspense>} />
         <Route path="/annual-report/:reportId" element={<PageSuspense><AnnualReportDetail /></PageSuspense>} />
 
-        {/* Get Involved */}
+        {/* 7. Join Hands & Take Action / Support */}
         <Route path="/membership" element={<PageSuspense><Membership /></PageSuspense>} />
         <Route path="/donate" element={<Donate />} />
+        <Route path="/support" element={<Navigate to="/donate" replace />} />
         <Route path="/contact" element={<PageSuspense><Contact /></PageSuspense>} />
 
         {/* Auth & Profile -> Frontend Branded Login/Signup with SSO Handoff */}

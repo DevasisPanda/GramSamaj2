@@ -1,6 +1,7 @@
 import { ContentPage } from '@/components/shared/ContentPage';
 import type { ContentSection } from '@/data/content';
 import { STRATEGY_BLOCKS } from '@/data/contentVerbatim';
+import { KRANTI_SUB_NAV } from '@/lib/subNavTree';
 
 export default function Strategy() {
   // Strategy1.docx: inline headings introduce one or two plain paragraphs.
@@ -14,10 +15,11 @@ export default function Strategy() {
 
   return (
     <ContentPage
-      title="Strategy"
+      title="Operational Strategy"
       subtitle="AIRD adopted a participatory and collaborative strategy for demonstrating Gram Swaraj in Village Garhi."
       gradient="forest"
-      crumbs={[{ label: 'Trustee', to: '/trustee/board' }, { label: 'Strategy' }]}
+      crumbs={[{ label: 'KRANTI', to: '/concept' }, { label: 'Strategy' }]}
+      subNavItems={KRANTI_SUB_NAV}
       sections={sections}
     />
   );

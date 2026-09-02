@@ -426,28 +426,8 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Right-side logos & Mobile hamburger */}
-          <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
-            {/* Logos: Sampoorna Swaraj Kranti, Bharat Nirman, VB-GRAM G Act */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              <img
-                src="/image1.jpg"
-                alt="Sampoorna Swaraj Kranti"
-                className="h-8 sm:h-10 md:h-12 w-auto object-contain drop-shadow-xs"
-              />
-              <img
-                src="/image2.jpg"
-                alt="Bharat Nirman"
-                className="h-7 sm:h-9 md:h-11 w-auto object-contain drop-shadow-xs"
-              />
-              <img
-                src="/vb-gram-g-act.png"
-                alt="VB-GRAM G Act Viksit Bharat 2047"
-                className="h-8 sm:h-10 md:h-12 w-auto object-contain drop-shadow-xs"
-              />
-            </div>
-
-            {/* Mobile hamburger */}
+          {/* Mobile hamburger */}
+          <div className="flex items-center md:hidden shrink-0">
             <button
               className="rounded-lg p-2 text-ink/70 hover:bg-saffron-50 md:hidden"
               onClick={() => setOpen(!open)}
@@ -467,8 +447,8 @@ export function Header() {
         className="hidden bg-forest-700 md:block border-b border-forest-800 shadow-xs relative z-50 overflow-visible"
         aria-label="Primary"
       >
-        <div className="container-px flex items-center justify-between gap-1 overflow-visible py-0">
-          <div className="flex items-center gap-0.5 flex-wrap xl:flex-nowrap overflow-visible">
+        <div className="container-px flex items-center justify-start gap-1 overflow-visible py-0">
+          <div className="flex items-center gap-0.5 flex-wrap xl:flex-nowrap overflow-visible w-full">
             {NAV_TREE.map((item, index) => (
               <DesktopNavItem
                 key={item.label}
@@ -484,14 +464,6 @@ export function Header() {
               />
             ))}
           </div>
-
-          {/* Saffron Highlighted Action Button (Join hands & take action) */}
-          <Link
-            to="/membership"
-            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] xl:text-xs font-extrabold uppercase tracking-wide bg-saffron-500 hover:bg-saffron-600 text-white border-2 border-saffron-300 shadow-sm transition-all hover:scale-105 my-1 ml-1 whitespace-nowrap"
-          >
-            <span>Join hands &amp; take action</span>
-          </Link>
         </div>
       </nav>
 
@@ -499,15 +471,6 @@ export function Header() {
       {open && (
         <div className="border-t border-saffron-100 bg-white md:hidden">
           <nav className="container-px max-h-[75vh] overflow-y-auto py-4" aria-label="Mobile">
-            {/* Mobile Call-to-action button */}
-            <Link
-              to="/membership"
-              onClick={() => setOpen(false)}
-              className="mb-3 block rounded-lg bg-saffron-500 hover:bg-saffron-600 text-white border-2 border-saffron-400 px-3 py-2.5 text-xs font-bold text-center uppercase tracking-wide shadow-sm"
-            >
-              Join hands &amp; take action &rarr;
-            </Link>
-
             {NAV_TREE.map((item) => (
               <MobileNavItem
                 key={item.label}

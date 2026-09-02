@@ -5,8 +5,10 @@ import {
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { SubNavPills } from '@/components/shared/SubNavPills';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { AIRD, SERVICE_PRINCIPLE, TRUST_DEED_AVAILABLE } from '@/lib/constants';
+import { TRUST_SUB_NAV } from '@/lib/subNavTree';
 
 const CREDENTIALS = [
   { icon: FileText, label: 'Registered Under', value: AIRD.registeredUnder },
@@ -24,10 +26,13 @@ export default function AboutTrust() {
           &ldquo;{AIRD.tagline}&rdquo;
         </p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'About Us', to: '/about' }, { label: 'Trust / In Brief' }]} />
+      <Breadcrumb items={[{ label: 'Trust', to: '/about/trust' }, { label: 'In brief' }]} />
 
       <section className="section-py">
-        <div className="container-px">
+        <div className="container-px max-w-4xl mx-auto space-y-8">
+          {/* Sub-menu bar for Trust section */}
+          <SubNavPills items={TRUST_SUB_NAV} />
+
           <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr]">
             {/* Credentials card */}
             <Card>
