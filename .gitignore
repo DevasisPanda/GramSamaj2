@@ -32,6 +32,7 @@ dist-ssr
 
 # Docs & Working files
 Work/
+Work1/
 .zcode/
 CONTENT_MAP.md
 instruction.md

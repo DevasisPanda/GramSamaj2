@@ -4,7 +4,7 @@ import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { SubNavPills } from '@/components/shared/SubNavPills';
 import { PHILOSOPHY_FULL } from '@/data/docFull';
-import { TEACHINGS_SUB_NAV } from '@/lib/subNavTree';
+import { TRUST_SUB_NAV } from '@/lib/subNavTree';
 
 /**
  * Complete text of "Philosophy.docx" — the /philosophy page shows the
@@ -20,7 +20,7 @@ export default function PhilosophyFull() {
       />
       <Breadcrumb
         items={[
-          { label: 'Teachings', to: '/teachings' },
+          { label: 'Trust', to: '/about/trust' },
           { label: 'Philosophy', to: '/philosophy' },
           { label: 'Complete Text' },
         ]}
@@ -28,7 +28,7 @@ export default function PhilosophyFull() {
 
       <article className="container-px section-py">
         <div className="mx-auto max-w-4xl space-y-6">
-          <SubNavPills items={TEACHINGS_SUB_NAV} />
+          <SubNavPills items={TRUST_SUB_NAV} />
           {PHILOSOPHY_FULL.map((s, i) => (
             <section key={i} className="card-surface bg-white p-5 sm:p-7 rounded-xl shadow-md border border-forest-100">
               {s.heading && (

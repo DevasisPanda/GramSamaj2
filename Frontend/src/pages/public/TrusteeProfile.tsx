@@ -36,9 +36,11 @@ export default function TrusteeProfile() {
 
           {/* Top Profile Header Card */}
           <div className="card-surface bg-white p-6 sm:p-8 rounded-xl shadow-md border border-saffron-100 flex flex-col md:flex-row items-center md:items-start gap-6">
-            <div className="h-28 w-28 rounded-2xl bg-gradient-to-br from-forest-800 to-forest-950 text-white flex items-center justify-center text-3xl font-extrabold shadow-lg shrink-0 border-2 border-saffron-300">
-              KCT
-            </div>
+            <img
+              src="/trustee-kct.jpg"
+              alt="Kamlesh Chandra Tripathi"
+              className="h-28 w-28 rounded-2xl object-cover shadow-lg shrink-0 border-2 border-saffron-300"
+            />
             <div className="space-y-2 text-center md:text-left flex-1">
               <span className="inline-block bg-saffron-100 text-saffron-800 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-saffron-300">
                 Founder &amp; Managing Trustee

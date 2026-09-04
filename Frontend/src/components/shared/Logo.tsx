@@ -9,16 +9,15 @@ interface LogoProps {
 }
 
 const SIZE_MAP = {
-  sm: 'h-9 w-9',
-  md: 'h-12 w-12',
-  lg: 'h-14 w-14',
-  xl: 'h-20 w-20',
+  sm: 'h-9 w-auto max-w-[70px]',
+  md: 'h-12 w-auto max-w-[95px]',
+  lg: 'h-14 sm:h-16 w-auto max-w-[125px]',
+  xl: 'h-20 w-auto max-w-[170px]',
 } as const;
 
 /**
- * Official AIRD emblem. Uses the logo extracted from Logo.docx
- * (public/aird-logo.png). Rendered with object-contain so the circular
- * emblem is never cropped, regardless of size.
+ * Official AIRD emblem. Uses the high-resolution logo extracted from official documents
+ * (public/aird-logo.png). Rendered with object-contain so the emblem is sharp and proportional.
  */
 export function Logo({ className, size = 'md', variant = 'default' }: LogoProps) {
   return (
@@ -26,15 +25,15 @@ export function Logo({ className, size = 'md', variant = 'default' }: LogoProps)
       src="/aird-logo.png"
       alt="AIRD — Appropriate Institute of Rural Development official emblem"
       className={cn(
-        'shrink-0 object-contain',
+        'shrink-0 object-contain drop-shadow-xs',
         SIZE_MAP[size],
-        variant === 'light' && 'rounded-full ring-2 ring-cream/40 bg-forest-800/30 p-0.5',
+        variant === 'light' && 'rounded-md ring-1 ring-cream/40 bg-white/90 p-1',
         className,
       )}
       loading="eager"
       decoding="async"
-      width={80}
-      height={80}
+      width={120}
+      height={70}
     />
   );
 }

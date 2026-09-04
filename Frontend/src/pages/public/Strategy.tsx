@@ -16,9 +16,9 @@ export default function Strategy() {
   return (
     <ContentPage
       title="Operational Strategy"
-      subtitle="AIRD adopted a participatory and collaborative strategy for demonstrating Gram Swaraj in Village Garhi."
+      subtitle="AIRD adopted a participatory and collaborative strategy for evolving an appropriate process for strengthening people’s governance in and around village Garhi of Malihabad, Lucknow."
       gradient="forest"
-      crumbs={[{ label: 'KRANTI', to: '/concept' }, { label: 'Strategy' }]}
+      crumbs={[{ label: 'KRANTI', to: '/kranti' }, { label: 'Strategy' }]}
       subNavItems={KRANTI_SUB_NAV}
       sections={sections}
     />

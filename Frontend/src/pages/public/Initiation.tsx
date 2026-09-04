@@ -7,10 +7,10 @@ export default function Initiation() {
   const sections: ContentSection[] = [{ paragraphs: INITIATION_PARAS }];
   return (
     <ContentPage
-      title="Community Initiation"
-      subtitle="How AIRD began — from the Development Car to Project KRANTI."
+      title="Initiation"
+      subtitle="Appropriate Institute of Rural Development (AIRD) — from the Development Car to Project KRANTI."
       gradient="forest"
-      crumbs={[{ label: 'KRANTI', to: '/concept' }, { label: 'Initiation' }]}
+      crumbs={[{ label: 'KRANTI', to: '/kranti' }, { label: 'Initiation' }]}
       subNavItems={KRANTI_SUB_NAV}
       sections={sections}
     />

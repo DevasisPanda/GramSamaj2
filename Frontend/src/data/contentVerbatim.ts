@@ -16,7 +16,7 @@ export const VISION_FULL: string[] = [
 
 
 export const INITIATION_PARAS: string[] = [
-  'The initiative to establish the Association for Integrated Rural Development (AIRD) was launched on 3 December 2019 during the birthday celebration of an Australian social worker who resides in London and is actively engaged in supporting the development of underprivileged communities in India.',
+  'The initiative to establish the Appropriate Institute of Rural Development (AIRD) was launched on 3 December 2019 during the birthday celebration of an Australian social worker who resides in London and is actively engaged in supporting the development of underprivileged communities in India.',
   'In 1999 she introduced the concept of the Development Car (DC), a unique initiative designed to inspire people to contribute their time, skills, and resources for the welfare of the needy. The underlying philosophy of the Development Car is that while material possessions remain on earth, the blessings earned through selfless service accompany the soul beyond this life. She believes that acts of compassion and service help enrich the spiritual journey of the human soul.',
   'The Development Car proved to be an effective tool for motivating individuals to view service to the poor and marginalized as a form of worship and social responsibility.',
   'Subsequently, while conducting participatory action studies on the functioning of Gram Panchayats and Self-Help Groups (SHGs) in the villages of Malihabad, Lucknow, AIRD developed a practical and participatory process aimed at strengthening collective action among community members and local institutions. The objective is to establish a living model of people-centred governance based on the principles of “Gram Swaraj”.',

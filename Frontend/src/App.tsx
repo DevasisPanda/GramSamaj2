@@ -31,6 +31,7 @@ const Concept            = lazy(() => import('@/pages/public/Concept'));
 const Initiation         = lazy(() => import('@/pages/public/Initiation'));
 const Teachings          = lazy(() => import('@/pages/public/Teachings'));
 const DevelopmentCar     = lazy(() => import('@/pages/public/DevelopmentCar'));
+const SpiritualAwakening = lazy(() => import('@/pages/public/SpiritualAwakening'));
 const History            = lazy(() => import('@/pages/public/History'));
 const DecentralizedGov    = lazy(() => import('@/pages/public/DecentralizedGovernance'));
 const DevelopmentIndia   = lazy(() => import('@/pages/public/DevelopmentInIndia'));
@@ -50,6 +51,10 @@ const PhilosophyFull     = lazy(() => import('@/pages/public/PhilosophyFull'));
 const HumanLife          = lazy(() => import('@/pages/public/HumanLife'));
 const TrusteeProfile     = lazy(() => import('@/pages/public/TrusteeProfile'));
 const Accounts           = lazy(() => import('@/pages/public/Accounts'));
+const PastActivities     = lazy(() => import('@/pages/public/PastActivities'));
+const CurrentActivities  = lazy(() => import('@/pages/public/CurrentActivities'));
+const KrantiHindi        = lazy(() => import('@/pages/public/KrantiHindi'));
+const VillageDevelopmentWorks = lazy(() => import('@/pages/public/VillageDevelopmentWorks'));
 
 /* ------------------------------------------------------------------ */
 /* Helpers & Portal Bridge                                             */
@@ -125,6 +130,7 @@ function AppRoutes() {
         <Route path="/philosophy/full" element={<PageSuspense><PhilosophyFull /></PageSuspense>} />
         <Route path="/human-and-humanity" element={<PageSuspense><HumanLife /></PageSuspense>} />
         <Route path="/development-car" element={<PageSuspense><DevelopmentCar /></PageSuspense>} />
+        <Route path="/spiritual-awakening" element={<PageSuspense><SpiritualAwakening /></PageSuspense>} />
 
         {/* 3. Trust */}
         <Route path="/about/trust" element={<PageSuspense><AboutTrust /></PageSuspense>} />
@@ -154,14 +160,20 @@ function AppRoutes() {
         <Route path="/project/kranti" element={<Navigate to="/kranti" replace />} />
         <Route path="/kranti/document" element={<PageSuspense><KrantiDocument /></PageSuspense>} />
         <Route path="/project/document" element={<Navigate to="/kranti/document" replace />} />
+        <Route path="/kranti/hindi" element={<PageSuspense><KrantiHindi /></PageSuspense>} />
         <Route path="/kranti/decentralized-governance" element={<PageSuspense><DecentralizedGov /></PageSuspense>} />
 
         {/* 6. Activities */}
         <Route path="/activities" element={<PageSuspense><Activities /></PageSuspense>} />
+        <Route path="/activities/past" element={<PageSuspense><PastActivities /></PageSuspense>} />
+        <Route path="/activities/current" element={<PageSuspense><CurrentActivities /></PageSuspense>} />
+        <Route path="/past-activities" element={<Navigate to="/activities/past" replace />} />
         <Route path="/gallery" element={<PageSuspense><Gallery /></PageSuspense>} />
         <Route path="/videos" element={<PageSuspense><VideosPage /></PageSuspense>} />
         <Route path="/donors" element={<PageSuspense><DonorsPage /></PageSuspense>} />
         <Route path="/village-directory" element={<PageSuspense><VillageDirPage /></PageSuspense>} />
+        <Route path="/village-development-works" element={<PageSuspense><VillageDevelopmentWorks /></PageSuspense>} />
+        <Route path="/model-village/development-works" element={<Navigate to="/village-development-works" replace />} />
         <Route path="/villages" element={<Navigate to="/village-directory" replace />} />
         <Route path="/annual-report" element={<PageSuspense><AnnualReport /></PageSuspense>} />
         <Route path="/annual-report/:reportId" element={<PageSuspense><AnnualReportDetail /></PageSuspense>} />

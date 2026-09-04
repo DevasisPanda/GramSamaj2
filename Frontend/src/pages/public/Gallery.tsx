@@ -5,7 +5,9 @@ import { trpc } from '@/lib/trpc';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { ImageIcon, Play, ExternalLink, Calendar } from 'lucide-react';
+import { ImageIcon, Play, ExternalLink, Calendar, LayoutGrid, TableProperties, Camera, Eye } from 'lucide-react';
+import { SubNavPills } from '@/components/shared/SubNavPills';
+import { MODEL_VILLAGE_SUB_NAV } from '@/lib/subNavTree';
 import { formatDate, cn } from '@/lib/utils';
 
 const CATEGORIES = [
@@ -24,6 +26,7 @@ export default function Gallery() {
 
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeMedia, setActiveMedia] = useState<any | null>(null);
+  const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
 
   const filtered = galleryItems.filter((item: any) => {
     if (selectedCategory === 'All') return true;
@@ -38,29 +41,59 @@ export default function Gallery() {
         subtitle="Moments from the field — Gram Sabha meetings, community workshops, and rural development milestones."
         gradient="forest"
       />
-      <Breadcrumb items={[{ label: 'Activities', href: '/activities' }, { label: 'Photo Gallery' }]} />
+      <Breadcrumb items={[{ label: 'Model village', to: '/village-directory' }, { label: 'Photo Gallery' }]} />
 
       <section className="container-px section-py">
         <div className="mx-auto max-w-6xl space-y-8">
-          {/* Filter tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {CATEGORIES.map((cat) => (
+          <SubNavPills items={MODEL_VILLAGE_SUB_NAV} />
+
+          {/* View mode toggle */}
+          <div className="card-surface p-3 rounded-xl border border-saffron-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
               <Button
-                key={cat}
-                variant={selectedCategory === cat ? 'default' : 'outline'}
+                variant={viewMode === 'grid' ? 'default' : 'outline'}
                 size="sm"
-                onClick={() => setSelectedCategory(cat)}
-                className={cn(
-                  'rounded-full px-4 text-xs font-semibold transition-all',
-                  selectedCategory === cat
-                    ? 'bg-forest-700 text-white hover:bg-forest-800'
-                    : 'border-saffron-200 text-ink/70 hover:border-saffron-400 hover:bg-saffron-50'
-                )}
+                onClick={() => setViewMode('grid')}
+                className="text-xs h-8 px-3 rounded-lg"
               >
-                {cat}
+                <LayoutGrid className="h-3.5 w-3.5 mr-1.5" /> Media Grid
               </Button>
-            ))}
+              <Button
+                variant={viewMode === 'table' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setViewMode('table')}
+                className="text-xs h-8 px-3 rounded-lg"
+              >
+                <TableProperties className="h-3.5 w-3.5 mr-1.5" /> Photo Register Directory (Photos.docx)
+              </Button>
+            </div>
+
+            <div className="text-xs text-ink/60 font-medium">
+              Showing {filtered.length} {filtered.length === 1 ? 'item' : 'items'}
+            </div>
           </div>
+
+          {viewMode === 'grid' && (
+            <>
+              {/* Filter tabs */}
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                {CATEGORIES.map((cat) => (
+                  <Button
+                    key={cat}
+                    variant={selectedCategory === cat ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setSelectedCategory(cat)}
+                    className={cn(
+                      'rounded-full px-4 text-xs font-semibold transition-all',
+                      selectedCategory === cat
+                        ? 'bg-forest-700 text-white hover:bg-forest-800'
+                        : 'border-saffron-200 text-ink/70 hover:border-saffron-400 hover:bg-saffron-50'
+                    )}
+                  >
+                    {cat}
+                  </Button>
+                ))}
+              </div>
 
           {/* Loading Skeletons */}
           {isLoading && (
@@ -167,6 +200,83 @@ export default function Gallery() {
               )}
             </div>
           )}
+          </>
+        )}
+
+        {/* View 2: Tabular Photo Register (Photos.docx) */}
+        {viewMode === 'table' && (
+          <div className="card-surface bg-white p-4 sm:p-6 rounded-2xl border border-saffron-100 shadow-sm space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-saffron-100 pb-3">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-saffron-100 text-saffron-800 mb-1">
+                  Official Structure • Photos.docx
+                </div>
+                <h3 className="font-bold text-lg text-ink flex items-center gap-2">
+                  <Camera className="h-5 w-5 text-saffron-600" /> Chronological Photo Register
+                </h3>
+                <p className="text-xs text-ink/60">
+                  Schema: Date | Activity | Photos record & descriptions
+                </p>
+              </div>
+              <Badge variant="outline" className="text-xs bg-saffron-50 text-saffron-800 border-saffron-200 self-start sm:self-auto">
+                {filtered.length} Records Logged
+              </Badge>
+            </div>
+
+            <div className="overflow-x-auto border border-slate-200 rounded-xl">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-50 text-[11px] font-bold uppercase text-ink/70 border-b border-slate-200">
+                    <th className="py-2.5 px-3 w-12 text-center">#</th>
+                    <th className="py-2.5 px-3 w-32">Date</th>
+                    <th className="py-2.5 px-3">Activity</th>
+                    <th className="py-2.5 px-3">Photos / Description</th>
+                    <th className="py-2.5 px-3 w-28 text-center">Preview</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 text-ink/80">
+                  {filtered.map((item: any, idx: number) => (
+                    <tr key={item.id} className="hover:bg-saffron-50/40 transition-colors">
+                      <td className="py-3 px-3 text-center font-semibold text-ink/40">{idx + 1}</td>
+                      <td className="py-3 px-3 font-medium text-slate-700 whitespace-nowrap">
+                        <span className="flex items-center gap-1.5">
+                          <Calendar className="h-3.5 w-3.5 text-saffron-600" />
+                          {formatDate(item.createdAt)}
+                        </span>
+                      </td>
+                      <td className="py-3 px-3">
+                        <div className="font-semibold text-ink">{item.title}</div>
+                        {item.category && (
+                          <Badge variant="secondary" className="text-[10px] mt-0.5">{item.category}</Badge>
+                        )}
+                      </td>
+                      <td className="py-3 px-3 text-ink/70">
+                        <p className="line-clamp-2">{item.description || 'Photographic field record'}</p>
+                      </td>
+                      <td className="py-3 px-3 text-center">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => setActiveMedia(item)}
+                          className="text-[11px] h-7 px-2.5 border-saffron-300 hover:bg-saffron-50 text-saffron-900"
+                        >
+                          <Eye className="h-3 w-3 mr-1" /> View Photo
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                  {filtered.length === 0 && (
+                    <tr>
+                      <td colSpan={5} className="py-8 text-center text-xs text-ink/40">
+                        No photographic records found.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
         </div>
       </section>
 

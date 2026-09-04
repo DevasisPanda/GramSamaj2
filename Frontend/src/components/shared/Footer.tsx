@@ -40,23 +40,23 @@ export function Footer() {
                 Key Movements &amp; Insignia
               </h5>
               <div className="space-y-2.5">
-                {/* Logo 1: Sampoorna Swaraj Kranti */}
+                {/* Logo 1: Project KRANTI Emblem */}
                 <div className="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-2 rounded-lg border border-white/10 transition-colors">
                   <img
-                    src="/image1.jpg"
-                    alt="सम्पूर्ण स्वराज क्रांति"
+                    src="/kranti-logo.png"
+                    alt="क्रांति — Project KRANTI"
                     className="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-md bg-white p-1 shrink-0 shadow-xs"
                   />
                   <div className="min-w-0">
-                    <div className="text-xs font-bold text-cream leading-snug">सम्पूर्ण स्वराज क्रांति</div>
-                    <div className="text-[10px] text-saffron-300 font-medium">Sampoorna Swaraj Kranti</div>
+                    <div className="text-xs font-bold text-cream leading-snug">परियोजना क्रांति</div>
+                    <div className="text-[10px] text-saffron-300 font-medium">Project KRANTI Emblem</div>
                   </div>
                 </div>
 
                 {/* Logo 2: Bharat Nirman */}
                 <div className="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-2 rounded-lg border border-white/10 transition-colors">
                   <img
-                    src="/image2.jpg"
+                    src="/bharat-nirman.jpg"
                     alt="भारत निर्माण"
                     className="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-md bg-white p-1 shrink-0 shadow-xs"
                   />
@@ -66,7 +66,20 @@ export function Footer() {
                   </div>
                 </div>
 
-                {/* Logo 3: VB-GRAM G Act */}
+                {/* Logo 3: Digital India */}
+                <div className="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-2 rounded-lg border border-white/10 transition-colors">
+                  <img
+                    src="/digital-india.jpg"
+                    alt="Digital India"
+                    className="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-md bg-white p-1 shrink-0 shadow-xs"
+                  />
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-cream leading-snug">Digital India</div>
+                    <div className="text-[10px] text-saffron-300 font-medium">Power To Empower</div>
+                  </div>
+                </div>
+
+                {/* Logo 4: VB-GRAM G Act */}
                 <div className="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-2 rounded-lg border border-white/10 transition-colors">
                   <img
                     src="/vb-gram-g-act.png"

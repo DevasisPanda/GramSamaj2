@@ -1,18 +1,32 @@
 /**
  * Official Financial Statements & Transaction Ledgers
- * Sourced directly from "AIRD Accounts.xlsx" (verbatim data across 8 financial years).
+ * Sourced directly from "Work1/AIRD Accounts.xlsx" (verbatim data across 8 financial years).
  */
 
-export interface FinancialPositionSummary {
-  date: string;
-  period: string;
-  received: number;
-  cashInHand: number;
-  bankDeposit: number;
-  expenditure: number;
+export interface MultiYearSummaryRecord {
+  year: string;
+  donationForActivities: number;
   returnableDonation: number;
+  totalReceipts: number;
+  activitiesExpenditure: number;
   donationReturned: number;
+  totalExpenditure: number;
   liability: number;
+}
+
+export interface VillageAdoptionFinancialPosition {
+  period: string;
+  asOn: string;
+  note: string;
+  donationForActivities: number;
+  returnableDonation: number;
+  totalReceipts: number;
+  activitiesExpenditure: number;
+  donationReturned: number;
+  totalExpenditure: number;
+  liability: number;
+  cashInHand: number;
+  depositInBank: number;
 }
 
 export interface AccountTransaction {
@@ -40,96 +54,93 @@ export interface YearAccountStatement {
   transactions: AccountTransaction[];
 }
 
-export const FINANCIAL_POSITION_SUMMARY: FinancialPositionSummary[] = [
+export const FINANCIAL_POSITION_SUMMARY: MultiYearSummaryRecord[] = [
   {
-    "date": "3.12.2019",
-    "period": "FY 2019\u201320 (Initiation)",
-    "received": 1100.0,
-    "cashInHand": 1100.0,
-    "bankDeposit": 0.0,
-    "expenditure": 0.0,
+    "year": "FY 2019\u201320",
+    "donationForActivities": 11800.0,
     "returnableDonation": 0.0,
+    "totalReceipts": 11800.0,
+    "activitiesExpenditure": 11660.0,
     "donationReturned": 0.0,
+    "totalExpenditure": 11660.0,
     "liability": 0.0
   },
   {
-    "date": "3.3.2020",
-    "period": "FY 2019\u201320 (Incorporation)",
-    "received": 11800.0,
-    "cashInHand": 140.0,
-    "bankDeposit": 0.0,
-    "expenditure": 11660.0,
-    "returnableDonation": 0.0,
-    "donationReturned": 0.0,
-    "liability": 0.0
-  },
-  {
-    "date": "3.12.2021",
-    "period": "FY 2020\u201321 (Operations)",
-    "received": 14285.0,
-    "cashInHand": 460.0,
-    "bankDeposit": 11143.0,
-    "expenditure": 2821.0,
+    "year": "FY 2020\u201321",
+    "donationForActivities": 14285.0,
     "returnableDonation": 11000.0,
+    "totalReceipts": 25285.0,
+    "activitiesExpenditure": 12822.0,
     "donationReturned": 0.0,
+    "totalExpenditure": 12822.0,
     "liability": 11000.0
   },
   {
-    "date": "31.3.2022",
-    "period": "FY 2021\u201322 (Expansion)",
-    "received": 14200.0,
-    "cashInHand": 1350.0,
-    "bankDeposit": 16494.0,
-    "expenditure": 7959.0,
+    "year": "FY 2021\u201322",
+    "donationForActivities": 9200.0,
     "returnableDonation": 5000.0,
+    "totalReceipts": 14200.0,
+    "activitiesExpenditure": 7959.0,
     "donationReturned": 5000.0,
+    "totalExpenditure": 12959.0,
     "liability": 11000.0
   },
   {
-    "date": "18.3.2023",
-    "period": "FY 2022\u201323 (Mobilization)",
-    "received": 57681.0,
-    "cashInHand": 2570.0,
-    "bankDeposit": 4026.0,
-    "expenditure": 69160.0,
+    "year": "FY 2022\u201323",
+    "donationForActivities": 23881.0,
     "returnableDonation": 33800.0,
+    "totalReceipts": 57681.0,
+    "activitiesExpenditure": 29480.0,
     "donationReturned": 38800.0,
+    "totalExpenditure": 68280.0,
     "liability": 6000.0
   },
   {
-    "date": "12.3.2024",
-    "period": "FY 2023\u201324 (Consolidation)",
-    "received": 25100.0,
-    "cashInHand": 470.0,
-    "bankDeposit": 0.0,
-    "expenditure": 26700.0,
-    "returnableDonation": 20000.0,
-    "donationReturned": 20000.0,
-    "liability": 6000.0
-  },
-  {
-    "date": "12.3.2025",
-    "period": "FY 2024\u201325 (Field Actions)",
-    "received": 23605.0,
-    "cashInHand": 120.0,
-    "bankDeposit": 0.0,
-    "expenditure": 20950.0,
-    "returnableDonation": 0.0,
-    "donationReturned": 0.0,
-    "liability": 6000.0
-  },
-  {
-    "date": "31.3.2026",
-    "period": "FY 2025\u201326 (Project KRANTI Phase)",
-    "received": 9100.0,
-    "cashInHand": 1520.0,
-    "bankDeposit": 1677.0,
-    "expenditure": 7700.0,
+    "year": "FY 2023\u201324",
+    "donationForActivities": 14600.0,
     "returnableDonation": 10000.0,
+    "totalReceipts": 24600.0,
+    "activitiesExpenditure": 16700.0,
+    "donationReturned": 10000.0,
+    "totalExpenditure": 26700.0,
+    "liability": 6000.0
+  },
+  {
+    "year": "FY 2024\u201325",
+    "donationForActivities": 23605.0,
+    "returnableDonation": 0.0,
+    "totalReceipts": 23605.0,
+    "activitiesExpenditure": 20950.0,
     "donationReturned": 0.0,
-    "liability": 16000.0
+    "totalExpenditure": 20950.0,
+    "liability": 6000.0
+  },
+  {
+    "year": "FY 2025\u201326",
+    "donationForActivities": 13100.0,
+    "returnableDonation": 6000.0,
+    "totalReceipts": 19100.0,
+    "activitiesExpenditure": 7700.0,
+    "donationReturned": 0.0,
+    "totalExpenditure": 7700.0,
+    "liability": 12000.0
   }
 ];
+
+export const FINANCIAL_POSITION_ADOPTION_2026: VillageAdoptionFinancialPosition = {
+  "period": "FY 2026\u201327",
+  "asOn": "15.08.2026",
+  "note": "Financial position of AIRD at the time of adopting village Manpur Lala to demonstrate process",
+  "donationForActivities": 20000.0,
+  "returnableDonation": 13000.0,
+  "totalReceipts": 33000.0,
+  "activitiesExpenditure": 3580.0,
+  "donationReturned": 0.0,
+  "totalExpenditure": 3580.0,
+  "liability": 25000.0,
+  "cashInHand": 940.0,
+  "depositInBank": 32868.9
+};
 
 export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
   {
@@ -730,7 +741,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
     "periodLabel": "01.04.2022 till 31.03.2023",
     "summary": {
       "totalIncome": 57681.0,
-      "totalExpenditure": 69160.0,
+      "totalExpenditure": 68280.0,
       "closingCashInHand": 2570.0,
       "closingBankBalance": 4026.07
     },
@@ -818,8 +829,8 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
         "income": 7800.0,
         "cashIncome": 7800.0,
         "bankIncome": 0.0,
-        "purpose": "Meeting of Bord dorectors",
-        "expenditure": 880.0,
+        "purpose": "",
+        "expenditure": 0.0,
         "cashInHand": 1460.0,
         "bankBalance": 43994.07
       },
@@ -1160,7 +1171,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
     "yearLabel": "FY 2023\u20132024",
     "periodLabel": "01.04.2023 till 31.03.2024",
     "summary": {
-      "totalIncome": 25100.0,
+      "totalIncome": 24600.0,
       "totalExpenditure": 26700.0,
       "closingCashInHand": 470.0,
       "closingBankBalance": 0.0
@@ -1356,9 +1367,9 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       {
         "date": "2.1.24",
         "receivedFrom": "K.C. Tripathi",
-        "income": 1000.0,
+        "income": 500.0,
         "cashIncome": 500.0,
-        "bankIncome": 500.0,
+        "bankIncome": 0.0,
         "purpose": "Bord meeting",
         "expenditure": 770.0,
         "cashInHand": 80.0,
@@ -1659,8 +1670,8 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
         "cashIncome": 0.0,
         "bankIncome": 0.0,
         "purpose": "Formulation of project",
-        "expenditure": 760.0,
-        "cashInHand": 390.0,
+        "expenditure": 780.0,
+        "cashInHand": 370.0,
         "bankBalance": 0.0
       },
       {
@@ -1670,7 +1681,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
         "cashIncome": 0.0,
         "bankIncome": 0.0,
         "purpose": "Foundation Day",
-        "expenditure": 270.0,
+        "expenditure": 250.0,
         "cashInHand": 120.0,
         "bankBalance": 0.0
       },
@@ -1714,7 +1725,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
     "yearLabel": "FY 2025\u20132026",
     "periodLabel": "01.04.2025 till 31.03.2026",
     "summary": {
-      "totalIncome": 9100.0,
+      "totalIncome": 19100.0,
       "totalExpenditure": 7700.0,
       "closingCashInHand": 1520.0,
       "closingBankBalance": 1677.0
@@ -1822,9 +1833,9 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       {
         "date": "23.3.26",
         "receivedFrom": "Jajeevan mission report",
-        "income": 0.0,
+        "income": 10000.0,
         "cashIncome": 0.0,
-        "bankIncome": 0.0,
+        "bankIncome": 10000.0,
         "purpose": "",
         "expenditure": 0.0,
         "cashInHand": 1520.0,
@@ -1868,9 +1879,9 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
   {
     "id": "26-27",
     "yearLabel": "FY 2026\u20132027",
-    "periodLabel": "01.04.2026 till 31.03.2027 (Ongoing)",
+    "periodLabel": "01.04.2026 till 15.08.2026 (Ongoing)",
     "summary": {
-      "totalIncome": 33191.9,
+      "totalIncome": 33000.0,
       "totalExpenditure": 3580.0,
       "closingCashInHand": 940.0,
       "closingBankBalance": 32868.9
@@ -1889,7 +1900,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "3.4.26",
-        "receivedFrom": "",
+        "receivedFrom": "Neera Tripathi",
         "income": 1000.0,
         "cashIncome": 1000.0,
         "bankIncome": 0.0,
@@ -1900,7 +1911,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "3.4.26",
-        "receivedFrom": "",
+        "receivedFrom": "Dhananjay",
         "income": 4000.0,
         "cashIncome": 4000.0,
         "bankIncome": 0.0,
@@ -1911,7 +1922,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "3.4.26",
-        "receivedFrom": "",
+        "receivedFrom": "Prandhu",
         "income": 4000.0,
         "cashIncome": 4000.0,
         "bankIncome": 0.0,
@@ -1922,7 +1933,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "3.4.26",
-        "receivedFrom": "",
+        "receivedFrom": "Atul Verma",
         "income": 4000.0,
         "cashIncome": 4000.0,
         "bankIncome": 0.0,
@@ -1933,7 +1944,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "3.4.26",
-        "receivedFrom": "RD",
+        "receivedFrom": "Gaurav Pandey RD",
         "income": 1000.0,
         "cashIncome": 1000.0,
         "bankIncome": 0.0,
@@ -1944,7 +1955,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "4.4.26",
-        "receivedFrom": "RD",
+        "receivedFrom": "Rajeev Saxena RD",
         "income": 4000.0,
         "cashIncome": 4000.0,
         "bankIncome": 0.0,
@@ -1955,7 +1966,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "4.4.26",
-        "receivedFrom": "RD",
+        "receivedFrom": "Raghvebdra Mathur RD",
         "income": 5000.0,
         "cashIncome": 5000.0,
         "bankIncome": 0.0,
@@ -1966,7 +1977,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "5.4.26",
-        "receivedFrom": "RD",
+        "receivedFrom": "Pragya RD",
         "income": 3000.0,
         "cashIncome": 3000.0,
         "bankIncome": 0.0,
@@ -2010,7 +2021,7 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       },
       {
         "date": "10.5.26",
-        "receivedFrom": "",
+        "receivedFrom": "Neera Tripathi",
         "income": 1000.0,
         "cashIncome": 1000.0,
         "bankIncome": 0.0,
@@ -2022,9 +2033,9 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       {
         "date": "11.5.26",
         "receivedFrom": "",
-        "income": 95.95,
+        "income": 0.0,
         "cashIncome": 0.0,
-        "bankIncome": 95.95,
+        "bankIncome": 0.0,
         "purpose": "",
         "expenditure": 0.0,
         "cashInHand": 1940.0,
@@ -2033,17 +2044,17 @@ export const YEARLY_ACCOUNT_STATEMENTS: YearAccountStatement[] = [
       {
         "date": "12.5.26",
         "receivedFrom": "",
-        "income": 95.95,
+        "income": 0.0,
         "cashIncome": 0.0,
-        "bankIncome": 95.95,
+        "bankIncome": 0.0,
         "purpose": "",
         "expenditure": 0.0,
         "cashInHand": 1940.0,
         "bankBalance": 26868.9
       },
       {
-        "date": "28.5.26",
-        "receivedFrom": "RD",
+        "date": "15.8.26",
+        "receivedFrom": "Bhawana SaxenaRD",
         "income": 6000.0,
         "cashIncome": 0.0,
         "bankIncome": 6000.0,

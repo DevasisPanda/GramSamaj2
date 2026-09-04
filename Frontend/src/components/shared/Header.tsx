@@ -53,6 +53,7 @@ function DesktopNavItem({
   isOpen,
   onOpen,
   onClose,
+  onCloseImmediate,
   onToggle,
 }: {
   item: NavItem;
@@ -61,6 +62,7 @@ function DesktopNavItem({
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
+  onCloseImmediate: () => void;
   onToggle: () => void;
 }) {
   const active = isItemActive(pathname, item);
@@ -70,9 +72,9 @@ function DesktopNavItem({
     return (
       <Link
         to={item.to!}
-        onClick={onClose}
+        onClick={onCloseImmediate}
         className={cn(
-          'inline-flex items-center px-2 lg:px-2.5 xl:px-3 py-2.5 text-[11px] xl:text-xs font-semibold transition-colors border-b-[3px] -mb-px whitespace-nowrap',
+          'inline-flex items-center px-1.5 lg:px-2 xl:px-2.5 2xl:px-3 py-2.5 text-[11px] xl:text-[11.5px] 2xl:text-xs font-semibold transition-colors border-b-[3px] -mb-px whitespace-nowrap',
           active
             ? 'text-white border-cream bg-forest-800'
             : 'text-white/90 border-transparent hover:bg-forest-600 hover:text-white',
@@ -84,54 +86,42 @@ function DesktopNavItem({
   }
 
   const navItemClasses = cn(
-    'inline-flex items-center text-[11px] xl:text-xs font-semibold transition-colors border-b-[3px] -mb-px select-none whitespace-nowrap',
-    active
+    'inline-flex items-center text-[11px] xl:text-[11.5px] 2xl:text-xs font-semibold transition-colors border-b-[3px] -mb-px whitespace-nowrap',
+    active || isOpen
       ? 'text-white border-cream bg-forest-800'
       : 'text-white/90 border-transparent hover:bg-forest-600 hover:text-white',
   );
 
   return (
-    <div className="relative" onMouseEnter={onOpen}>
-      {item.to ? (
-        <div className={navItemClasses}>
-          <Link
-            to={item.to}
-            onClick={onClose}
-            onFocus={onOpen}
-            className="inline-flex items-center pl-2 lg:pl-2.5 xl:pl-3 pr-1 py-2.5 cursor-pointer text-inherit"
-            aria-haspopup="true"
-            aria-expanded={isOpen}
-          >
-            <span>{item.label}</span>
-          </Link>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              onToggle();
-            }}
-            className="inline-flex items-center pr-2 lg:pr-2.5 xl:pr-3 pl-0.5 py-2.5 cursor-pointer text-inherit"
-            aria-label={`Toggle ${item.label} menu`}
-          >
-            <ChevronDown
-              className={cn(
-                'h-3.5 w-3.5 transition-transform duration-200',
-                isOpen && 'rotate-180',
-              )}
-            />
-          </button>
-        </div>
-      ) : (
+    <div
+      className="relative"
+      onMouseEnter={onOpen}
+      onMouseLeave={onClose}
+    >
+      <div
+        className={cn(
+          navItemClasses,
+          'px-1.5 lg:px-2 xl:px-2.5 2xl:px-3 py-2.5 flex items-center gap-1 cursor-pointer select-none',
+        )}
+      >
+        <Link
+          to={item.to!}
+          onClick={onCloseImmediate}
+          className="hover:text-white transition-colors"
+        >
+          {item.label}
+        </Link>
         <button
           type="button"
-          onClick={onToggle}
-          onFocus={onOpen}
-          className={cn(navItemClasses, 'gap-1 px-2 lg:px-2.5 xl:px-3 py-2.5 cursor-pointer')}
-          aria-haspopup="true"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onToggle();
+          }}
+          className="p-0.5 rounded hover:bg-forest-600/70 transition-colors cursor-pointer text-white/80 hover:text-white focus:outline-hidden"
+          aria-label={`Toggle ${item.label} submenu`}
           aria-expanded={isOpen}
         >
-          <span>{item.label}</span>
           <ChevronDown
             className={cn(
               'h-3.5 w-3.5 transition-transform duration-200',
@@ -139,24 +129,29 @@ function DesktopNavItem({
             )}
           />
         </button>
-      )}
+      </div>
 
       {/* Dropdown panel — multi-column mega-menu when many children */}
       {isOpen && (
         <div
+          onMouseEnter={onOpen}
+          onMouseLeave={onClose}
           className={cn(
-            'absolute top-full z-[100] pt-1 transition-all duration-150',
+            'absolute top-full z-[100] pt-1.5 transition-all duration-150',
             isLast ? 'right-0 left-auto' : 'left-0',
             (item.children ?? []).length > 7
               ? 'w-[560px] max-w-[calc(100vw-2rem)]'
               : 'w-[280px] max-w-[calc(100vw-2rem)]',
           )}
         >
+          {/* Invisible hover bridge connecting trigger to dropdown */}
+          <div className="absolute -top-2 inset-x-0 h-2 bg-transparent" aria-hidden />
+
           <div className="overflow-hidden rounded-b-xl border border-saffron-200 bg-white shadow-2xl ring-1 ring-black/10">
             {item.to && (
               <Link
                 to={item.to}
-                onClick={onClose}
+                onClick={onCloseImmediate}
                 className="block border-b border-saffron-100 bg-saffron-50 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-saffron-700 hover:bg-saffron-100 transition-colors"
               >
                 {item.label} &mdash; Overview
@@ -174,7 +169,7 @@ function DesktopNavItem({
                   <li key={c.to}>
                     <Link
                       to={c.to}
-                      onClick={onClose}
+                      onClick={onCloseImmediate}
                       className={cn(
                         'block rounded-lg px-3 py-2 text-sm transition-colors',
                         cActive
@@ -284,22 +279,56 @@ function MobileNavItem({
 export function Header() {
   const [open, setOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const { pathname } = useLocation();
   const { idx, apply } = useFontScale();
   const { user, isAdmin, logout } = useAuth();
 
+  const handleOpen = (label: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setActiveMenu(label);
+  };
+
+  const handleClose = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 220);
+  };
+
+  const handleCloseImmediate = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setActiveMenu(null);
+  };
+
+  const handleToggle = (label: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setActiveMenu((prev) => (prev === label ? null : label));
+  };
+
   // Close mobile menu & desktop dropdowns on route change
   useEffect(() => {
     setOpen(false);
-    setActiveMenu(null);
+    handleCloseImmediate();
   }, [pathname]);
 
   // Outside click listener to close desktop dropdowns
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        setActiveMenu(null);
+        handleCloseImmediate();
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -443,12 +472,12 @@ export function Header() {
       {/* Primary navigation (desktop) */}
       <nav
         ref={navRef}
-        onMouseLeave={() => setActiveMenu(null)}
+        onMouseLeave={handleClose}
         className="hidden bg-forest-700 md:block border-b border-forest-800 shadow-xs relative z-50 overflow-visible"
         aria-label="Primary"
       >
         <div className="container-px flex items-center justify-start gap-1 overflow-visible py-0">
-          <div className="flex items-center gap-0.5 flex-wrap xl:flex-nowrap overflow-visible w-full">
+          <div className="flex items-center justify-between gap-0.5 w-full overflow-visible">
             {NAV_TREE.map((item, index) => (
               <DesktopNavItem
                 key={item.label}
@@ -456,11 +485,10 @@ export function Header() {
                 pathname={pathname}
                 isLast={index >= NAV_TREE.length - 2}
                 isOpen={activeMenu === item.label}
-                onOpen={() => setActiveMenu(item.label)}
-                onClose={() => setActiveMenu(null)}
-                onToggle={() =>
-                  setActiveMenu((prev) => (prev === item.label ? null : item.label))
-                }
+                onOpen={() => handleOpen(item.label)}
+                onClose={handleClose}
+                onCloseImmediate={handleCloseImmediate}
+                onToggle={() => handleToggle(item.label)}
               />
             ))}
           </div>

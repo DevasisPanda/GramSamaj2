@@ -30,9 +30,9 @@ export default function Concept() {
   return (
     <ContentPage
       title="Concept"
-      subtitle="The case for a live demonstration village of Gram Swaraj."
+      subtitle="The case of live demonstration on process of strengthening people’s governance “Gram Swaraj” at village level."
       gradient="forest"
-      crumbs={[{ label: 'KRANTI', to: '/concept' }, { label: 'Concept' }]}
+      crumbs={[{ label: 'KRANTI', to: '/kranti' }, { label: 'Concept' }]}
       subNavItems={KRANTI_SUB_NAV}
       sections={merged}
     />

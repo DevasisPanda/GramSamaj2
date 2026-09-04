@@ -9,7 +9,7 @@ export default function DevelopmentInIndia() {
       title="History of Rural Development in India"
       subtitle="India has one of the world's most comprehensive rural development systems."
       gradient="saffron"
-      crumbs={[{ label: 'KRANTI', to: '/concept' }, { label: 'History of rural development' }]}
+      crumbs={[{ label: 'KRANTI', to: '/kranti' }, { label: 'History of rural development' }]}
       subNavItems={KRANTI_SUB_NAV}
     >
       <section className="prose-aird mx-auto max-w-3xl">

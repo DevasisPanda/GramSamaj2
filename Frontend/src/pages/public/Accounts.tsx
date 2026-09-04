@@ -12,6 +12,7 @@ import { AIRD, SERVICE_PRINCIPLE } from '@/lib/constants';
 import { ABOUT_SUB_NAV } from '@/lib/subNavTree';
 import {
   FINANCIAL_POSITION_SUMMARY,
+  FINANCIAL_POSITION_ADOPTION_2026,
   YEARLY_ACCOUNT_STATEMENTS
 } from '@/data/accountsData';
 import { formatINR, cn } from '@/lib/utils';
@@ -53,7 +54,7 @@ export default function Accounts() {
       <Breadcrumb
         items={[
           { label: 'About us', to: '/about' },
-          { label: 'Account' },
+          { label: 'Accounts' },
         ]}
       />
 
@@ -128,13 +129,9 @@ export default function Accounts() {
                     <span className="text-ink/60 font-semibold">Trust Registration No:</span>
                     <span className="font-bold text-forest-950">{AIRD.registrationNo}</span>
                   </div>
-                  <div className="flex justify-between py-2 border-b border-stone-100">
+                  <div className="flex justify-between py-2">
                     <span className="text-ink/60 font-semibold">NITI Aayog NGO Darpan:</span>
                     <span className="font-bold text-forest-950">{AIRD.ngoDarpanId}</span>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <span className="text-ink/60 font-semibold">Tax Status:</span>
-                    <span className="font-bold text-forest-950">{AIRD.taxStatus}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -167,58 +164,61 @@ export default function Accounts() {
                   <TrendingUp className="h-6 w-6 text-saffron-600" /> Multi-Year Financial Position (2019&ndash;2026)
                 </h2>
                 <p className="text-xs text-ink/60 mt-1">
-                  Official audited summary of income, expenditures, cash reserves, and liabilities from inception.
+                  Audited financial position of AIRD from inception across all financial years (Sourced from official State of Account).
                 </p>
               </div>
               <span className="text-[11px] font-bold bg-forest-50 text-forest-800 border border-forest-200 px-3 py-1 rounded-full">
-                8 Financial Years Audited
+                7 Audited Financial Years
               </span>
             </div>
 
             <div className="overflow-x-auto rounded-xl border border-stone-200 shadow-2xs">
-              <table className="w-full min-w-[700px] text-xs sm:text-sm text-left border-collapse">
+              <table className="w-full min-w-[780px] text-xs sm:text-sm text-left border-collapse">
                 <thead className="bg-forest-900 text-white uppercase text-[11px] tracking-wider">
                   <tr>
-                    <th className="p-3 font-semibold">Period / Date</th>
-                    <th className="p-3 font-semibold text-right">Received (₹)</th>
-                    <th className="p-3 font-semibold text-right">Cash in Hand (₹)</th>
-                    <th className="p-3 font-semibold text-right">Bank Deposit (₹)</th>
-                    <th className="p-3 font-semibold text-right">Expenditure (₹)</th>
-                    <th className="p-3 font-semibold text-right">Returnable (₹)</th>
-                    <th className="p-3 font-semibold text-right">Returned (₹)</th>
-                    <th className="p-3 font-semibold text-right">Liability (₹)</th>
+                    <th className="p-3 font-semibold" rowSpan={2}>Financial Year</th>
+                    <th className="p-2.5 font-semibold text-center border-b border-forest-800" colSpan={3}>Receipts (₹)</th>
+                    <th className="p-2.5 font-semibold text-center border-b border-forest-800" colSpan={3}>Expenditure (₹)</th>
+                    <th className="p-3 font-semibold text-right" rowSpan={2}>Liability (₹)</th>
+                  </tr>
+                  <tr className="bg-forest-950/90 text-[10px] text-forest-200">
+                    <th className="p-2 text-right">Activities</th>
+                    <th className="p-2 text-right">Returnable</th>
+                    <th className="p-2 text-right font-bold text-saffron-300">Total</th>
+                    <th className="p-2 text-right">Activities</th>
+                    <th className="p-2 text-right">Returned</th>
+                    <th className="p-2 text-right font-bold text-emerald-300">Total</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
                   {FINANCIAL_POSITION_SUMMARY.map((row, idx) => (
                     <tr
-                      key={row.date + idx}
+                      key={row.year}
                       className={cn(
                         'transition-colors hover:bg-saffron-50/50',
                         idx % 2 === 0 ? 'bg-white' : 'bg-stone-50/60'
                       )}
                     >
-                      <td className="p-3 font-bold text-forest-950">
-                        <div>{row.period}</div>
-                        <div className="text-[10px] text-ink/50 font-normal">{row.date}</div>
-                      </td>
-                      <td className="p-3 font-mono font-bold text-forest-700 text-right">
-                        {row.received > 0 ? formatINR(row.received) : '—'}
+                      <td className="p-3 font-bold text-forest-950 whitespace-nowrap">
+                        {row.year}
                       </td>
                       <td className="p-3 font-mono text-ink/80 text-right">
-                        {row.cashInHand > 0 ? formatINR(row.cashInHand) : '0'}
-                      </td>
-                      <td className="p-3 font-mono text-ink/80 text-right">
-                        {row.bankDeposit > 0 ? formatINR(row.bankDeposit) : '0'}
-                      </td>
-                      <td className="p-3 font-mono font-bold text-saffron-800 text-right">
-                        {row.expenditure > 0 ? formatINR(row.expenditure) : '—'}
+                        {row.donationForActivities > 0 ? formatINR(row.donationForActivities) : '—'}
                       </td>
                       <td className="p-3 font-mono text-ink/70 text-right">
                         {row.returnableDonation > 0 ? formatINR(row.returnableDonation) : '—'}
                       </td>
+                      <td className="p-3 font-mono font-bold text-forest-800 text-right bg-forest-50/40">
+                        {formatINR(row.totalReceipts)}
+                      </td>
+                      <td className="p-3 font-mono text-ink/80 text-right">
+                        {row.activitiesExpenditure > 0 ? formatINR(row.activitiesExpenditure) : '—'}
+                      </td>
                       <td className="p-3 font-mono text-ink/70 text-right">
                         {row.donationReturned > 0 ? formatINR(row.donationReturned) : '—'}
+                      </td>
+                      <td className="p-3 font-mono font-bold text-saffron-800 text-right bg-saffron-50/40">
+                        {formatINR(row.totalExpenditure)}
                       </td>
                       <td className="p-3 font-mono font-bold text-red-700 text-right">
                         {row.liability > 0 ? formatINR(row.liability) : '0'}
@@ -227,6 +227,47 @@ export default function Accounts() {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            {/* Special Highlight: Current Position on Village Adoption (15.08.2026) */}
+            <div className="rounded-2xl border-2 border-forest-200 bg-linear-to-br from-forest-50/60 to-saffron-50/40 p-5 sm:p-6 space-y-4">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <div>
+                  <div className="text-xs uppercase tracking-wider font-bold text-forest-700">Demonstration Milestone</div>
+                  <h3 className="text-base sm:text-lg font-extrabold text-forest-950">
+                    Financial Position at Adoption of Village Manpur Lala (As on 15.08.2026)
+                  </h3>
+                </div>
+                <span className="text-xs font-bold bg-saffron-500 text-white px-3 py-1 rounded-full shadow-xs">
+                  FY 2026&ndash;2027 Active
+                </span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2">
+                <div className="bg-white p-3 rounded-xl border border-forest-100 shadow-2xs">
+                  <span className="text-[11px] text-ink/60 block">Donations (Activities)</span>
+                  <span className="font-mono font-bold text-sm text-forest-800">{formatINR(FINANCIAL_POSITION_ADOPTION_2026.donationForActivities)}</span>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-forest-100 shadow-2xs">
+                  <span className="text-[11px] text-ink/60 block">Returnable Donation</span>
+                  <span className="font-mono font-bold text-sm text-forest-800">{formatINR(FINANCIAL_POSITION_ADOPTION_2026.returnableDonation)}</span>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-forest-100 shadow-2xs">
+                  <span className="text-[11px] text-ink/60 block">Total Receipts</span>
+                  <span className="font-mono font-bold text-sm text-forest-900">{formatINR(FINANCIAL_POSITION_ADOPTION_2026.totalReceipts)}</span>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-saffron-100 shadow-2xs">
+                  <span className="text-[11px] text-ink/60 block">Activities Expenditure</span>
+                  <span className="font-mono font-bold text-sm text-saffron-800">{formatINR(FINANCIAL_POSITION_ADOPTION_2026.activitiesExpenditure)}</span>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-stone-200 shadow-2xs">
+                  <span className="text-[11px] text-ink/60 block">Cash in Hand</span>
+                  <span className="font-mono font-bold text-sm text-ink/90">{formatINR(FINANCIAL_POSITION_ADOPTION_2026.cashInHand)}</span>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-stone-200 shadow-2xs">
+                  <span className="text-[11px] text-ink/60 block">Deposit in Bank</span>
+                  <span className="font-mono font-bold text-sm text-ink/90">{formatINR(FINANCIAL_POSITION_ADOPTION_2026.depositInBank)}</span>
+                </div>
+              </div>
             </div>
           </div>
 

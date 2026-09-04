@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, ChevronDown, ArrowLeft } from 'lucide-react';
+import { FileText, ChevronDown, ArrowLeft, Languages } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { SubNavPills } from '@/components/shared/SubNavPills';
+import { KrantiTimelineChart } from '@/components/kranti/KrantiTimelineChart';
 import { KRANTI_DOCUMENT, type DocSection } from '@/data/docFull';
 import { cn } from '@/lib/utils';
 import { PROJECT_SUB_NAV } from '@/lib/subNavTree';
@@ -17,9 +18,8 @@ function shortLabel(h?: string): string {
 const COLLAPSE_AFTER = 8;
 
 /**
- * Full Project KRANTI document ("Project KRANTI.docx" =O) — complete verbatim
- * text with sticky section navigation and collapsible long sections
- * (client-approved UI). The existing /kranti page stays untouched.
+ * Full Project KRANTI document — complete verbatim text with
+ * sticky section navigation, visual timeline chart, and Hindi toggle.
  */
 export default function KrantiDocument() {
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
@@ -31,18 +31,67 @@ export default function KrantiDocument() {
   return (
     <>
       <PageHero
-        title="Project KRANTI — Full Document"
+        title="Key to Reform & Adopt Noble Treatment Initiatives {KRANTI}"
         subtitle="Key to Reform & Adopt Noble Treatment Initiatives — complete project document."
         gradient="forest"
       >
-        <p className="inline-flex items-center gap-1.5 rounded-lg bg-white/70 px-3 py-1.5 text-sm font-medium text-forest-800">
-          <FileText className="h-4 w-4" /> Complete verbatim text &bull; {KRANTI_DOCUMENT.length} sections
-        </p>
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+          <p className="inline-flex items-center gap-1.5 rounded-lg bg-white/70 px-3 py-1.5 text-sm font-medium text-forest-800">
+            <FileText className="h-4 w-4" /> Complete verbatim text &bull; {KRANTI_DOCUMENT.length} sections
+          </p>
+          <Link
+            to="/kranti/hindi"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-saffron-500 hover:bg-saffron-600 px-3 py-1.5 text-sm font-bold text-white transition-colors shadow-xs"
+          >
+            <Languages className="h-4 w-4" /> हिन्दी में पढ़ें (Hindi Version)
+          </Link>
+        </div>
       </PageHero>
-      <Breadcrumb items={[{ label: 'Project', to: '/kranti' }, { label: 'Project Blueprint & Document' }]} />
+      <Breadcrumb items={[{ label: 'KRANTI', to: '/kranti' }, { label: 'Project Blueprint & Document' }]} />
 
       <div className="container-px pt-4 max-w-4xl mx-auto">
         <SubNavPills items={PROJECT_SUB_NAV} />
+      </div>
+
+      {/* Official Project Cover (from Website-1.docx) */}
+      <div className="container-px pt-6 max-w-3xl mx-auto">
+        <div className="rounded-2xl border-2 border-forest-600 bg-white p-6 sm:p-8 shadow-lg text-center space-y-4">
+          <div className="inline-block bg-saffron-100 text-saffron-800 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-saffron-300">
+            Official Project Document
+          </div>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-forest-950 leading-tight">
+            Key to Reform &amp; Adopt Noble Treatment Initiatives
+            <span className="block text-saffron-700 text-2xl sm:text-3xl md:text-4xl mt-1">(KRANTI)</span>
+          </h1>
+
+          <div className="flex justify-center py-2">
+            <img
+              src="/kranti-logo.png"
+              alt="क्रांति — Key to Reform & Adopt Noble Treatment Initiatives"
+              className="h-28 sm:h-36 w-auto object-contain drop-shadow-md"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <h2 className="text-sm sm:text-base md:text-lg font-bold text-forest-900 leading-snug max-w-xl mx-auto">
+              A Participatory Action Project to demonstrate process of Village Digitalization and Strengthening People&rsquo;s Governance &mdash; <span className="underline decoration-saffron-500 decoration-2">not on paper but in village</span>.
+            </h2>
+          </div>
+
+          <div className="pt-4 border-t border-saffron-100 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Proposed by:</span>
+            <div className="flex items-center gap-2">
+              <img
+                src="/aird-logo.png"
+                alt="AIRD Logo"
+                className="h-9 w-auto object-contain"
+              />
+              <span className="font-bold text-xs sm:text-sm text-forest-950">
+                Appropriate Institute of Rural Development (AIRD)
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Sticky section chip-nav */}
@@ -79,6 +128,9 @@ export default function KrantiDocument() {
                     </span>
                     <span className="break-words min-w-0">{shortLabel(s.heading)}</span>
                   </h2>
+                  {s.heading?.includes('Timeline') && (
+                    <KrantiTimelineChart />
+                  )}
                   {shown.map((p, j) => {
                     // Numbered/bulleted lines inside a section render as list rows
                     const isListItem = /^(\d+\.|[a-z]\)|\u2022|-)/.test(p) || /^[A-Z][^.!?]{0,80}:$/.test(p);

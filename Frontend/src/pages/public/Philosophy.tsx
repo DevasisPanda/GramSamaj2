@@ -10,7 +10,7 @@ import { SubNavPills } from '@/components/shared/SubNavPills';
 import {
   PHILOSOPHY_INTRO, PHILOSOPHY_GUIDING_PRINCIPLE, PHILOSOPHY_PILLARS, THREE_WORLDS,
 } from '@/data/philosophy';
-import { TEACHINGS_SUB_NAV } from '@/lib/subNavTree';
+import { TRUST_SUB_NAV } from '@/lib/subNavTree';
 
 const PILLAR_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   Heart, Sparkles, HandHeart: Heart, Brain, Users, Leaf,
@@ -20,8 +20,7 @@ const WORLD_ICONS = [Sun, Wind, Droplets];
 
 /**
  * Philosophy — AIRD's own philosophy, sourced from "Philosophy.docx".
- * Spiritual Teachings are a separate section (/teachings) with their own
- * source documents; the two are intentionally never merged here.
+ * Listed under Trust section in Buttons foe cover page.docx.
  */
 export default function Philosophy() {
   return (
@@ -31,12 +30,12 @@ export default function Philosophy() {
           &ldquo;{PHILOSOPHY_GUIDING_PRINCIPLE}&rdquo;
         </p>
       </PageHero>
-      <Breadcrumb items={[{ label: 'Teachings', to: '/teachings' }, { label: 'Philosophy' }]} />
+      <Breadcrumb items={[{ label: 'Trust', to: '/about/trust' }, { label: 'Philosophy' }]} />
 
       {/* Six pillars */}
       <section className="section-py">
         <div className="container-px">
-          <SubNavPills items={TEACHINGS_SUB_NAV} />
+          <SubNavPills items={TRUST_SUB_NAV} />
 
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-gradient-saffron">
             Six Pillars of Our Philosophy

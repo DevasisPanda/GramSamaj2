@@ -1,6 +1,6 @@
 import {
   ShieldCheck, FileText, Hash, Globe, CreditCard, Building,
-  MapPin, Mail, Phone, ScrollText,
+  MapPin, Mail, Phone,
 } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
@@ -60,13 +60,8 @@ export default function AboutTrust() {
                   <div className="flex items-start gap-2">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-saffron-500" />
                     <span className="text-ink/70 break-words">
-                      <strong className="font-semibold text-ink">Registered office:</strong>{' '}
                       {AIRD.registeredOffice}
                     </span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <ScrollText className="mt-0.5 h-4 w-4 shrink-0 text-saffron-500" />
-                    <span className="text-ink/70 break-words">{AIRD.taxStatus}</span>
                   </div>
                   {TRUST_DEED_AVAILABLE && (
                     <div className="flex items-center gap-2">

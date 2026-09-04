@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { SubNavPills } from '@/components/shared/SubNavPills';
+import { KrantiTimelineChart } from '@/components/kranti/KrantiTimelineChart';
 import { useMoonCountdown } from '@/hooks/useMoonCountdown';
 import { KRANTI, KRANTI_PHASES, KRANTI_CONTINUOUS } from '@/data/kranti';
 import { formatDate } from '@/lib/utils';
@@ -24,25 +25,60 @@ export default function Kranti() {
   return (
     <>
       <PageHero
-        title={`Project ${KRANTI.shortName}`}
-        subtitle={`${KRANTI.fullName} — ${KRANTI.tagline}`}
+        title="Project KRANTI"
+        subtitle="A Participatory Action Project to demonstrate process of village digitalization and strengthening people’s governance – not on paper but in village."
         gradient="forest"
       >
         <div className="flex flex-wrap gap-3 text-sm">
           <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/70 px-3 py-1.5 font-medium text-forest-800">
-            <Rocket className="h-4 w-4" /> Launch: {formatDate(KRANTI.launchDate)}
+            <Rocket className="h-4 w-4" /> Launch: 25th September (Bank Uncle's Day)
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/70 px-3 py-1.5 font-medium text-forest-800">
-            <MapPin className="h-4 w-4" /> {KRANTI.location}
+            <MapPin className="h-4 w-4" /> Village Manpur Lala, BKT, Lucknow
           </span>
         </div>
       </PageHero>
-      <Breadcrumb items={[{ label: 'Project', to: '/kranti' }, { label: 'Project KRANTI' }]} />
+      <Breadcrumb items={[{ label: 'KRANTI', to: '/kranti' }, { label: 'Project KRANTI' }]} />
 
-      {/* Aim */}
+      {/* Aim & Adoption Milestone */}
       <section className="section-py">
         <div className="container-px max-w-5xl mx-auto space-y-8">
           <SubNavPills items={PROJECT_SUB_NAV} />
+
+          {/* Milestone Banner: Village Adoption & Launch Announcement */}
+          <div className="mx-auto max-w-4xl rounded-2xl border-2 border-forest-200 bg-linear-to-br from-forest-50 to-saffron-50/50 p-5 sm:p-6 shadow-xs">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <img
+                src="/kranti-logo.png"
+                alt="KRANTI Emblem"
+                className="h-24 sm:h-28 w-auto object-contain shrink-0 drop-shadow-md bg-white p-1 rounded-xl border border-saffron-200"
+              />
+              <div className="space-y-3 flex-1 min-w-0">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="bg-forest-800 text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider">
+                    Live Demonstration Milestone
+                  </span>
+                  <span className="text-xs font-bold text-saffron-800 bg-white px-3 py-1 rounded-full border border-saffron-200">
+                    Adoption Date: 15th August 2026
+                  </span>
+                </div>
+                <h3 id="adoption" className="text-base sm:text-lg font-bold text-forest-950 scroll-mt-28">
+                  Adoption of Village Manpur Lala (BKT, Lucknow)
+                </h3>
+                <p className="text-xs sm:text-sm text-ink/80 leading-relaxed">
+                  On <strong>15th August 2026</strong>, village <strong>Manpur Lala</strong> (Block Bakshi Ka Talab, Lucknow) has been formally adopted
+                  by AIRD for demonstrating the practical process of strengthening People&rsquo;s Governance (&ldquo;Gram Swaraj&rdquo;) not on paper,
+                  but at the village level.
+                </p>
+                <div id="launching" className="flex items-center gap-2 pt-1 text-xs font-semibold text-saffron-900 bg-white/80 p-3 rounded-xl border border-saffron-200/80 scroll-mt-28">
+                  <Rocket className="h-4 w-4 text-saffron-600 shrink-0" />
+                  <span>
+                    <strong>Official Launch:</strong> Project KRANTI will be launched on <strong>25th September</strong> to make Bank Uncle&rsquo;s Day memorable.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <Card className="mx-auto max-w-4xl border-l-4 border-l-forest-600">
             <CardHeader>
@@ -57,12 +93,20 @@ export default function Kranti() {
               </div>
             </CardContent>
           </Card>
-          <p className="mt-4 text-center">
-            <Link to="/kranti/document" className="govt-link">
-              Read Full Project Document &rarr;
+          <div className="mt-4 flex flex-wrap justify-center gap-4 text-sm">
+            <Link to="/kranti/document" className="govt-link font-bold">
+              Read Full Project Document (English) &rarr;
             </Link>
-          </p>
+            <Link to="/kranti/hindi" className="govt-link font-bold text-saffron-700">
+              संपूर्ण परियोजना दस्तावेज़ (हिन्दी) &rarr;
+            </Link>
+          </div>
         </div>
+      </section>
+
+      {/* Phased Visual Timeline Gantt Chart */}
+      <section className="container-px max-w-5xl mx-auto pb-6">
+        <KrantiTimelineChart />
       </section>
 
       {/* 7-Phase Timeline */}
