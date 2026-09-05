@@ -455,6 +455,23 @@ export function Header() {
             </div>
           </Link>
 
+          {/* National Initiative Logos from Buttons foe cover page.docx */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <img
+              src="/bharat-nirman.jpg"
+              alt="भारत निर्माण"
+              className="h-9 w-auto object-contain"
+              title="भारत निर्माण - चलें नयी आज़ादी की ओर"
+            />
+            <div className="h-7 w-px bg-saffron-200" />
+            <img
+              src="/digital-india.jpg"
+              alt="Digital India"
+              className="h-8 w-auto object-contain"
+              title="Digital India - Power To Empower"
+            />
+          </div>
+
           {/* Mobile hamburger */}
           <div className="flex items-center md:hidden shrink-0">
             <button
