@@ -73,6 +73,39 @@ export function HeroDandi() {
           <span className="hidden sm:inline">&bull;</span>
           <span>NGO Darpan: {AIRD.ngoDarpanId}</span>
         </div>
+
+        {/* National Initiative Logos — Right on Desktop (lg+), Bottom on Mobile/Tablet */}
+        <div
+          aria-label="National Initiatives"
+          className="mt-4 lg:mt-0 lg:absolute lg:right-4 xl:right-8 lg:top-1/2 lg:-translate-y-1/2 flex flex-row lg:flex-col items-center justify-center gap-2.5 sm:gap-3 bg-white/95 border border-forest-300/80 rounded p-2 sm:p-2.5 shadow-xs"
+        >
+          <div className="text-[8px] sm:text-[9px] font-bold text-forest-900 uppercase tracking-wider text-center hidden lg:block border-b border-forest-100 pb-1 w-full">
+            Initiatives
+          </div>
+
+          {/* Bharat Nirman Logo */}
+          <div className="flex flex-col items-center justify-center p-1 bg-stone-50 rounded border border-gray-200">
+            <img
+              src="/bharat-nirman.jpg"
+              alt="भारत निर्माण"
+              className="h-8 sm:h-9 lg:h-11 w-auto max-w-full object-contain"
+              title="भारत निर्माण - चलें नयी आज़ादी की ओर"
+            />
+          </div>
+
+          <div className="hidden lg:block w-full h-px bg-saffron-200" />
+          <div className="lg:hidden h-6 w-px bg-saffron-200 shrink-0" />
+
+          {/* Digital India Logo */}
+          <div className="flex flex-col items-center justify-center p-1 bg-stone-50 rounded border border-gray-200">
+            <img
+              src="/digital-india.jpg"
+              alt="Digital India"
+              className="h-7 sm:h-8 lg:h-10 w-auto max-w-full object-contain"
+              title="Digital India - Power To Empower"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
